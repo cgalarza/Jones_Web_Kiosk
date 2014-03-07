@@ -27,7 +27,6 @@ function addingPromotionalMovies(accessionNumbers, titles, catalogLinks){
 			var img = new Image();
 
 			img.src = '../../Pictures/DVD/' + accessionNumbers[i] + '.jpg';
-			console.log(img.src);
 		
 			var newHeight = 600;
 			img.width = (newHeight/img.height) * img.width;
