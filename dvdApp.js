@@ -2,7 +2,6 @@
 function jonesDvdKiosk(){
 	console.log('ready!');
 	
-
 	//add new html to promotionalDvds inorder for all the promotional DVDs to be displayed
 	var accessionNumbers = [1, 2, 3, 6, 7, 8];
 	var titles = ["Animal House", "To Kill a Mockingbird", "Psycho", "West Side Story", "Seven Samurai", "The Seventh Seal"];
@@ -26,7 +25,7 @@ function addingPromotionalMovies(accessionNumbers, titles, catalogLinks){
 
 			var img = new Image();
 
-			img.src = '../../Pictures/DVD/' + accessionNumbers[i] + '.jpg';
+			img.src = 'http://www.dartmouth.edu/~library/mediactr/images/' + accessionNumbers[i] + '.jpg';
 		
 			var newHeight = 600;
 			img.width = (newHeight/img.height) * img.width;
@@ -41,6 +40,5 @@ function addingPromotionalMovies(accessionNumbers, titles, catalogLinks){
 		}
 
 }
-
 
 $(document).ready(jonesDvdKiosk);
