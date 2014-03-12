@@ -4,14 +4,14 @@
 	<body>
 		Search the Jones Media Center Collection
 
-		You were searching: <?php echo $_POST["search"]; ?>
+		You were searching: <?php echo $_GET["search"]; ?>
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 
 		<script>
 
 			$.get("search.php", function(response){
-				console.log(search.php returned);
+				console.log("search.php returned");
 				//Code to parse the JSON object that is returned
 			});
 
