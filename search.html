@@ -1,21 +1,59 @@
 <html>
 
+	<head>
+		<title>Jones DVD Search</title>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+	</head>
 
 	<body>
-		Search the Jones Media Center Collection
 
-		You were searching: <?php echo $_GET["search"]; ?>
+		<div id="header">
+			<h1>Jones Media Center</h1>
+
+			<form action="search.html" method="get">
+				Search for DVDs and VHS: <input type="text" name="search">
+				<input type="submit" value="Search">
+			</form>
+		</div>
+
+
+		Search results for: <?php echo $_GET["search"]; ?>
+
+		<!-- Where search results will be displayed -->
+		<div id="searchResultsWrapper">
+			<div id="searchResults">
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<script src='jquery-1.11.0.js'></script>
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
-
 		<script>
+			console.log("got to script");
 
-			$.get("search.php", function(response){
-				console.log("search.php returned");
-				//Code to parse the JSON object that is returned
-			});
+			var get_results = window.location.search.substring(1);
+			var search_term = get_results.split("=");
 
+			$.get("search_results.php?search=\"" + search_term[1] + "\"", 
+				function(response){
+					console.log("search.php returned");
+					console.log(response);
+					//Code to parse the JSON object that is returned
+				}, 
+				"json");
 		</script>
 
 	</body>
+
 </html>

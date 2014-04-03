@@ -1,0 +1,15 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+
+div#header{
+	background-color: #2B9C8A;
+}
+
+h1 {
+	color: black;
+}
+
+
+body {
+	background-color: #FEFEFD;
+	font-family: 'Open Sans', sans-serif;
+}
