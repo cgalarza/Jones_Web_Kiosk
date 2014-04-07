@@ -1,15 +1,36 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 
 div#header{
 	background-color: #2B9C8A;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 h1 {
 	color: black;
+	margin: 0px;
 }
-
 
 body {
 	background-color: #FEFEFD;
 	font-family: 'Open Sans', sans-serif;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+h2.title {
+	font-weight: 600;
+	color: #F36C6E;
+	line-height: normal;
+	margin-bottom: 7px;
+}
+
+#searchResults {
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+
+input {
+
 }
