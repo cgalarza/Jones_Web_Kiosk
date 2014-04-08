@@ -34,3 +34,7 @@ h2.title {
 input {
 
 }
+
+#title {
+	float: left;
+}
