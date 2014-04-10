@@ -48,16 +48,23 @@
 
 							var movieHtml = [];
 
-
 							// Add image.
-							movieHtml.push('<div class="movieImages"> <img src="images/Image_Not_Available.png" width="207" height="300"></img>');
+
+							movieHtml.push('<div class="movieImage"><img src="' + obj.image_path + 
+							 '" width="210"></img></div>');
 
 							// Add title
-							movieHtml.push('<strong><h2 class="title">' + obj.title + '</h2></strong>');
+							movieHtml.push('<div class="movieInfo"><strong><h2 class="title">' + obj.title + '</h2></strong>');
 
 							// Add summary (only if there is one)
-							if (obj.summary != "")
-								movieHtml.push('<div class="summary">' + obj.summary + '</div>');
+							if (obj.summary != ""){
+								movieHtml.push('<div class="summary">' + obj.summary.substr(0, 500));
+
+								if (obj.summary.length > 500)
+									movieHtml.push('...</div>');
+								else
+									movieHtml.push('</div>');
+							}
 
 							// Add location, call number, status
 							$.each(obj.location, function(index, row){
@@ -66,14 +73,12 @@
 									row.status);
 							})
 
-
 							// Add cast (only if there is one)
 							if (obj.cast != "")
 								movieHtml.push('<br/><br/><div class="cast"><strong>Cast: </strong>' + obj.cast + '</div>');
 
-
-
-
+							// Closing the information div. 
+							movieHtml.push("</div>");
 
 							var movie = $('<div>', {
 								'class' : 'movieResult',

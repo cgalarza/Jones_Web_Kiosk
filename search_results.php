@@ -1,6 +1,6 @@
 <?php
 
-	require 'MovieRecord.php';
+	require 'movie_record.php';
 
 	$search_term = $_GET["search"];
 
