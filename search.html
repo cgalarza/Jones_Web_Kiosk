@@ -34,7 +34,7 @@
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
 
-				$('#searchTerm').html(search_term[1]);
+				$('#searchTerm').html(search_term[1].split("+").join(" "));
 
 				$.get("search_results.php?search=\"" + search_term[1] + "\"", 
 					function(response){
@@ -44,14 +44,15 @@
 						// Parse the JSON object that is returned
 						var jsonObj = $.parseJSON(JSON.stringify(response));
 						$.each(jsonObj, function(index, obj){
+							
 							console.log(obj.location);
 
 							var movieHtml = [];
 
 							// Add image.
 
-							movieHtml.push('<div class="movieImage"><img src="' + obj.image_path + 
-							 '" width="210"></img></div>');
+							movieHtml.push('<div><img class="movieImage" src="' + obj.image_path + 
+							 '"></img></div>');
 
 							// Add title
 							movieHtml.push('<div class="movieInfo"><strong><h2 class="title">' + obj.title + '</h2></strong>');
@@ -84,6 +85,9 @@
 								'class' : 'movieResult',
 								html : movieHtml.join('')
 							});
+
+							if (index % 2 == 0)
+								movie.attr('class', 'movieResult altColor');
 
 							movie.appendTo($('#searchResults'));
 

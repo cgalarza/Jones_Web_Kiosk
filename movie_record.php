@@ -9,6 +9,8 @@ class MovieRecord{
 	const BEG_IMG_PATH = '../DVD/'; // This url needs to be changed when its actually on the server
 	const JPG_EXTENTION = '.jpg';
 	const IMG_NOT_AVAILABLE = 'images/Image_Not_Available.png';
+	const DVD = "DVD";
+	const VHS = "VHS";
 
 	private $bib_number;
 	private $url;
@@ -58,14 +60,14 @@ class MovieRecord{
 
 		foreach ($this->location_array as $location_info){
 			if ($location_info['type'] == self::MEDIA_DVD){
-				$this->media = "DVD";
+				$this->media = self::DVD;
 				$accession_array = explode(" ", $location_info['callnumber']);
 				$this->accession_number = $accession_array[0];
 				break;
 			}
 			
 			else if ($location_info['type'] == self::MEDIA_VHS){
-				$this->media = "VHS";
+				$this->media = self::VHS;
 				$accession_array = explode(" ", $location_info['callnumber']);
 				$this->accession_number = $accession_array[0];
 				break;
@@ -112,7 +114,7 @@ class MovieRecord{
 		// Check if file exists on the server
 		$img_file = self::BEG_IMG_PATH . $this->accession_number . self::JPG_EXTENTION;
 
-		if (file_exists($img_file))
+		if (file_exists($img_file) && $this->media == self::DVD)
 			return $img_file;
 		else 
 			return self::IMG_NOT_AVAILABLE;

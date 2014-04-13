@@ -11,10 +11,6 @@ h1 {
 	margin: 0px;
 }
 
-h2.title {
-	margin: 0px;
-}
-
 body {
 	background-color: #FEFEFD;
 	font-family: 'Open Sans', sans-serif;
@@ -27,25 +23,28 @@ h2.title {
 	color: #F36C6E;
 	line-height: normal;
 	margin-bottom: 7px;
+	margin: 0px;
 }
 
 #searchResults {
 	padding-right: 40px;
 	padding-left: 40px;
-
 }
 
 .movieResult {
-	padding-top: 25px;
-	padding-bottom: 25px;
+	padding: 25px;
 	height: 300px;
 	width: 1000px;
+}
 
+.altColor {
+	background-color: #DCE3E8;
 }
 
 .movieImage {
-	width: 200px;
+	max-width: 210px;
 	float: left;
+	max-height: 315px;
 }
 
 .movieInfo {
