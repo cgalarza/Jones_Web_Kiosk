@@ -2,14 +2,19 @@
 
 div#header{
 	background-color: #2B9C8A;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
 }
 
 h1 {
 	color: black;
 	margin: 0px;
+	display: inline;
 }
+
+a#home{
+	text-decoration: none;
+}
+
 
 body {
 	background-color: #FEFEFD;
@@ -18,23 +23,61 @@ body {
 	padding-right: 20px;
 }
 
+form {
+	display:inline;
+	float:right;
+	padding: 10px;
+}
+
 h2.title {
 	font-weight: 600;
 	color: #F36C6E;
 	line-height: normal;
 	margin-bottom: 7px;
 	margin: 0px;
+	display: inline;
+}
+
+span.media{
+	background-color: #3F5765;
+	color:#FFFFFF;
+	float:right;
+	font-size: 90%;
+	padding: 3px;
+}
+
+#genre {
+	text-decoration: none;
+}
+
+h3#displaySearchTerm{
+	padding: 10px;
+	padding-left: 60px;
+}
+
+input#searchField {
+	width: 225px;
+	height: 25px;
+	font-size: 15px;
 }
 
 #searchResults {
 	padding-right: 40px;
 	padding-left: 40px;
+
+}
+
+.noResults{
+	color: red;
+	font-size: 200%;
 }
 
 .movieResult {
 	padding: 25px;
 	height: 300px;
 	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .altColor {
@@ -43,8 +86,9 @@ h2.title {
 
 .movieImage {
 	max-width: 210px;
-	float: left;
 	max-height: 315px;
+
+	float: left;
 }
 
 .movieInfo {

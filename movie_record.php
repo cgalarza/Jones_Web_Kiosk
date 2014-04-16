@@ -9,8 +9,14 @@ class MovieRecord{
 	const BEG_IMG_PATH = '../DVD/'; // This url needs to be changed when its actually on the server
 	const JPG_EXTENTION = '.jpg';
 	const IMG_NOT_AVAILABLE = 'images/Image_Not_Available.png';
+	const IMG_ON_RESERVE = 'images/On_Reserve_at_Jones.png';
+	const ON_RESERVE_AT_JMC = 'On Reserve at Jones Media';
+	const RESERVE = "On Reserve";
 	const DVD = "DVD";
 	const VHS = "VHS";
+	const MULTIPLE_DVD = "DVD Set";
+	const MULTIPLE_VHS = "VHS Set";
+	const MULTIPLE_TYPE = "Multiple Types";
 
 	private $bib_number;
 	private $url;
@@ -55,28 +61,64 @@ class MovieRecord{
 		// Getting location array information
 		$this->location_array = $this->get_locations($xpath->query("//tr[@class='bibItemsEntry']"));
 
-		// Getting media type (DVD or VHS) and accession number.
-		$this->accession_number = -1;
-
-		foreach ($this->location_array as $location_info){
-			if ($location_info['type'] == self::MEDIA_DVD){
-				$this->media = self::DVD;
-				$accession_array = explode(" ", $location_info['callnumber']);
-				$this->accession_number = $accession_array[0];
-				break;
-			}
-			
-			else if ($location_info['type'] == self::MEDIA_VHS){
-				$this->media = self::VHS;
-				$accession_array = explode(" ", $location_info['callnumber']);
-				$this->accession_number = $accession_array[0];
-				break;
-			}
-		}
+		$this->get_type_and_accession_num();
 
 		// Creating image path based on the accession number and media type.
 		$this->image_path = $this->get_img_path();
 	
+	}
+
+	function get_type_and_accession_num(){
+		// Getting media type (DVD or VHS) and accession number.
+		$this->accession_number = -1;
+
+		// If there is only one location then the type can only be DVD, VHS or on Reserve
+		if (sizeof($this->location_array) == 1){
+			
+			$location_info = $this->location_array[0];
+
+			if ($location_info['type'] == self::MEDIA_DVD){
+				$this->media = self::DVD;
+				$this->accession_number = $this->get_accession_num($location_info['callnumber']);
+				return;
+			}
+			else if ($location_info['type'] == self::ON_RESERVE_AT_JMC){
+				$this->media = self::RESERVE;
+				return;
+			}
+			
+			else if ($location_info['type'] == self::MEDIA_VHS){
+				$this->media = self::VHS;
+				$this->accession_number = $this->get_accession_num($location_info['callnumber']);
+				return;
+			}
+		}
+		else {
+
+			$loc = $this->location_array[0]['type'];
+
+			// Check if all types are the same
+			foreach ($this->location_array as $location_info){
+				// If one type is different the type is set to multiple
+				if ($location_info['type'] != $loc){
+					$this->media = self::MULTIPLE_TYPE;
+					return;
+				}	
+			}
+
+			// If all types are the same set it to that type
+			if ($loc == self::MEDIA_DVD)
+				$this->media = self::MULTIPLE_DVD;
+			else if ($loc == self::MEDIA_VHS)
+				$this->media = self::MULTIPLE_VHS;
+			else if ($loc == self::ON_RESERVE_AT_JMC)
+				$this->media = self::RESERVE;
+		}
+	}
+
+	function get_accession_num($call_number_string){
+		$accession_array = explode(" ", $call_number_string);
+		return $accession_array[0];
 	}
 
 	function get_title($title_node){
@@ -116,6 +158,8 @@ class MovieRecord{
 
 		if (file_exists($img_file) && $this->media == self::DVD)
 			return $img_file;
+		else if ($this->media == self::RESERVE) 
+			return self::IMG_ON_RESERVE;
 		else 
 			return self::IMG_NOT_AVAILABLE;
 	}
