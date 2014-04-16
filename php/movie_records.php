@@ -1,6 +1,6 @@
 <?php
 
-class MovieRecord{
+class MovieRecords{
 
 	const BEG_RECORD_URL = "http://libcat.dartmouth.edu/record=";
 	const END_RECORD_URL = "~S4";

@@ -38,7 +38,7 @@
 				$('#searchTerm > i').html(search);
 				$('#searchField').attr("value", search);
 
-				$.get("search_results.php?search=\"" + search_term[1] + "\"", 
+				$.get("php/keyword_search.php?search=\"" + search_term[1] + "\"", 
 					function(response){
 						console.log("search_results.php returned");
 						console.log(response);

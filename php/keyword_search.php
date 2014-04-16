@@ -1,7 +1,6 @@
 <?php
 	
-	include '../ChromePhp.php';
-	require 'movie_record.php';
+	require 'movie_records.php';
 
 	$search_term = $_GET["search"];
 
@@ -25,7 +24,7 @@
 	$movies_array = array();
 
 	for ($i = 0; $i < $bib_number_nodes->length; $i++){
-		$movie = new MovieRecord ($bib_number_nodes->item($i)->nodeValue);
+		$movie = new MovieRecords ($bib_number_nodes->item($i)->nodeValue);
 
 		array_push($movies_array, json_decode($movie->create_JSON_representation()));
 	}
