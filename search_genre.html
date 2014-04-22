@@ -3,7 +3,6 @@
 	
 	<head>
 		<title>Jones DVD Search</title>
-
 		<link rel="stylesheet" href="style.css" type="text/css"/>
 	</head>
 
@@ -20,28 +19,49 @@
 		</div>
 		
 		<ul id="genreNavigationBar">
-			<li>adventure</li>
-			<li>animation</li>
-			<li>children</li>
-			<li>comedy</li>
-			<li>crime</li>
-			<li>documentary</li>
-			<li>drama</li>
-			<li>fantasy</li>
-			<li>historical</li>
-			<li>horror</li>
-			<li>musical</li>
-			<li>mystery</li>
-			<li>romance</li>
-			<li>science fiction</li>
-			<li>television programs</li>
-			<li>thriller</li>
-			<li>war</li>
-			<li>western</li>
+			<li><a href="search_genre.html?genre=adventure">adventure</a></li>
+			<li><a href="search_genre.html?genre=animation">animation</a></li>
+			<li><a href="search_genre.html?genre=children">children</a></li>
+			<li><a href="search_genre.html?genre=comedy">comedy</a></li>
+			<li><a href="search_genre.html?genre=crime">crime</a></li>
+			<li><a href="search_genre.html?genre=documentary">documentary</a></li>
+			<li><a href="search_genre.html?genre=drama">drama</a></li>
+			<li><a href="search_genre.html?genre=fantasy">fantasy</a></li>
+			<li><a href="search_genre.html?genre=historical">historical</a></li>
+			<li><a href="search_genre.html?genre=horror">horror</a></li>
+			<li><a href="search_genre.html?genre=musical">musical</a></li>
+			<li><a href="search_genre.html?genre=mystery">mystery</a></li>
+			<li><a href="search_genre.html?genre=romance">romance</a></li>
+			<li><a href="search_genre.html?genre=science_fiction">science fiction</a></li>
+			<li><a href="search_genre.html?genre=television_program">television programs</a></li>
+			<li><a href="search_genre.html?genre=thriller">thriller</a></li>
+			<li><a href="search_genre.html?genre=war">war</a></li>
+			<li><a href="search_genre.html?genre=western">western</a></li>
 		</ul>
 
-		<br />
 
+		<!-- Where search results will be displayed -->
+		<div id="searchResultsWrapper">
+			<br/>
+			<div id="searchResults" class="floatRight">
+				<!-- Need some kind of loading message -->
+			</div>
+		</div>
+
+		<script src='js/jquery-1.11.0.js'></script>
+		<script src='js/DisplaySearch.js'></script>
+		<script>
+			$(document).ready(function(){
+				var get_results = window.location.search.substring(1);
+				var search_term = get_results.split("=");
+				$.get("php/search.php?genre=" + search_term[1], 
+					
+					function(response){
+						displaySearchResults(response);
+					},
+					"json");
+			});
+		</script>
 	</body>
 
 </html>

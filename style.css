@@ -4,25 +4,25 @@
 /* -----------------------------------*/
 /* ---------->>> GLOBAL <<<-----------*/
 /* -----------------------------------*/
-h1 {
+h1{
 	color: black;
 	margin: 0px;
 	display: inline;
 }
 
-body {
+body{
 	background-color: #FEFEFD;
 	font-family: 'Open Sans', sans-serif;
 	padding-left: 20px;
 	padding-right: 20px;
+	min-width: 1200px;
 }
 
-form {
+form{
 	display:inline;
 	float:right;
 	padding: 10px;
 }
-
 
 /* -----------------------------------*/
 /* ---------->>> HEADER <<<-----------*/
@@ -60,10 +60,13 @@ input#searchField {
 	font-size: 15px;
 }
 
+.floatRight {
+	float: right;
+}
+
 #genreButton {
 	text-decoration: none;
 }
-
 
 /* -----------------------------------*/
 /* ----->>> GENRE NAVIGATION <<<------*/
@@ -71,6 +74,9 @@ input#searchField {
 
 #genreNavigationBar {
 	list-style: none;
+	float: left;
+	padding: 15px;
+
 }
 
 /* -----------------------------------*/
@@ -93,9 +99,9 @@ h3#displaySearchTerm{
 }
 
 .movieResult {
-	padding: 25px;
-	height: 300px;
-	width: 1000px;
+	padding: 15px;
+	height: 250px;
+	width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -105,12 +111,12 @@ h3#displaySearchTerm{
 }
 
 .movieImage {
-	max-width: 210px;
-	max-height: 315px;
+	max-width: 220px;
+	max-height: 250px;
 	float: left;
 }
 
 .movieInfo {
 	float: right;
-	width: 775px;
+	width: 700px;
 }
