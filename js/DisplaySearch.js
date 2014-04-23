@@ -34,7 +34,7 @@ function displaySearchResults(json){
 
 		// Add summary (only if there is one)
 		if (obj.summary != ""){
-			movieHtml.push('<div class="summary">' + obj.summary.substr(0, 500));
+			movieHtml.push('<div class="summary">' + obj.summary.substr(0, 400));
 
 			if (obj.summary.length > 500)
 				movieHtml.push('...</div>');
@@ -46,10 +46,25 @@ function displaySearchResults(json){
 		// Add accession number
 		if (obj.location.length == 1) {
 			if (obj.media == "DVD" || obj.media == "VHS"){
-				movieHtml.push("<br/><strong>Call Number:</strong> " + obj.accession_number + " <br/><strong>Status: </strong>" + obj.location[0].status);
+				movieHtml.push("<br/><strong>Call Number:</strong> " + 
+					obj.accession_number);
 			} else {
-				movieHtml.push("<br/>On Reserve for " + obj.location[0].callnumber + "   " + obj.location[0].status);
+				movieHtml.push("<br/>On Reserve for " + obj.location[0].callnumber);
 			}
+
+			if (obj.location[0].status == "AVAILABLE")
+				movieHtml.push("      <span class=\"available\"><strong>" + obj.location[0].status + "</strong></span>");
+			else
+				movieHtml.push("      <span class=\"notAvailable\"><strong>" + obj.location[0].status + "</strong></span>");
+
+		}
+		else if (obj.media == "DVD Set") {
+			movieHtml.push("<br><strong>Call Number: </strong>" + obj.accession_number + " (Multiple Discs)<br/>");
+			$.each(obj.location, function(index, row){
+				var discString = row.callnumber.split(" ");
+				movieHtml.push(discString[1] + "   " + row.status + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+			})
+
 		}
 		else {
 			$.each(obj.location, function(index, row){

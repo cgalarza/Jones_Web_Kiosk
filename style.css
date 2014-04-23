@@ -46,23 +46,12 @@ h2.title {
 	display: inline;
 }
 
-span.media{
-	background-color: #3F5765;
-	color:#FFFFFF;
-	float:right;
-	font-size: 90%;
-	padding: 3px;
-}
-
 input#searchField {
 	width: 225px;
 	height: 25px;
 	font-size: 15px;
 }
 
-.floatRight {
-	float: right;
-}
 
 #genreButton {
 	text-decoration: none;
@@ -88,6 +77,10 @@ h3#displaySearchTerm{
 	padding-left: 60px;
 }
 
+.floatRight {
+	float: right;
+}
+
 #searchResults {
 	padding-right: 40px;
 	padding-left: 40px;
@@ -105,6 +98,27 @@ h3#displaySearchTerm{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+span.notAvailable {
+	color: #F36C6E;
+	font-size: 110%;
+	padding: 3px;
+}
+
+span.available {
+	color: #2B9C8A;
+	font-size: 110%;
+	padding: 3px;
+}
+
+span.media{
+	background-color: #3F5765;
+	color:#FFFFFF;
+	float:right;
+	font-size: 90%;
+	padding: 3px;
+}
+
 
 .altColor {
 	background-color: #DCE3E8;
