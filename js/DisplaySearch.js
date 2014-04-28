@@ -27,7 +27,7 @@ function displaySearchResults(json){
 		 '"></img></div>');
 
 		// Add title
-		movieHtml.push('<div class="movieInfo"><strong><h2 class="title">' + obj.title + '</h2></strong>');
+		movieHtml.push('<div class="movieInfo"><strong><a href=\"entire_record.html?bibnum=' + obj.bibnumber + '\"><h2 class="title">' + obj.title + '</h2></a></strong>');
 
 		// Add media
 		movieHtml.push('<span class="media">' + obj.media + ' </span>');

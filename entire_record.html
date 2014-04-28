@@ -1,12 +1,13 @@
+<!DOCTYPE html>
 <html>
-
+	
 	<head>
 		<title>Jones DVD Search</title>
+
 		<link rel="stylesheet" href="style.css" type="text/css"/>
 	</head>
 
 	<body>
-
 		<div id="header">
 			<a href="index.html" id="home"><img src="images/Jones_Logo.png"/></a>
 
@@ -17,38 +18,31 @@
 				<input type="submit" value="Search">
 			</form>
 		</div>
+		
+		<br />
 
-		<h3 id='displaySearchTerm'>
-			Search results for:&nbsp;<span id='searchTerm'><i></i></span>
-		</h3>
-		<!-- Where search results will be displayed -->
-		<div id="searchResultsWrapper">
-			<div id="searchResults">
-				<!-- Need some kind of loading message -->
-			</div>
+		<div id="entireRecord">
 		</div>
 
-		<script src='js/jquery-1.11.0.js'></script>
-		<script src='js/DisplaySearch.js'></script>
 
-		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
+
+		<script src='js/jquery-1.11.0.js'></script>
+
 		<script>
 			$(document).ready(function(){
 				var get_results = window.location.search.substring(1);
-				var search_term = get_results.split("=");
-				search = search_term[1].split("+").join(" ");
-
-				$('#searchTerm > i').html(search);
-				$('#searchField').attr("value", search);
-
-				$.get("php/search.php?search=" + search_term[1], 
+				var bibnum_split= get_results.split("=");
+				console.log(bibnum_split[1]);
+				$.get("php/entire_record.php?bibnum=" + bibnum_split[1], 
+					
 					function(response){
 						displaySearchResults(response);
 					},
 					"json");
 			});
-		</script> 
+		</script>
 
 	</body>
+
 
 </html>
