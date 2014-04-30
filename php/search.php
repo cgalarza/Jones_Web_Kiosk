@@ -1,10 +1,9 @@
 <?php
 	
 	require 'movie_records.php';
-	include "../../ChromePhp.php";
+	include '../../ChromePhp.php';
 	
 	new Search();
-
 
 	class Search{	
 
@@ -35,11 +34,11 @@
 
 			$xpath = new DOMXPATH($doc);
 
-			// Bib numbers of items on search result page
+			// Bib numbers of items on search result page.
 			// Empty if there aren't any results
 			$bib_number_nodes = $this->search($xpath);
 
-			// With the bib_number_nodes create a json to return
+			// With the bib_number_nodes create a json to return.
 			echo $this->search_result_json($bib_number_nodes);
 
 		}

@@ -1,6 +1,13 @@
-// Function that displays search result
+
+// Displays the record of just one item. 
+function displayEntireRecord(json){
+	console.log(json);
+	
+}
+
+
+// Displays search results given a json with the information of all the search results.
 function displaySearchResults(json){
-	console.log("search_results.php returned");
 	console.log(json);
 
 	// Parse the JSON object that is returned
@@ -23,31 +30,22 @@ function displaySearchResults(json){
 		var movieHtml = [];
 
 		// Add image.
-		movieHtml.push('<div><img class="movieImage" src="' + obj.image_path + 
-		 '"></img></div>');
+		movieHtml.push(formatImage(obj.image_path));
 
 		// Add title
-		movieHtml.push('<div class="movieInfo"><a href=\"entire_record.html?bibnum=' + obj.bibnumber + '\"><h2 class="title">' + obj.title + '</h2></a>');
+		movieHtml.push(formatTitle(obj.title, obj.bibnumber));
 
 		// Add media
-		movieHtml.push('<span class="media">' + obj.media + ' </span>');
+		movieHtml.push(formatMedia(obj.media));
 
 		// Add summary (only if there is one)
-		if (obj.summary != ""){
-			movieHtml.push('<div class="summary">' + obj.summary.substr(0, 400));
-
-			if (obj.summary.length > 400)
-				movieHtml.push('...</div>');
-			else
-				movieHtml.push('</div>');
-		}
-
+		movieHtml.push(formatSummary(obj.summary));
+	
 		// Add location, call number, status
 		movieHtml.push(formatCallNumber(obj.accession_number, obj.location, obj.media));
 
 		// Add cast (only if there is one)
-		if (obj.cast != "")
-			movieHtml.push('<br/><br/><div class="cast"><strong>Cast: </strong>' + obj.cast + '</div>');
+		movieHtml.push(formatCast(obj.cast));
 
 		// Closing the information div. 
 		movieHtml.push("</div>");
@@ -65,6 +63,41 @@ function displaySearchResults(json){
 	});
 }
 
+function formatImage(path){
+	return '<div><img class="movieImage" src="' + path + '"></img></div>';
+}
+
+function formatTitle(title, bibnumber){
+	return '<div class="movieInfo"><a href=\"entire_record.html?bibnum=' + bibnumber + '\"><h2 class="title">' + title + '</h2></a>';
+}
+
+function formatMedia(media){
+	return '<span class="media">' + media + ' </span>';
+}
+
+function formatCast(cast){
+	if (cast != "")
+		return '<br/><br/><div class="cast"><strong>Cast: </strong>' + cast + '</div>';
+	else
+		return '';
+}
+
+function formatSummary(summary){
+	var strings = [];
+	if (summary != ""){
+			strings.push('<div class="summary">' + summary.substr(0, 400));
+
+			if (summary.length > 400)
+				strings.push('...</div>');
+			else
+				strings.push('</div>');
+	}
+
+	return strings.join('');
+
+}
+
+// Given the locations table, accession_number and type of media
 function formatCallNumber(accession_number, locations, media){
 	var strings = []; 
 	// If there is only one item associated with the record display the call number and availability
