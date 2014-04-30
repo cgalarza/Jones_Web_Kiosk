@@ -142,20 +142,12 @@
 					return $this->general_genre_url("Historical%20films"); 
 				case "horror":
 					return $this->general_genre_url("horror%20films");
-				case "fantasy":
-					return $this->general_genre_url("Fantasy%20films");
-				case "musical":
-					return $this->general_genre_url("musical%20films");
-				case "mystery":
-					return $this->general_genre_url("mystery%20films");
 				case "romance":
 					return $this->general_genre_url("Romance%20films");
 				case "science_fiction":
 					return $this->general_genre_url("Science%20Fiction");
-				case "television_program":
+				case "television_programs":
 					return "http://libcat.dartmouth.edu/search~S4?/dTelevision+programs./dtelevision+programs/-3%2C-1%2C0%2CB/exact&FF=dtelevision+programs&1%2C165%2C";
-				case "thriller":
-					return $this->general_genre_url("Thrillers%20%28Motion%20pictures%29%20films");
 				case "war":
 					return $this->general_genre_url("war%20films");
 				case "western":

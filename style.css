@@ -1,60 +1,105 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
-
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 /* -----------------------------------*/
 /* ---------->>> GLOBAL <<<-----------*/
 /* -----------------------------------*/
-h1{
+h1 {
 	color: black;
-	margin: 0px;
 	display: inline;
 }
 
-body{
+body {
 	background-color: #FEFEFD;
-	font-family: 'Open Sans', sans-serif;
-	padding-left: 20px;
-	padding-right: 20px;
+	font-family: 'Lato', 'Open Sans', sans-serif;
+	margin: 0px;
 	min-width: 1200px;
 }
 
-form{
-	display:inline;
-	float:right;
-	padding: 10px;
+form {
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visted {
+	text-decoration: none;
+}
+
+form {
+	padding: 0px;
+	margin: 0px;
 }
 
 /* -----------------------------------*/
 /* ---------->>> HEADER <<<-----------*/
 /* -----------------------------------*/
 
-div#header{
-	background-color: #2B9C8A;
-	padding: 0px;
+#logo {
+	content:url('images/Jones_Logo.png');
 }
 
-a#home{
-	text-decoration: none;
+div#header {
+	background-color: #058C73;
+	font-size: 18px;
+	font-family: 'Lato', 'Open Sans', sans-serif;
+	font-weight: 300;
+	height: 62px;
 }
 
-h2.title {
-	font-weight: 600;
-	color: #F36C6E;
-	line-height: normal;
-	margin-bottom: 7px;
-	margin: 0px;
-	display: inline;
+a#home {
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px 0px 15px 0px;
+	margin: 0px 20px 0px 40px;
+	color: #FFF;
+}
+
+a#home:hover {
+	border-bottom: thick solid #F5C068;
+
+}
+
+a#searchByGenre {
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px 0px 15px 0px;
+	margin: 0px 20px 0px 20px;
+	color: #FFF;
+}
+
+a#searchByGenre:hover {
+	border-bottom: thick solid #F5C068;
+}
+
+span#searchByKeyword {
+	display: inline-block;
+	vertical-align: top;
+	padding: 18px 0px 10px 0px;
+	margin: 0px 20px 0px 20px;
+	color: #FFF;
+	text-align: center;
+}
+
+a#questions {
+	float: right;
+	padding: 7px 15px 6px 7px;
+	vertical-align: top;
+	text-align: center;
+	color: #FFF;
+}
+
+a#questions:hover {
+	border-bottom: thick solid #F5C068;
 }
 
 input#searchField {
-	width: 225px;
-	height: 25px;
-	font-size: 15px;
+	font-family: 'Lato';
+	font-size: 16px;
 }
 
-
-#genreButton {
-	text-decoration: none;
+.bottomBorder {
+	border-bottom: thick solid #F5C068;
 }
 
 /* -----------------------------------*/
@@ -64,26 +109,60 @@ input#searchField {
 #genreNavigationBar {
 	list-style: none;
 	float: left;
-	padding: 15px;
+	padding: 0px;
+}
 
+.button {
+	margin-bottom: 5px;
+	text-align: center;
+	width: 115px;
+	padding: 12px;
+	font-size: 20px;
+	font-family: 'Lato';
+	font-weight: 300;
+	line-height: 100%;
+	/*text-shadow: 0 1px rgba(0, 0, 0, 0.4);*/
+	color: #FFF;
+	display: inline-block;
+	background-color: #5E5D7D;
+}
+
+.button:hover {
+	opacity:.85;
+	width: 130px;
+}
+
+.genreSelected {
+	/*background-color: #FFF;
+	color: #000;*/
+	width: 130px;
 }
 
 /* -----------------------------------*/
 /* ------>>> SEARCH RESULTS <<<-------*/
 /* -----------------------------------*/
-
 h3#displaySearchTerm{
 	padding: 10px;
 	padding-left: 60px;
 }
 
-.floatRight {
-	float: right;
+h2.title {
+	display: inline;
+	font-weight: 600;
+	color: #F36C6E;
+	padding: 0px;
+	margin-bottom: 7px;
+	margin: 0px;
+	text-decoration: none;
 }
 
 #searchResults {
-	padding-right: 40px;
-	padding-left: 40px;
+
+}
+
+.floatRight {
+	/*float: right;*/
+	padding-left: 130px;
 }
 
 .noResults{
@@ -119,7 +198,6 @@ span.media{
 	padding: 3px;
 }
 
-
 .altColor {
 	background-color: #DCE3E8;
 }
@@ -134,3 +212,44 @@ span.media{
 	float: right;
 	width: 700px;
 }
+
+/* -----------------------------------*/
+/* ------>>> F & Q <<<-------*/
+/* -----------------------------------*/
+
+hr {
+	height: 4px;
+	width: 75%;
+	color: #0C7FBA;
+	background: #0C7FBA;
+	border: none;
+}
+
+h1#questionsTitle{
+	font-weight: 400;
+	color: #0C7FBA;
+}
+
+h3.questionsLink a {
+	margin-left: 100px;
+	font-weight: 300;
+	padding-left: 5px;
+}
+
+h3.questionsLink a:hover{
+	border-left: thick solid #F5C068;
+}
+
+h3.questionsAnchor a {
+	margin-left: 100px;
+	font-weight: 400;
+	padding-left: 5px;
+	border-left: thick solid #F5C068;
+}
+
+p.answers {
+	margin-left: 125px;
+	font-weight: 300;
+
+}
+
