@@ -22,7 +22,13 @@ function displayEntireRecord(json){
 	movieHtml.push(formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media));
 
 	// Add cast (only if there is one)
-	movieHtml.push(formatCast(jsonObj.cast));
+	movieHtml.push(formatInfo("Cast", jsonObj.cast));
+
+	// Add language.
+	movieHtml.push(formatInfo("Language", jsonObj.language));
+
+	// Add rating.
+	movieHtml.push(formatInfo("Rating", jsonObj.rating));
 
 	// Closing the information div. 
 	movieHtml.push("</div>");
@@ -75,7 +81,7 @@ function displaySearchResults(json){
 		movieHtml.push(formatCallNumber(obj.accession_number, obj.location, obj.media));
 
 		// Add cast (only if there is something in the case field).
-		movieHtml.push(formatCast(obj.cast));
+		movieHtml.push(formatInfo("Cast", obj.cast));
 
 		// Closing the information div. 
 		movieHtml.push("</div>");
@@ -93,6 +99,13 @@ function displaySearchResults(json){
 	});
 }
 
+function formatInfo(tagTitle, information){
+	if (information != "")
+		return '<br/><br/><strong>' + tagTitle + ': </strong>' + information;
+	else
+		return '';
+}
+
 function formatImage(path){
 	return '<div><img class="movieImage" src="' + path + '"></img></div>';
 }
@@ -105,22 +118,15 @@ function formatMedia(media){
 	return '<span class="media">' + media + ' </span>';
 }
 
-function formatCast(cast){
-	if (cast != "")
-		return '<br/><br/><div class="cast"><strong>Cast: </strong>' + cast + '</div>';
-	else
-		return '';
-}
-
 function formatSummary(summary){
 	var strings = [];
 	if (summary != ""){
-			strings.push('<div class="summary">' + summary.substr(0, 400));
+		strings.push('<div class="summary">' + summary.substr(0, 400));
 
-			if (summary.length > 400)
-				strings.push('...</div>');
-			else
-				strings.push('</div>');
+		if (summary.length > 400)
+			strings.push('...</div>');
+		else
+			strings.push('</div>');
 	}
 
 	return strings.join('');
