@@ -2,7 +2,38 @@
 // Displays the record of just one item. 
 function displayEntireRecord(json){
 	console.log(json);
+
+	var jsonObj = $.parseJSON(JSON.stringify(json));
+	var movieHtml = [];
+
+	// Add image.
+	movieHtml.push(formatImage(jsonObj.image_path));
+
+	// Add title.
+	movieHtml.push(formatTitle(jsonObj.title, jsonObj.bibnumber));
+
+	// Add media.
+	movieHtml.push(formatMedia(jsonObj.media));
+
+	// Add summary (only if there is one)
+	movieHtml.push(formatSummary(jsonObj.summary));
+
+	// Add location, call number, status
+	movieHtml.push(formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media));
+
+	// Add cast (only if there is one)
+	movieHtml.push(formatCast(jsonObj.cast));
+
+	// Closing the information div. 
+	movieHtml.push("</div>");
+
+	var movie = $('<div>', {
+		'class' : 'movieResult',
+		html : movieHtml.join('')
+	});
 	
+	movie.appendTo($('#entireRecord'));
+
 }
 
 
@@ -13,7 +44,8 @@ function displaySearchResults(json){
 	// Parse the JSON object that is returned
 	var jsonObj = $.parseJSON(JSON.stringify(json));
 
-	// If no search results were returned display a message
+	// If the json is empty then no search results were found. 
+	// Displays a message saying no results were found.
 	if (jsonObj.length == 0){
 		console.log("Empty Json");
 		var movie = $('<div>', {
@@ -25,26 +57,24 @@ function displaySearchResults(json){
 
 	$.each(jsonObj, function(index, obj){
 		
-		console.log(obj.location);
-
 		var movieHtml = [];
 
 		// Add image.
 		movieHtml.push(formatImage(obj.image_path));
 
-		// Add title
+		// Add title.
 		movieHtml.push(formatTitle(obj.title, obj.bibnumber));
 
-		// Add media
+		// Add media.
 		movieHtml.push(formatMedia(obj.media));
 
 		// Add summary (only if there is one)
 		movieHtml.push(formatSummary(obj.summary));
 	
-		// Add location, call number, status
+		// Add location, call number, status.
 		movieHtml.push(formatCallNumber(obj.accession_number, obj.location, obj.media));
 
-		// Add cast (only if there is one)
+		// Add cast (only if there is something in the case field).
 		movieHtml.push(formatCast(obj.cast));
 
 		// Closing the information div. 

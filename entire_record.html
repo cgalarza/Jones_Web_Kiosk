@@ -46,7 +46,6 @@
 				$.get("php/entire_record.php?bibnum=" + bibnum_split[1], 
 					
 					function(response){
-						console.log(response);
 						displayEntireRecord(response);
 					},
 					"json");

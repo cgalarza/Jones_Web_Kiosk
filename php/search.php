@@ -1,7 +1,6 @@
 <?php
 	
 	require 'movie_records.php';
-	include '../../ChromePhp.php';
 	
 	new Search();
 
@@ -17,7 +16,8 @@
 			$genre = $_GET["genre"];
 			$search_term = $_GET["search"];
 
-			// check that the search term is empty
+			//TO DO: Check for an empty search term.
+			
 			if (!is_null($genre))
 				$url = $this->genre_url($genre);
 			else if (!is_null($search_term))
@@ -53,7 +53,7 @@
 			$movies_array = array();
 
 			for ($i = 0; $i < $bib_number_nodes->length; $i++){
-				$movie = new MovieRecords ($bib_number_nodes->item($i)->nodeValue);
+				$movie = new MovieRecord($bib_number_nodes->item($i)->nodeValue);
 
 				array_push($movies_array, json_decode($movie->create_JSON_representation()));
 			}
