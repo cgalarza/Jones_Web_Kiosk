@@ -1,0 +1,16 @@
+{
+	"carousel_title": "Thanksgiving Movies", 
+	"movies": [
+		{
+			"title": "A Charlie Brown Thanksgiving", 
+			"accession_number": "7850",
+			"bibnumber": "b4624311"
+		},
+		{
+			"title": "Home For the Holidays", 
+			"accession_number": "9335",
+			"bibnumber": "b4709802"
+		}
+
+	]
+}

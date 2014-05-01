@@ -1,44 +1,71 @@
+$(document).ready(movieCarousel);
 
-function jonesDvdKiosk(){
+function movieCarousel(){
 	console.log('ready!');
-	
-	//add new html to promotionalDvds inorder for all the promotional DVDs to be displayed
-	var accessionNumbers = [1, 2, 3, 6, 7, 8];
-	var titles = ["Animal House", "To Kill a Mockingbird", "Psycho", "West Side Story", "Seven Samurai", "The Seventh Seal"];
-	var catalogLinks = ["http://libcat.dartmouth.edu/record=b2718797~S4", "http://libcat.dartmouth.edu/record=b2718545~S4", 
-				"http://libcat.dartmouth.edu/record=b2719988~S4", "http://libcat.dartmouth.edu/record=b2741611~S4", 
-				"http://libcat.dartmouth.edu/record=b2731053~S4", "http://libcat.dartmouth.edu/record=b2726892~S4"];
 
-	addingPromotionalMovies(accessionNumbers, titles, catalogLinks);
-}
+	// Check date and use appropriate json
+	var jsonPath = getPromotionalMoviesJSON();
 
-function addingPromotionalMovies(accessionNumbers, titles, catalogLinks){
 	$('.promotional-slideshow').cycle();
 
-		for (var i = 0; i < accessionNumbers.length; i++){
+	$.getJSON(jsonPath, function(data){
+		console.log(data);
 
-			console.log(accessionNumbers[i]);
+		// Display title of promotional movies being displayed.
+		$('h1#promotionalMovies').html(data.carousel_title);
 
-			var link = $('<a />', {
-						href : catalogLinks[i] 
-						});
-
-			var img = new Image();
-
-			img.src = 'http://www.dartmouth.edu/~library/mediactr/images/' + accessionNumbers[i] + '.jpg';
-		
-			var newHeight = 600;
-			img.width = (newHeight/img.height) * img.width;
-			img.height = newHeight;
-			$(img).attr('data-cycle-title', titles[i]);
-			$(img).attr('data-cycle-desc', accessionNumbers[i]);
-
-			link.append(img);
-		
-			$('.promotional-slideshow').cycle('add', link);
-			$('.promotional-slideshow').cycle('reinit');
-		}
+		// Add each film to the caurosel. 
+		$.each(data.movies, function(index, obj){
+			addingPromotionalMovie(obj.title, obj.accession_number, obj.bibnumber);
+		})
+	});
 
 }
 
-$(document).ready(jonesDvdKiosk);
+function addingPromotionalMovie(title, accessionNumber, bibnumber){
+
+	console.log(accessionNumber);
+
+	var link = $('<a />', {
+				href : "entire_record.html?bibnumber=" + bibnumber
+				});
+
+	var img = new Image();
+
+	img.src = 'http://www.dartmouth.edu/~library/mediactr/images/dvd/' + accessionNumber + '.jpg';
+
+	var newHeight = 600;
+	img.width = (newHeight/img.height) * img.width;
+	img.height = newHeight;
+	$(img).attr('data-cycle-title', title);
+	$(img).attr('data-cycle-desc', accessionNumber);
+
+	link.append(img);
+
+	$('.promotional-slideshow').cycle('add', link);
+	$('.promotional-slideshow').cycle('reinit');
+}
+
+
+// Checks the date and uses the appropriate json. 
+function getPromotionalMoviesJSON(){
+	
+	var date = new Date(); // Gets current date and time
+	var day = date.getDate(); // Get Month
+	var month = date.getMonth() + 1; // Get Date
+
+	// If the date is between Oct 15 - Oct 31, then display halloween movies.
+	if ((month === 10) && (day > 15) && (day <= 31))
+		return "promotional_movies/halloween.json";
+	// If the date is between Nov 17 - 28, then display thanksgiving movies
+	else if ((month === 11) && (day > 16) && (day <=28))
+		return "promotional_movies/thanksgiving.json"
+	else if (month === 12)
+		return "promotional_movies/holiday.json"
+	// valentines day movies
+	else
+		//Display promotional movies for that month
+		return "promotional_movies/holiday.json";
+
+}
+

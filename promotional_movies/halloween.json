@@ -1,0 +1,170 @@
+{
+	"carousel_title": "Halloween Movies", 
+	"movies": [
+		{
+			"title": "Eraserhead", 
+			"accession_number": "9173",
+			"bibnumber": "b3650378"
+		},
+		{
+			"title": "The Thing", 
+			"accession_number": "6125",
+			"bibnumber": "b3953498"
+		}, 
+		{
+			"title": "The Exorcist", 
+			"accession_number": "7260",
+			"bibnumber": "b4354564"
+		},
+		{
+			"title": "Poltergeist",
+			"accession_number": "1362",
+			"bibnumber": "b3005464"
+		},
+		{
+			"title": "Night of the Living Dead",
+			"accession_number": "4204",
+			"bibnumber": "b3763076"
+		}, 
+		{
+			"title": "Halloween",
+			"accession_number": "8622",
+			"bibnumber": "b4653428" 
+		},
+		{
+			"title": "Texas Chainsaw Massacre",
+			"accession_number": "8450",
+			"bibnumber": "b4653450" 
+		},
+		{
+			"title": "Invasion of the Body Snatchers",
+			"accession_number": "1611",
+			"bibnumber": "b3117360"
+		},
+		{
+			"title": "Psycho",
+			"accession_number": "3",
+			"bibnumber": "b2719988"
+		},
+		{
+			"title": "Salem's Lot",
+			"accession_number": "5084", 
+			"bibnumber": "b3853547"
+		},
+		{
+			"title": "Saw",
+			"accession_number": "8450",
+			"bibnumber": "b3390667"
+		},
+		{
+			"title": "Dawn of the Dead",
+			"accession_number": "3770",
+			"bibnumber": "b4703358"
+		},
+		{
+			"title": "A Nightmare on Elm Street",
+			"accession_number": "8449",
+			"bibnumber": "b4653449"
+		},
+		{
+			"title": "Pet Sematary",
+			"accession_number": "1352",
+			"bibnumber": "b3013060"
+		},
+		{
+			"title": "28 Days Later",
+			"accession_number": "1500",
+			"bibnumber": "b3074448" 
+		},
+		{
+			"title": "Scream",
+			"accession_number": "1225",
+			"bibnumber": "b2956225"
+		},
+		{
+			"title": "Rosemary's Baby",
+			"accession_number": "451",
+			"bibnumber": "b2791426"
+		},
+		{
+			"title": "The Wicker Man",
+			"accession_number": "1972",
+			"bibnumber": "b3156427"
+		},
+		{
+			"title": "Zombieland",
+			"accession_number": "9580",
+			"bibnumber": "b4729582" 
+		},
+		{
+			"title": "Drag me to Hell",
+			"accession_number": "9099",
+			"bibnumber": "b4702039"
+		},
+		{
+			"title": "Corpse Bride",
+			"accession_number": "3075",
+			"bibnumber": "b3653839"
+		},
+		{
+			"title": "The Eye",
+			"accession_number": "3093",
+			"bibnumber": "b3287445"
+		},
+		{
+			"title": "Beetle Juice",
+			"accession_number": "12588",
+			"bibnumber": "b4954186" 
+		},
+		{
+			"title": "The Evil Dead",
+			"accession_number": "10811",
+			"bibnumber": "b4894937"
+		},
+		{
+			"title": "Frankenstein",
+			"accession_number": "83",
+			"bibnumber": "b2749712"
+		},
+		{
+			"title": "Something Wicked This Way Comes",
+			"accession_number": "2636",
+			"bibnumber": "b3525626"
+		},
+		{
+			"title": "Children of the Corn",
+			"accession_number": "11067",
+			"bibnumber": "b4897625"
+		},
+		{
+			"title": "A Nightmare on Elm Street",
+			"accession_number": "8449",
+			"bibnumber": "b4653449"
+		},
+		{
+			"title": "The Bride of Frankenstein",
+			"accession_number": "925",
+			"bibnumber": "b2948794"
+		},
+		{
+			"title": "Near Dark",
+			"accession_number": "10242",
+			"bibnumber": "b4734308"
+		},
+		{
+			"title": "From Dusk Till Dawn",
+			"accession_number": "3790",
+			"bibnumber": "b2853037"
+		},
+		{
+			"title": "The Wolfman",
+			"accession_number": "10186",
+			"bibnumber": "b4807206"
+		},
+		{
+			"title": "Drag Me to Hell",
+			"accession_number": "9099",
+			"bibnumber": "b4702039"
+		}
+	]
+}

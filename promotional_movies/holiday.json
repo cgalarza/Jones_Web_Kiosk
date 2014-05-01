@@ -1,0 +1,95 @@
+{
+	"carousel_title": "Holiday Movies", 
+	"movies": [
+		{
+			"title": "Polar Express", 
+			"accession_number": "9273",
+			"bibnumber": "b4709799"
+		},
+		{
+			"title": "It's a Wonderful Life", 
+			"accession_number": "15",
+			"bibnumber": "b2733505"
+		},
+		{
+			"title": "Love Actually", 
+			"accession_number": "1762",
+			"bibnumber": "b3170007"
+		},
+		{
+			"title": "Nightmare Before Christmas", 
+			"accession_number": "1720",
+			"bibnumber": "b3155866"
+		},
+		{
+			"title": "A Charlie Brown Christmas", 
+			"accession_number": "7849",
+			"bibnumber": "b4616495"
+		},
+		{
+			"title": "How the Grinch Stole Christmas", 
+			"accession_number": "135",
+			"bibnumber": "b2759856"
+		},
+		{
+			"title": "Rudolf the Red-Nosed Reindeer", 
+			"accession_number": "9106",
+			"bibnumber": "b4616496"
+		},
+		{
+			"title": "Miracle on 34th Street", 
+			"accession_number": "949",
+			"bibnumber": "b2956347"
+		},
+		{
+			"title": "Frosty the Snowman", 
+			"accession_number": "9106",
+			"bibnumber": "b4616496"
+		},
+		{
+			"title": "Elf", 
+			"accession_number": "9201",
+			"bibnumber": "b4709636"
+		},
+		{
+			"title": "The Bishop's Wife", 
+			"accession_number": "1990",
+			"bibnumber": "b3287801"
+		},
+		{
+			"title": "The Holiday", 
+			"accession_number": "16487",
+			"bibnumber": "b5480539"
+		},
+		{
+			"title": "Scrooged", 
+			"accession_number": "9244",
+			"bibnumber": "b4709801"
+		},
+		{
+			"title": "All Mine to Give", 
+			"accession_number": "10713",
+			"bibnumber": "b4888508"
+		},
+		{
+			"title": "Eight Crazy Nights", 
+			"accession_number": "8322",
+			"bibnumber": "b4616499"
+		},
+		{
+			"title": "A Christmas Carol", 
+			"accession_number": "4168",
+			"bibnumber": "b3617809"
+		},
+		{
+			"title": "Christmas in Connecticut", 
+			"accession_number": "9890",
+			"bibnumber": "b4734710"
+		},
+		{
+			"title": "It Happened on 5th Avenue", 
+			"accession_number": "10711",
+			"bibnumber": "b4893299"
+		}
+	]
+}
