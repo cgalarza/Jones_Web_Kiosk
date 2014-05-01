@@ -18,7 +18,7 @@ function displayEntireRecord(json){
 	// Add summary (only if there is one)
 	movieHtml.push(formatSummary(jsonObj.summary));
 
-	// Add location, call number, status
+	// Add location, call number, status.
 	movieHtml.push(formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media));
 
 	// Add cast (only if there is one)
@@ -75,7 +75,7 @@ function displaySearchResults(json){
 		movieHtml.push(formatMedia(obj.media));
 
 		// Add summary (only if there is one)
-		movieHtml.push(formatSummary(obj.summary));
+		movieHtml.push(formatSummary(obj.summary, 400));
 	
 		// Add location, call number, status.
 		movieHtml.push(formatCallNumber(obj.accession_number, obj.location, obj.media));
@@ -118,12 +118,18 @@ function formatMedia(media){
 	return '<span class="media">' + media + ' </span>';
 }
 
-function formatSummary(summary){
-	var strings = [];
-	if (summary != ""){
-		strings.push('<div class="summary">' + summary.substr(0, 400));
+function formatSummary(summary, length){
+	
+	var str = summary;
+	if (!(typeof(length)==='undefined'))
+		str = summary.substr(0, length);
 
-		if (summary.length > 400)
+	var strings = [];
+
+	if (summary != ""){
+		strings.push('<div class="summary">' + str);
+
+		if (summary.length > str.length)
 			strings.push('...</div>');
 		else
 			strings.push('</div>');
