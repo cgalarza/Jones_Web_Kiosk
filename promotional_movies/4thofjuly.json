@@ -1,0 +1,65 @@
+{
+	"carousel_title": "Fourth of July Movies", 
+	"movies": [
+		{
+			"title": "Rocky", 
+			"accession_number": "77",
+			"bibnumber": "b2729727"
+		},
+		{
+			"title": "Independence Day", 
+			"accession_number": "1803",
+			"bibnumber": "b3144438"
+		},
+		{
+			"title": "The Patriot", 
+			"accession_number": "667",
+			"bibnumber": "b2912925"
+		},
+		{
+			"title": "Jaws", 
+			"accession_number": "7337",
+			"bibnumber": "b4669279"
+		},
+		{
+			"title": "Born on the Fourth of July", 
+			"accession_number": "5041",
+			"bibnumber": "b3634477"
+		},
+		{
+			"title": "Yankee Doodle Dandy", 
+			"accession_number": "2440",
+			"bibnumber": "b3496894"
+		},
+		{
+			"title": "Red Dawn", 
+			"accession_number": "8736",
+			"bibnumber": "b4673286"
+		},
+		{
+			"title": "John Adams", 
+			"accession_number": "7368",
+			"bibnumber": "b4413848"
+		},
+		{
+			"title": "Frost Nixon", 
+			"accession_number": "9881",
+			"bibnumber": "b4662731"
+		},
+		{
+			"title": "Lincoln", 
+			"accession_number": "15952",
+			"bibnumber": "b5367404"
+		},
+		{
+			"title": "Glory", 
+			"accession_number": "7257",
+			"bibnumber": "b4354600"
+		},
+		{
+			"title": "Mr. Smith Goes to Washington", 
+			"accession_number": "244",
+			"bibnumber": "b2787063"
+		}
+	]
+}

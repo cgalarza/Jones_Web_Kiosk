@@ -63,6 +63,8 @@ function getPromotionalMoviesJSON(){
 	else if (month === 12)
 		return "promotional_movies/holiday.json"
 	// valentines day movies
+
+	//forth of july movies
 	else
 		//Display promotional movies for that month
 		return "promotional_movies/holiday.json";
