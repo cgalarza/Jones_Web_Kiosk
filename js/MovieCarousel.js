@@ -65,9 +65,11 @@ function getPromotionalMoviesJSON(){
 	// valentines day movies
 
 	//forth of july movies
-	else
+	else {
 		//Display promotional movies for that month
-		return "promotional_movies/holiday.json";
+
+		$.ajax("php/recent_acquisitions.php");
+	}
 
 }
 
