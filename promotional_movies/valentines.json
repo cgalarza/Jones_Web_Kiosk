@@ -5,6 +5,76 @@
 			"title": "When Harry Met Sally", 
 			"accession_number": "1197",
 			"bibnumber": "b2974260"
+		},
+		{
+			"title": "What Dreams May Come",
+			"accession_number": "6632",
+			"bibnumber": "b4259461"
+		},
+		{
+			"title": "Lady and the Tramp",
+			"accession_number": "151",
+			"bibnumber": "b2755345"
+		},
+		{
+			"title": "Stardust",
+			"accession_number": "16117",
+			"bibnumber": "b5375115"
+		},
+		{
+			"title": "Love Actually",
+			"accession_number": "1762",
+			"bibnumber": "b3170007"
+		},
+		{
+			"title": "Eternal Sunshine of the Spotless Mind",
+			"accession_number": "12598",
+			"bibnumber": "b4956923"
+		},
+		{
+			"title": "Silver Linings Playbook",
+			"accession_number": "16091",
+			"bibnumber": "b5376237"
+		},
+		{
+			"title": "Casablanca",
+			"accession_number": "4400",
+			"bibnumber": "b2951756"
+		},
+		{
+			"title": "Sleepless in Seattle",
+			"accession_number": "8757",
+			"bibnumber": "b4679053"
+		},
+		{
+			"title": "Titanic",
+			"accession_number": "3750",
+			"bibnumber": "b2893196"
+		},
+		{
+			"title": "50 First Dates",
+			"accession_number": "15200",
+			"bibnumber": "b5318493"
+		},
+		{
+			"title": "Moonstruck",
+			"accession_number": "7391",
+			"bibnumber": "b4380893"
+		},
+		{
+			"title": "An Affair to Remember",
+			"accession_number": "1447",
+			"bibnumber": "b2985907"
+		},
+		{
+			"title": "The Notebook",
+			"accession_number": "14578",
+			"bibnumber": "b5277887"
+		},
+		{
+			"title": "Valentine's Day",
+			"accession_number": "10172",
+			"bibnumber": "b4807204"
 		}
 	]
 }
