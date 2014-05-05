@@ -3,10 +3,11 @@ $(document).ready(movieCarousel);
 function movieCarousel(){
 	console.log('ready!');
 
+	$('#promotional-slideshow').cycle();
+
+
 	// Check date and use appropriate json
 	var jsonPath = getPromotionalMoviesJSON();
-
-	$('.promotional-slideshow').cycle();
 
 	$.getJSON(jsonPath, function(data){
 		console.log(data);
@@ -19,6 +20,9 @@ function movieCarousel(){
 			addingPromotionalMovie(obj.title, obj.accession_number, obj.bibnumber);
 		})
 	});
+
+
+	//$('#promotional-slideshow').cycle('reinit');
 
 }
 
@@ -34,16 +38,17 @@ function addingPromotionalMovie(title, accessionNumber, bibnumber){
 
 	img.src = 'http://www.dartmouth.edu/~library/mediactr/images/dvd/' + accessionNumber + '.jpg';
 
-	var newHeight = 600;
+	var newHeight = 450;
 	img.width = (newHeight/img.height) * img.width;
 	img.height = newHeight;
-	$(img).attr('data-cycle-title', title);
-	$(img).attr('data-cycle-desc', accessionNumber);
 
 	link.append(img);
+	link.append('<center><h3>' + title + '</h3></center>');
+	link.append('<center><h4>' + accessionNumber + '</h3></center>');
 
-	$('.promotional-slideshow').cycle('add', link);
-	$('.promotional-slideshow').cycle('reinit');
+	//$('#promotional-slideshow').append(link);
+	$('#promotional-slideshow').cycle('add', link);
+	$('#promotional-slideshow').cycle('reinit');
 }
 
 
