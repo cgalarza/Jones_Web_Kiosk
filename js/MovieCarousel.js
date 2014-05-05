@@ -59,16 +59,16 @@ function getPromotionalMoviesJSON(){
 		return "promotional_movies/halloween.json";
 	// If the date is between Nov 17 - 28, then display thanksgiving movies
 	else if ((month === 11) && (day > 16) && (day <=28))
-		return "promotional_movies/thanksgiving.json"
+		return "promotional_movies/thanksgiving.json";
 	else if (month === 12)
-		return "promotional_movies/holiday.json"
+		return "promotional_movies/holiday.json";
 	// valentines day movies
 
 	//forth of july movies
 	else {
 		//Display promotional movies for that month
-
-		$.ajax("php/recent_acquisitions.php");
+		return "promotional_movies/valentines.json";
+		//$.ajax("php/recent_acquisitions.php");
 	}
 
 }

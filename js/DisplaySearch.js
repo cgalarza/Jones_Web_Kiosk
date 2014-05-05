@@ -30,6 +30,8 @@ function displayEntireRecord(json){
 	// Add rating.
 	movieHtml.push(formatInfo("Rating", jsonObj.rating));
 
+	movieHtml.push("<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + ">See library catalog entry</a>");
+
 	// Closing the information div. 
 	movieHtml.push("</div>");
 

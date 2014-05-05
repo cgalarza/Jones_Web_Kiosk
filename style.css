@@ -110,32 +110,36 @@ input#searchField {
 	list-style: none;
 	float: left;
 	padding: 0px;
+	margin-top:  20px;
+	font-size: 20px;
+	font-family: 'Lato';
+	font-weight: 300;
+	text-align: center;
+}
+
+li#pickGenre {
+	background-color: #F5C068;
+	margin-bottom: 5px;
+	padding: 12px;
+	font-size: 25px;
 }
 
 .button {
 	margin-bottom: 5px;
-	text-align: center;
 	width: 115px;
-	padding: 12px;
-	font-size: 20px;
-	font-family: 'Lato';
-	font-weight: 300;
+	padding: 10px 16px;
 	line-height: 100%;
-	/*text-shadow: 0 1px rgba(0, 0, 0, 0.4);*/
 	color: #FFF;
 	display: inline-block;
 	background-color: #5E5D7D;
 }
 
 .button:hover {
-	opacity:.85;
-	width: 130px;
+	background-color: #F5C068;
+	color: #000;
 }
 
 .genreSelected {
-	/*background-color: #FFF;
-	color: #000;*/
-	width: 130px;
 	background-color: #F5C068;
 	color: #000;
 }
@@ -163,7 +167,6 @@ h2.title {
 }
 
 .floatRight {
-	/*float: right;*/
 	padding-left: 130px;
 }
 
@@ -215,6 +218,17 @@ span.media{
 	width: 700px;
 }
 
+
+/* -----------------------------------*/
+/* --->>> Entire Catalog Entry <<<----*/
+/* -----------------------------------*/
+
+div#entireRecord div.movieResult a.catalogLink {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+
 /* -----------------------------------*/
 /* ------>>> F & Q <<<-------*/
 /* -----------------------------------*/
@@ -236,6 +250,7 @@ h3.questionsLink a {
 	margin-left: 100px;
 	font-weight: 300;
 	padding-left: 5px;
+	color: #000;
 }
 
 h3.questionsLink a:hover{
