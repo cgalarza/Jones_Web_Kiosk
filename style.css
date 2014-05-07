@@ -13,6 +13,7 @@ body {
 	font-family: 'Lato', 'Open Sans', sans-serif;
 	margin: 0px;
 	min-width: 1200px;
+	font-size: 16px;
 }
 
 form {
@@ -154,7 +155,7 @@ h3#displaySearchTerm{
 
 h2.title {
 	display: inline;
-	font-weight: 600;
+	font-weight: 400;
 	color: #F36C6E;
 	padding: 0px;
 	margin-bottom: 7px;
@@ -191,7 +192,6 @@ span.notAvailable {
 
 span.available {
 	color: #2B9C8A;
-	font-size: 110%;
 	padding: 3px;
 }
 
@@ -201,6 +201,11 @@ span.media{
 	float:right;
 	font-size: 90%;
 	padding: 3px;
+}
+
+span.multipleDiscs {
+	display: inline-block;
+	padding: 0px 10px;
 }
 
 .altColor {
@@ -230,7 +235,7 @@ div#entireRecord div.movieResult a.catalogLink {
 
 
 /* -----------------------------------*/
-/* ------>>> F & Q <<<-------*/
+/* ------->>> F & Q <<<--------*/
 /* -----------------------------------*/
 
 hr {

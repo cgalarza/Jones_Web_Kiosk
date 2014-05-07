@@ -33,15 +33,14 @@ function addMovies(data){
 
 function promotionalMovie(title, accessionNumber, bibnumber){
 
-	console.log(accessionNumber);
-
 	var movie = [];
+
+	// Check if image exists. Easier to do once its on the server?
+	var url = "http://www.dartmouth.edu/~library/mediactr/images/dvd/" + accessionNumber + ".jpg";
+	//var url = "../DVD/" + accessionNumber + ".jpg";
+
 	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
-
-	movie.push("<img src=\"http://www.dartmouth.edu/~library/mediactr/images/dvd/" 
-		+ accessionNumber + ".jpg\"" + "/>");
-
-
+	movie.push("<img src=\"" + url + "\"/>");
 	movie.push('<h3>' + title + '</h3>');
 	movie.push('<h4>' + accessionNumber + '</h3>');
 
@@ -50,7 +49,6 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 	return movie.join("");
 	
 }
-
 
 // Checks the date and uses the appropriate json. 
 function getPromotionalMoviesJSON(){

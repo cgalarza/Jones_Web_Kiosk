@@ -158,11 +158,17 @@ function formatCallNumber(accession_number, locations, media){
 	}
 	else if (media == "DVD Set") {
 		// If it is a DVD set display the call number and that there are multiple disc
-		// and under that display the disc number and weather or not its available
+		// and under that display the disc number and whether or not its available.
 		strings.push("<br><strong>Call Number: </strong>" + accession_number + " (Multiple Discs)<br/>");
 		$.each(locations, function(index, row){
+
 			var discString = row.callnumber.split(" ");
-			strings.push(discString[1] + "   " + formatStatus(row.status) + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+
+			// If the first part of the string does not only contain numbers then its on reserve. 
+			if (!(/^\d+$/.test(discString[0])))
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " (On Reserve for " + discString[0].trim() + ") " + formatStatus(row.status) + "</span>");
+			else	
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " " + formatStatus(row.status) + "</span>");
 		})
 
 	}
@@ -170,7 +176,7 @@ function formatCallNumber(accession_number, locations, media){
 		$.each(locations, function(index, row){
  			strings.push("<br/>" + row.type + "  " +
 	 		row.callnumber + "  " +
-	 		row.status);
+	 		formatStatus(row.status));
 		 })
 	}
 
@@ -179,9 +185,9 @@ function formatCallNumber(accession_number, locations, media){
 
 function formatStatus(status){
 	if (status == "AVAILABLE")
-		return "&nbsp&nbsp<span class=\"available\"><strong>" + status + "</strong></span>";
+		return "&nbsp&nbsp<span class=\"available\"><strong>" + status.trim() + "</strong></span>";
 	else
-		return "&nbsp&nbsp<span class=\"notAvailable\"><strong>" + status + "</strong></span>";
+		return "&nbsp&nbsp<span class=\"notAvailable\"><strong>" + status.trim() + "</strong></span>";
 }
 
 

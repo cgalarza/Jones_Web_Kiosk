@@ -24,20 +24,15 @@
 		}
 
 		function create_JSON_representation(){
-			$json_array = array(
-				"title" => $this->title, 
-				"media" => $this->media,
-				"accession_number" => $this->accession_number,
-				"summary" => $this->summary,
-				"url" => $this->url, 
-				"bibnumber" => $this->bib_number,
-				"cast" => $this->cast, 
-				"image_path" => $this->image_path,
-				"location" => $this->location_array,
-				"language" => $this->language,
-				"note" => $this->note,
-				"rating" => $this->rating
-			);
+
+			$json = parent::create_JSON_representation();
+
+			// Convert from a JSON to an array.
+			$json_array = json_decode($json, true);
+
+			$json_array["language"] = $this->language;
+			$json_array["note"] = $this->note;
+			$json_array["rating"] = $this->rating;
 
 			return json_encode($json_array);
 		}
@@ -118,9 +113,9 @@
 			// Getting media type (DVD or VHS) and accession number.
 			$this->accession_number = -1;
 
-			// If there is only one location then the type can only be DVD, VHS or on Reserve
 			if (sizeof($this->location_array) == 1){
-				
+				// If there is only one item then the type can only be DVD, VHS or On Reserve.
+
 				$location_info = $this->location_array[0];
 
 				if ($location_info['type'] == self::MEDIA_DVD){
@@ -139,24 +134,39 @@
 					return;
 				}
 			}
+
 			else {
+				// There are multiple discs for this item. It has to be On Reserve, a DVD set, a VHS set, or Multiple Types.
 
-				$loc = $this->location_array[0]['type'];
+				// Sets the type to the first type in the locations array.
+				$loc = $this->location_array[0]['type']; 
 
-				// Check if all types are the same
+				// Sets the accession number to the first callnumber in the locations array.
+				$this->accession_number = $this->get_accession_num($this->location_array[0]['callnumber']); 
+
+				// Check to see if all the items have the same type. Items are consireded to have the same types even if some
+				// discs are on reserve.
 				foreach ($this->location_array as $location_info){
-					// If one type is different the type is set to multiple
-					if ($location_info['type'] != $loc){
+					$new_loc = $location_info['type'];
+					
+					if (($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_DVD) || 
+						($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_VHS)) {
+						$loc = $new_loc;
+					$this->accession_number = $this->get_accession_num($location_info['callnumber']);
+
+					}
+
+					// If one item is different (not including items on reserve), the type  is set to "Multiple Types."
+					if ($new_loc != $loc && $new_loc != self::ON_RESERVE_AT_JMC){
 						$this->media = self::MULTIPLE_TYPE;
 						return;
-					}	
+					}
 				}
 
-				// If all types are the same set it to that type
-				if ($loc == self::MEDIA_DVD){
+				// If all types are the same (even if some discs are on reserve) set to Multiple DVD or Multiple VHS.
+				// If all items are on reserve then set the type to On Reserve.
+				if ($loc == self::MEDIA_DVD)
 					$this->media = self::MULTIPLE_DVD;
-					$this->accession_number = $this->get_accession_num($this->location_array[0]['callnumber']);
-				}
 				else if ($loc == self::MEDIA_VHS)
 					$this->media = self::MULTIPLE_VHS;
 				else if ($loc == self::ON_RESERVE_AT_JMC)
@@ -178,9 +188,8 @@
 		function get_locations($table_node){
 
 			$loc_array = array();
-			// Getting call number, type and status
 
-			// check to make sure there are nodes
+			// Getting call number, type and status from each row in the table.
 			foreach ($table_node as $n){ // for each row
 
 				$columns = $n->childNodes;
@@ -201,7 +210,7 @@
 		}
 
 		function get_img_path() {
-			// Check if file exists on the server
+			// To Do: Check if file exists on the server.
 			$img_file = self::BEG_IMG_PATH . $this->accession_number . self::JPG_EXTENTION;
 
 			if (file_exists($img_file) && $this->media == self::DVD)
