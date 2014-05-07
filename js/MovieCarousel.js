@@ -3,52 +3,51 @@ $(document).ready(movieCarousel);
 function movieCarousel(){
 	console.log('ready!');
 
-	//$('#promotional-slideshow').cycle();
-
-
 	// Check date and use appropriate json
-	var jsonPath = getPromotionalMoviesJSON();
 
-	$.getJSON(jsonPath, function(data){
-		console.log(data);
-
-		// Display title of promotional movies being displayed.
-		$('h1#promotionalMovies').html(data.carousel_title);
-
-		// Add each film to the caurosel. 
-		$.each(data.movies, function(index, obj){
-			addingPromotionalMovie(obj.title, obj.accession_number, obj.bibnumber);
-		})
+	$("#owl-movies").owlCarousel({
+		items : 5,
+		itemsDesktop : [1280, 4],
+		itemsDesktopSmall : [900, 3],
+		jsonPath : getPromotionalMoviesJSON(),
+		jsonSuccess: addMovies
 	});
-
-	$('#promotional-slideshow').cycle();
-
-	//$('#promotional-slideshow').cycle('reinit');
 
 }
 
-function addingPromotionalMovie(title, accessionNumber, bibnumber){
+function addMovies(data){
+	var content = [];
+
+	// Display title of promotional movies being displayed.
+	$('h1#promotionalMovies').html(data.carousel_title);
+
+	// Add each film to the caurosel. 
+	$.each(data.movies, function(index, obj){
+		content.push(promotionalMovie(obj.title, obj.accession_number, obj.bibnumber));
+	})
+
+	console.log(content.join(""));
+	$("#owl-movies").html(content.join(""));
+}
+
+
+function promotionalMovie(title, accessionNumber, bibnumber){
 
 	console.log(accessionNumber);
 
-	var link = $('<a />', {
-				href : "entire_record.html?bibnumber=" + bibnumber
-				});
+	var movie = [];
+	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
 
-	var img = new Image();
+	movie.push("<img src=\"http://www.dartmouth.edu/~library/mediactr/images/dvd/" 
+		+ accessionNumber + ".jpg\"" + "/>");
 
-	img.src = 'http://www.dartmouth.edu/~library/mediactr/images/dvd/' + accessionNumber + '.jpg';
 
-	var newHeight = 450;
-	img.width = (newHeight/img.height) * img.width;
-	img.height = newHeight;
+	movie.push('<h3>' + title + '</h3>');
+	movie.push('<h4>' + accessionNumber + '</h3>');
 
-	link.append(img);
-	link.append('<center><h3>' + title + '</h3></center>');
-	link.append('<center><h4>' + accessionNumber + '</h3></center>');
+	movie.push("</a>");
 
-	$('#promotional-slideshow').append(link);
-	//$('#promotional-slideshow').cycle('add', link);
+	return movie.join("");
 	
 }
 
