@@ -3,7 +3,7 @@ $(document).ready(movieCarousel);
 function movieCarousel(){
 	console.log('ready!');
 
-	$('#promotional-slideshow').cycle();
+	//$('#promotional-slideshow').cycle();
 
 
 	// Check date and use appropriate json
@@ -21,6 +21,7 @@ function movieCarousel(){
 		})
 	});
 
+	$('#promotional-slideshow').cycle();
 
 	//$('#promotional-slideshow').cycle('reinit');
 
@@ -46,9 +47,9 @@ function addingPromotionalMovie(title, accessionNumber, bibnumber){
 	link.append('<center><h3>' + title + '</h3></center>');
 	link.append('<center><h4>' + accessionNumber + '</h3></center>');
 
-	//$('#promotional-slideshow').append(link);
-	$('#promotional-slideshow').cycle('add', link);
-	$('#promotional-slideshow').cycle('reinit');
+	$('#promotional-slideshow').append(link);
+	//$('#promotional-slideshow').cycle('add', link);
+	
 }
 
 
