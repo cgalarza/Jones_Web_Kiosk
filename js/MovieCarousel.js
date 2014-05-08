@@ -6,9 +6,13 @@ function movieCarousel(){
 	// Check date and use appropriate json
 
 	$("#owl-movies").owlCarousel({
-		items : 5,
-		itemsDesktop : [1280, 4],
-		itemsDesktopSmall : [900, 3],
+		itemsCustom : [
+			[0, 1],
+			[600, 2],
+			[900, 3], 
+			[1200, 4],
+			[1500, 5]
+		],
 		jsonPath : getPromotionalMoviesJSON(),
 		jsonSuccess: addMovies
 	});
