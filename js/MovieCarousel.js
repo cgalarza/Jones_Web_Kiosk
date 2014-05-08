@@ -42,6 +42,8 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 
 	console.log("URL = " + url + "   http.status = " + imageExists(url));
 
+	if (!imageExists(url))
+		return "";
 
 	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
 	movie.push("<img src=\"" + url + "\"/>");
@@ -54,12 +56,13 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 	
 }
 
+// Return true if image exist, false if it doesnt
 function imageExists(url){
 	var http = new XMLHttpRequest();
 
 	http.open('HEAD', url, false);
 	http.send();
-	return http.status;
+	return http.status == 200;
 }
 
 // Checks the date and uses the appropriate json. 
