@@ -7,7 +7,7 @@ function displayEntireRecord(json){
 	var movieHtml = [];
 
 	// Add image.
-	movieHtml.push(formatImage(jsonObj.image_path));
+	movieHtml.push(formatImage(jsonObj.media, jsonObj.accession_number));
 
 	// Add title.
 	movieHtml.push(formatTitle(jsonObj.title, jsonObj.bibnumber));
@@ -68,7 +68,7 @@ function displaySearchResults(json){
 		var movieHtml = [];
 
 		// Add image.
-		movieHtml.push(formatImage(obj.image_path));
+		movieHtml.push(formatImage(obj.media, obj.accession_number));
 
 		// Add title.
 		movieHtml.push(formatTitle(obj.title, obj.bibnumber));
@@ -108,8 +108,31 @@ function formatInfo(tagTitle, information){
 		return '';
 }
 
-function formatImage(path){
-	return '<div><img class="movieImage" src="' + path + '"></img></div>';
+function formatImage(media, accessionNumber){
+
+	var path = '';
+
+	// If the item is on reserve
+	if (media == "On Reserve")
+		path = "images/On_Reserve_at_Jones.png";
+	// if the image exists but its not a DVD or a DVD Set
+	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') && (media === 'DVD' || media === 'DVD Set'))
+		path = '../images/dvd/' +  accessionNumber + '.jpg';
+	// Otherwise, display default image. 
+	else 
+		path = 'images/Image_Not_Available.png';
+
+	return '<div><img class="movieImage" src=\"' + path + '\"></img></div>';
+}
+
+// Return true if image exist, false if it doesnt
+// THIS IS REPEATED CODE! -- NEED TO FIX THIS (Just for testing purposes).
+function imageExists(url){
+	var http = new XMLHttpRequest();
+
+	http.open('HEAD', url, false);
+	http.send();
+	return http.status == 200;
 }
 
 function formatTitle(title, bibnumber){

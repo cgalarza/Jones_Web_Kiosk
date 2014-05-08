@@ -1,5 +1,7 @@
 <?php
 	
+	include '../../ChromePhp.php';
+
 	class LongMovieRecord extends MovieRecord{
 		protected $language;
 		protected $note;
@@ -42,7 +44,7 @@
 		const END_RECORD_URL = "~S4";
 		const MEDIA_DVD = 'Jones Media DVD';
 		const MEDIA_VHS = 'Jones Media Video tape';
-		const BEG_IMG_PATH = '../../images/dvd/'; /*This url needs to be changed when its actually on the server */
+		const BEG_IMG_PATH = '/library/mediactr/images/dvd/'; /*This url needs to be changed when its actually on the server */
 		const JPG_EXTENTION = '.jpg';
 		const IMG_NOT_AVAILABLE = 'images/Image_Not_Available.png';
 		const IMG_ON_RESERVE = 'images/On_Reserve_at_Jones.png';
@@ -174,7 +176,12 @@
 
 		function get_accession_num($call_number_string){
 			$accession_array = explode(" ", $call_number_string);
-			return $accession_array[0];
+
+			ChromePhp::log($accession_array[0]);
+			ChromePhp::log(ctype_digit($accession_array[0]));
+			ChromePhp::log(preg_match('/^-?[0-9]+$/', (string)$accession_array[0]) ? true : false);
+
+			return trim($accession_array[0]);
 		}
 
 		function get_title($title_node){
@@ -212,6 +219,8 @@
 			$img_file = self::BEG_IMG_PATH . $this->accession_number . self::JPG_EXTENTION;
 
 			if (file_exists($img_file) && $this->media == self::DVD)
+				return $img_file;
+			else if (file_exists($img_file) && $this->media == self::MULTIPLE_DVD)
 				return $img_file;
 			else if ($this->media == self::RESERVE) 
 				return self::IMG_ON_RESERVE;

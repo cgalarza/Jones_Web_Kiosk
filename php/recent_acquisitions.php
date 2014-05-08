@@ -1,25 +1,16 @@
 <?php
-	
-	include '../../ChromePhp.php';
-
-	ChromePhp::log("php script");
-	
+		
 	date_default_timezone_set('UTC');
 
 	// Get date
 	$month = date('n')-1; // Get month
 	$year = date('o'); // Get year
 
-	ChromePhp::log('Month: ' . $month);
-	ChromePhp::log('Year: ' . $year);
-
-
 	// check to see if there is a file of recent acquisitions for the previous month
 	// filename: "recent_acqusitions_4_2014.json"
 	$filename = "recent_acqusitions_" . $month . "_" . $year . ".json";
 	if (!file_exists($filename)){
 		// There isn't a file so create the json
-		ChromePhp::log($filename . " does not exist.");
 		rss_to_json($filename);
 
 	}
@@ -27,14 +18,12 @@
 	// if there isn't a file create the file and pull the images form imdb
 	// RSS FEED: http://library.dartmouth.edu/newacq/RSS/latest/type-av.xml
 	
-	
 	//echo file name
 
 	function rss_to_json($filename){
 		$rss = new DOMDocument();
 		$rss->load('http://library.dartmouth.edu/newacq/RSS/latest/type-av.xml');
 		
-		ChromePhp::log("got to rss_to_json");
 		$movies = [];
 
 		foreach($rss->getElementsByTagName('item') as $node){
@@ -81,16 +70,12 @@
 			"movies" => $movies
 		);
 
-		ChromePhp::log($filename);
 
 		$fp = fopen($filename, 'w');
 		
 		fwrite($fp, 'bananas');
 		//fwrite($file, json_encode($jsonArray));
 		fclose($fp);
-
-		ChromePhp::log($json);
-
 
 	}
 

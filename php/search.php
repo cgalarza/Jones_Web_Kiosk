@@ -22,7 +22,6 @@
 			else if (!is_null($search_term))
 				$url = $this->search_url($search_term);
 
-			ChromePhp::log($url);
 			$html = file_get_contents($url);
 
 			// In order to supress warnings
