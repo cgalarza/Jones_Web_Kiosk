@@ -1,7 +1,5 @@
 <?php
 	
-	include '../../ChromePhp.php';
-
 	class LongMovieRecord extends MovieRecord{
 		protected $language;
 		protected $note;
