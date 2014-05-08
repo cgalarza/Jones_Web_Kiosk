@@ -44,7 +44,7 @@
 		const END_RECORD_URL = "~S4";
 		const MEDIA_DVD = 'Jones Media DVD';
 		const MEDIA_VHS = 'Jones Media Video tape';
-		const BEG_IMG_PATH = '../DVD/'; /*This url needs to be changed when its actually on the server */
+		const BEG_IMG_PATH = '../../images/dvd/'; /*This url needs to be changed when its actually on the server */
 		const JPG_EXTENTION = '.jpg';
 		const IMG_NOT_AVAILABLE = 'images/Image_Not_Available.png';
 		const IMG_ON_RESERVE = 'images/On_Reserve_at_Jones.png';

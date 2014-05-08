@@ -36,8 +36,12 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 	var movie = [];
 
 	// Check if image exists. Easier to do once its on the server?
-	var url = "http://www.dartmouth.edu/~library/mediactr/images/dvd/" + accessionNumber + ".jpg";
-	//var url = "../DVD/" + accessionNumber + ".jpg";
+
+	//var url = "http://www.dartmouth.edu/~library/mediactr/images/dvd/" + accessionNumber + ".jpg";
+	var url = "../images/dvd/" + accessionNumber + ".jpg";
+
+	console.log("URL = " + url + "   http.status = " + imageExists(url));
+
 
 	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
 	movie.push("<img src=\"" + url + "\"/>");
@@ -48,6 +52,14 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 
 	return movie.join("");
 	
+}
+
+function imageExists(url){
+	var http = new XMLHttpRequest();
+
+	http.open('HEAD', url, false);
+	http.send();
+	return http.status;
 }
 
 // Checks the date and uses the appropriate json. 

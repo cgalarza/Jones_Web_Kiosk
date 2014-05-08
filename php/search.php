@@ -12,7 +12,6 @@
 		const GENRE_URL_END = "%20and%20branch:branchbajmz";
 
 		function __construct(){
-			ChromePhp::log("got to php script");
 			$genre = $_GET["genre"];
 			$search_term = $_GET["search"];
 
