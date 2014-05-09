@@ -30,7 +30,6 @@ function addMovies(data){
 		content.push(promotionalMovie(obj.title, obj.accession_number, obj.bibnumber));
 	})
 
-	console.log(content.join(""));
 	$("#owl-movies").html(content.join(""));
 }
 
@@ -44,10 +43,10 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 	//var url = "http://www.dartmouth.edu/~library/mediactr/images/dvd/" + accessionNumber + ".jpg";
 	var url = "../images/dvd/" + accessionNumber + ".jpg";
 
-	console.log("URL = " + url + "   http.status = " + imageExists(url));
-
-	if (!imageExists(url))
+	if (!imageExists(url)){
+		console.log("Get Image for: " + title + ", " + accessionNumber);
 		return "";
+	}
 
 	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
 	movie.push("<img src=\"" + url + "\"/>");
@@ -89,7 +88,7 @@ function getPromotionalMoviesJSON(){
 	//forth of july movies
 	else {
 		//Display promotional movies for that month
-		return "promotional_movies/valentines.json";
+		return "promotional_movies/4thofjuly.json";
 		//$.ajax("php/recent_acquisitions.php");
 	}
 

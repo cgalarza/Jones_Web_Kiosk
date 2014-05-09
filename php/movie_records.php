@@ -1,7 +1,5 @@
 <?php
 	
-	include '../../ChromePhp.php';
-
 	class LongMovieRecord extends MovieRecord{
 		protected $language;
 		protected $note;
@@ -176,10 +174,6 @@
 
 		function get_accession_num($call_number_string){
 			$accession_array = explode(" ", $call_number_string);
-
-			ChromePhp::log($accession_array[0]);
-			ChromePhp::log(ctype_digit($accession_array[0]));
-			ChromePhp::log(preg_match('/^-?[0-9]+$/', (string)$accession_array[0]) ? true : false);
 
 			return trim($accession_array[0]);
 		}

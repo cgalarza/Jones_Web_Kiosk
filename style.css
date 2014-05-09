@@ -12,7 +12,6 @@ body {
 	background-color: #FEFEFD;
 	font-family: 'Lato', 'Open Sans', sans-serif;
 	margin: 0px;
-	min-width: 1200px;
 	font-size: 16px;
 }
 
@@ -108,42 +107,53 @@ input#searchField {
 /* -----------------------------------*/
 
 #genreNavigationBar {
-	list-style: none;
-	float: left;
 	padding: 0px;
 	margin-top:  20px;
 	font-size: 20px;
-	font-family: 'Lato';
 	font-weight: 300;
+	list-style-type: none;
 	text-align: center;
+	display: inline-block;
 }
 
 li#pickGenre {
 	background-color: #F5C068;
-	margin-bottom: 5px;
-	padding: 12px;
-	font-size: 25px;
 }
 
-.button {
+li.button {
 	margin-bottom: 5px;
-	width: 115px;
+	/*width: 115px;*/
 	padding: 10px 16px;
 	line-height: 100%;
-	color: #FFF;
-	display: inline-block;
 	background-color: #5E5D7D;
+	list-style-type: none;
+	display: inline-block;
+	text-align: center;
 }
 
-.button:hover {
-	background-color: #F5C068;
-	color: #000;
+li.button a{
+	color: white;
 }
 
-.genreSelected {
+li.button:hover {
 	background-color: #F5C068;
-	color: #000;
+	color: black;
 }
+
+li.button:hover a{
+	color: black;
+}
+
+li#genreSelected {
+	background-color: #F5C068;
+	color: black;
+}
+
+li#genreSelected a{
+	background-color: #F5C068;
+	color: black;
+}
+
 
 /* -----------------------------------*/
 /* ------>>> SEARCH RESULTS <<<-------*/
@@ -164,7 +174,8 @@ h2.title {
 }
 
 #searchResults {
-
+	margin: 0px auto;
+	width: 90%;
 }
 
 .floatRight {
@@ -177,11 +188,11 @@ h2.title {
 }
 
 .movieResult {
+	display: inline-block;
 	padding: 15px;
-	height: 250px;
-	width: 900px;
 	margin-left: auto;
 	margin-right: auto;
+	width: 75%;
 }
 
 span.notAvailable {
@@ -219,8 +230,8 @@ span.multipleDiscs {
 }
 
 .movieInfo {
-	float: right;
-	width: 700px;
+	margin-left: 230px;
+	width: auto;
 }
 
 
