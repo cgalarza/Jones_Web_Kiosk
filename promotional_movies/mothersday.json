@@ -1,0 +1,45 @@
+{
+	"carousel_title": "Mother's Day Movies", 
+	"movies": [
+		{	"title": "Terms of Endearment",
+			"accession_number": "691",
+			"bibnumber": "b2862535"
+		},
+		{	"title": "Spanglish",
+			"accession_number": "4507",
+			"bibnumber": "b3854897"
+		},
+		{	"title": "The Kids Are All Right",
+			"accession_number": "11051",
+			"bibnumber": "b4904650"
+		},
+		{	"title": "Steel Magnolias",
+			"accession_number": "9152",
+			"bibnumber": "b4702034"
+		},
+		{	"title": "Freaky Friday",
+			"accession_number": "8705",
+			"bibnumber": "b4678671"
+		},
+		{	"title": "Mamma Mia!",
+			"accession_number": "15583",
+			"bibnumber": "b5335256"
+		},
+		{	"title": "Little Miss Sunshine",
+			"accession_number": "4322",
+			"bibnumber": "b3894307"
+		},
+		{	"title": "Real Women Have Curves",
+			"accession_number": "1442",
+			"bibnumber": "b3051799"
+		},
+		{	"title": "Anywhere But Here",
+			"accession_number": "13690",
+			"bibnumber": "b5002116"
+		},
+		{	"title": "The Blind Side",
+			"accession_number": "9718",
+			"bibnumber": "b4736127"
+		}
+	]
+}

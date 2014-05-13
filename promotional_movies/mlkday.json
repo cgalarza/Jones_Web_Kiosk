@@ -1,0 +1,60 @@
+{
+	"carousel_title": "MLK Day Movies",
+	"movies": [
+		{	
+			"title": "Hairspray",
+			"accession_number": "1429",
+			"bibnumber": "b3034705"
+		},
+		{
+			"title": "Guess Who's Coming To Dinner",
+			"accession_number": "7264",
+			"bibnumber": "b4353573"
+		},
+		{
+			"title": "Mississippi Burning",
+			"accession_number": "3777",
+			"bibnumber": "b3783213"
+		},
+		{
+			"title": "In the Heat of the Night",
+			"accession_number": "1201",
+			"bibnumber": "b2947853"
+		},
+		{
+			"title": "To Kill a Mockingbird",
+			"accession_number": "2",
+			"bibnumber": "b2718545"
+		},
+		{
+			"title": "Malcolm X",
+			"accession_number": "729",
+			"bibnumber": "b2937424"
+		},
+		{
+			"title": "The Autobiography of Miss Jane Pittman",
+			"accession_number": "8826",
+			"bibnumber": "b4688231"
+		},
+		{
+			"title": "The Butler",
+			"accession_number": "16814",
+			"bibnumber": "b5564959"
+		},
+		{
+			"title": "Freedom On My Mind",
+			"accession_number": "10380",
+			"bibnumber": "b4232731"
+		},
+		{
+			"title": "Talk To Me",
+			"accession_number": "6092",
+			"bibnumber": "b4122355"
+		},
+		{
+			"title": "JFK",
+			"accession_number": "179",
+			"bibnumber": "b2782469"
+		}
+	]
+}

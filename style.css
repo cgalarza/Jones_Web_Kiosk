@@ -4,18 +4,17 @@
 /* ---------->>> GLOBAL <<<-----------*/
 /* -----------------------------------*/
 h1 {
-	color: black;
 	display: inline;
+	font-weight: 400;
+	color: #0C7FBA;
 }
 
 body {
 	background-color: #FEFEFD;
 	font-family: 'Lato', 'Open Sans', sans-serif;
 	margin: 0px;
-	font-size: 16px;
-}
-
-form {
+	font-size: 17px;
+	min-width: 870px;
 }
 
 a {
@@ -29,6 +28,11 @@ a:visted {
 form {
 	padding: 0px;
 	margin: 0px;
+}
+
+.last-updated {
+	position: absolute;
+	bottom: 0;
 }
 
 /* -----------------------------------*/
@@ -57,7 +61,6 @@ a#home {
 
 a#home:hover {
 	border-bottom: thick solid #F5C068;
-
 }
 
 a#searchByGenre {
@@ -122,7 +125,6 @@ li#pickGenre {
 
 li.button {
 	margin-bottom: 5px;
-	/*width: 115px;*/
 	padding: 10px 16px;
 	line-height: 100%;
 	background-color: #5E5D7D;
@@ -131,7 +133,7 @@ li.button {
 	text-align: center;
 }
 
-li.button a{
+li.button a {
 	color: white;
 }
 
@@ -159,27 +161,19 @@ li#genreSelected a{
 /* ------>>> SEARCH RESULTS <<<-------*/
 /* -----------------------------------*/
 h3#displaySearchTerm{
-	padding: 10px;
-	padding-left: 60px;
+	padding: 10px 10px 10px 60px;
 }
 
 h2.title {
 	display: inline;
 	font-weight: 400;
 	color: #F36C6E;
-	padding: 0px;
-	margin-bottom: 7px;
-	margin: 0px;
 	text-decoration: none;
 }
 
 #searchResults {
-	margin: 0px auto;
+	margin: auto;
 	width: 90%;
-}
-
-.floatRight {
-	padding-left: 130px;
 }
 
 .noResults{
@@ -188,11 +182,11 @@ h2.title {
 }
 
 .movieResult {
-	display: inline-block;
+	display: block;
 	padding: 15px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 75%;
+	margin: auto;
+	max-width: 800px;
+	min-height: 250px;
 }
 
 span.notAvailable {
@@ -208,8 +202,8 @@ span.available {
 
 span.media{
 	background-color: #3F5765;
-	color:#FFFFFF;
-	float:right;
+	color: #FFFFFF;
+	float: right;
 	font-size: 90%;
 	padding: 3px;
 }
@@ -230,7 +224,7 @@ span.multipleDiscs {
 }
 
 .movieInfo {
-	margin-left: 230px;
+	margin-left: 200px;
 	width: auto;
 }
 
@@ -239,9 +233,23 @@ span.multipleDiscs {
 /* --->>> Entire Catalog Entry <<<----*/
 /* -----------------------------------*/
 
+div#entireRecord div.movieResult {
+	max-width: 1000px;
+	font-size: 105%;
+}
+
 div#entireRecord div.movieResult a.catalogLink {
 	font-size: 18px;
 	font-weight: 700;
+}
+
+div#entireRecord div.movieResult .movieImage {
+	max-width: 400px;
+	max-height: 450px;
+}
+
+div#entireRecord div.movieResult .movieInfo {
+	margin-left: 325px;
 }
 
 
@@ -255,11 +263,6 @@ hr {
 	color: #0C7FBA;
 	background: #0C7FBA;
 	border: none;
-}
-
-h1#questionsTitle{
-	font-weight: 400;
-	color: #0C7FBA;
 }
 
 h3.questionsLink a {
@@ -283,6 +286,4 @@ h3.questionsAnchor a {
 p.answers {
 	margin-left: 125px;
 	font-weight: 300;
-
 }
-

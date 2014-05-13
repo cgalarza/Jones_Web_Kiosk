@@ -1,0 +1,45 @@
+{
+	"carousel_title": "Back-To-School Movies",
+	"movies": [
+		{	
+			"title": "Mean Girls",
+			"accession_number": "9465",
+			"bibnumber": "b4724062"
+		},
+		{	
+			"title": "Animal House",
+			"accession_number": "6646",
+			"bibnumber": "b4201491"
+		},
+		{
+			"title": "The Social Network",
+			"accession_number": "11445",
+			"bibnumber": "b4916155"
+		},
+		{	
+			"title": "Good Will Hunting",
+			"accession_number": "206",
+			"bibnumber": "b2756935"
+		},
+		{
+			"title": "Legally Blonde",
+			"accession_number": "14781",
+			"bibnumber": "b5270360"
+		},
+		{
+			"title": "Pitch Perfect",
+			"accession_number": "15701",
+			"bibnumber": "b5354015"
+		},
+		{
+			"title": "Ferris Bueller's Day Off",
+			"accession_number": "10173",
+			"bibnumber": "b4807202"
+		},
+		{
+			"title": "The Breakfast Club",
+			"accession_number": "5113",
+			"bibnumber": "b3974097"
+		}
+	]
+}

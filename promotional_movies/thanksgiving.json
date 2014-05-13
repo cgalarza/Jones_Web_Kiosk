@@ -10,7 +10,45 @@
 			"title": "Home For the Holidays", 
 			"accession_number": "9335",
 			"bibnumber": "b4709802"
+		},
+		{
+			"title": "Miracle on 34th Street",
+			"accession_number": "949",
+			"bibnumber": "b2956347"
+		},
+		{
+			"title": "Alice's Restaurant",
+			"accession_number": "681",
+			"bibnumber": "b2956347"
+		},
+		{
+			"title": "Pieces of April",
+			"accession_number": "1600",
+			"bibnumber": "b3128453"
+		},
+		{
+			"title": "Hannah and Her Sisters",
+			"accession_number": "957",
+			"bibnumber": "b2895598"
+		},
+		{
+			"title": "She's Gotta Have It",
+			"accession_number": "14501",
+			"bibnumber": "b5275708"
+		},
+		{
+			"title": "The Myth of Fingerprints",
+			"accession_number": "15768",
+			"bibnumber": "b5358286"
+		},
+		{
+			"title": "The Ice Storm",
+			"accession_number": "512",
+			"bibnumber": "b2857736"
+		},
+		{	"title": "Rocky",
+			"accession_number": "445",
+			"bibnumber": "b2865432"
 		}
-
 	]
 }
