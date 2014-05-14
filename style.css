@@ -3,6 +3,11 @@
 /* -----------------------------------*/
 /* ---------->>> GLOBAL <<<-----------*/
 /* -----------------------------------*/
+html {
+	height: 100%;
+}
+
+
 h1 {
 	display: inline;
 	font-weight: 400;
@@ -15,6 +20,7 @@ body {
 	margin: 0px;
 	font-size: 17px;
 	min-width: 870px;
+	height: 100%;
 }
 
 a {
@@ -31,8 +37,8 @@ form {
 }
 
 .last-updated {
-	position: absolute;
-	bottom: 0;
+	margin: 10px;
+	font-size: 10px;
 }
 
 /* -----------------------------------*/
@@ -171,9 +177,15 @@ h2.title {
 	text-decoration: none;
 }
 
+#searchResultsWrapper {
+	height: 100%;
+}
+
 #searchResults {
 	margin: auto;
 	width: 90%;
+	height: auto;
+	min-height: 100%;
 }
 
 .noResults{
@@ -232,6 +244,15 @@ span.multipleDiscs {
 /* -----------------------------------*/
 /* --->>> Entire Catalog Entry <<<----*/
 /* -----------------------------------*/
+
+#entireRecordWrapper {
+	height: 100%;
+}
+
+#entireRecord {
+	min-height: 100%
+	height: auto;
+}
 
 div#entireRecord div.movieResult {
 	max-width: 1000px;
