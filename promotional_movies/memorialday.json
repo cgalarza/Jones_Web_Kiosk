@@ -1,0 +1,140 @@
+{
+	"carousel_title": "Memorial Day Films", 
+	"movies": [
+		{
+			"title": "Band of Brothers", 
+			"accession_number": "1232",
+			"bibnumber": "b4935547"
+		},
+		{
+			"title": "The Pacific", 
+			"accession_number": "14770",
+			"bibnumber": "b5289737"
+		},
+		{
+			"title": "Full Metal Jacket", 
+			"accession_number": "13384",
+			"bibnumber": "b4992543"
+		},
+		{
+			"title": "Saving Private Ryan", 
+			"accession_number": "130",
+			"bibnumber": "b2751024"
+		},
+		{
+			"title": "Pearl Harbor", 
+			"accession_number": "559",
+			"bibnumber": "b2898916"
+		},
+		{
+			"title": "Good Morning Vietnam", 
+			"accession_number": "8990",
+			"bibnumber": "b4685249"
+		},
+		{
+			"title": "The Longest Day", 
+			"accession_number": "819",
+			"bibnumber": "b2915144"
+		},
+		{
+			"title": "We Were Soldiers", 
+			"accession_number": "14188",
+			"bibnumber": "b5119920"
+		},
+		{
+			"title": "Flyboys", 
+			"accession_number": "4441",
+			"bibnumber": "b3876642"
+		},
+		{
+			"title": "Best Years of Our Lives", 
+			"accession_number": "2620",
+			"bibnumber": "b3496074"
+		},
+		{
+			"title": "Coming Home", 
+			"accession_number": "3679",
+			"bibnumber": "b3765338"
+		},
+		{
+			"title": "Platoon", 
+			"accession_number": "6986",
+			"bibnumber": "b4294108"
+		},
+		{
+			"title": "Flags of Our Fathers", 
+			"accession_number": "4470",
+			"bibnumber": "b3917343"
+		},
+		{
+			"title": "Born of the 4th of July", 
+			"accession_number": "5041",
+			"bibnumber": "b3634477"
+		},
+		{
+			"title": "Big Red One", 
+			"accession_number": "17033",
+			"bibnumber": "b5864898"
+		},
+		{
+			"title": "The Messenger", 
+			"accession_number": "9966",
+			"bibnumber": "b4798901"
+		},
+		{
+			"title": "Hamburger Hill", 
+			"accession_number": "14450",
+			"bibnumber": "b5275641"
+		},
+		{
+			"title": "Glory", 
+			"accession_number": "7257",
+			"bibnumber": "b4354600"
+		},
+		{
+			"title": "Patton", 
+			"accession_number": "138",
+			"bibnumber": "b2754168"
+		},
+		{
+			"title": "The Hurt Locker", 
+			"accession_number": "9500",
+			"bibnumber": "b4724059"
+		},
+		{
+			"title": "M*A*S*H", 
+			"accession_number": "5026",
+			"bibnumber": "b3934683"
+		},
+		{
+			"title": "The Patriot", 
+			"accession_number": "667",
+			"bibnumber": "b2912925"
+		},
+		{
+			"title": "The Deer Hunter", 
+			"accession_number": "47",
+			"bibnumber": "b2728833"
+		},
+		{
+			"title": "Black Hawk Down", 
+			"accession_number": "1540",
+			"bibnumber": "b3075909"
+		},
+		{
+			"title": "Jarhead", 
+			"accession_number": "3218",
+			"bibnumber": "b3687148"
+		},
+		{
+			"title": "Green Zone", 
+			"accession_number": "10301",
+			"bibnumber": "b4809102"
+		},
+		{
+			"title": "The Tuskegee Airmen", 
+			"accession_number": "1867",
+			"bibnumber": "b3168725"
+		}
+	]
+}

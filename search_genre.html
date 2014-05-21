@@ -46,7 +46,6 @@
 			<li class="button"><a href="search_genre.html?genre=western">western</a></li>
 		</ul>
 
-
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
 			<br/>
@@ -59,6 +58,7 @@
 		<script src='js/DisplaySearch.js'></script>
 		<script>
 			$(document).ready(function(){
+				
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
 
@@ -81,8 +81,11 @@
 						displaySearchResults(response);
 					},
 					"json");
-			});
+				});
+
 		</script>
+
+		<p class="last-updated"><a href="google.com">google</a></p>
 
 	</body>
 

@@ -88,7 +88,7 @@ function getPromotionalMoviesJSON(){
 	//forth of july movies
 	else {
 		//Display promotional movies for that month
-		return "promotional_movies/4thofjuly.json";
+		return "promotional_movies/memorialday.json";
 		//$.ajax("php/recent_acquisitions.php");
 	}
 
