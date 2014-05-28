@@ -8,9 +8,9 @@ function movieCarousel(){
 	$("#owl-movies").owlCarousel({
 		itemsCustom : [
 			[0, 1],
-			[600, 2],
-			[900, 3], 
-			[1200, 4],
+			[800, 2],
+			[1200, 3], 
+			[1600, 4],
 			[1500, 5]
 		],
 		jsonPath : getPromotionalMoviesJSON(),
@@ -28,7 +28,7 @@ function addMovies(data){
 	// Add each film to the caurosel. 
 	$.each(data.movies, function(index, obj){
 		content.push(promotionalMovie(obj.title, obj.accession_number, obj.bibnumber));
-	})
+	});
 
 	$("#owl-movies").html(content.join(""));
 }

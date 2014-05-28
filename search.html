@@ -31,6 +31,10 @@
 		<h3 id='displaySearchTerm'>
 			Search results for:&nbsp;<span id='searchTerm'><i></i></span>
 		</h3>
+
+		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
+		<img id="loading" src="images/Loader.gif"></img>
+		
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
 			<div id="searchResults">
@@ -44,18 +48,33 @@
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 		<script>
 			$(document).ready(function(){
+
+				$('#loading').hide();
+				$('.last-updated').hide();
+				$('#searchResultsWrapper').hide();
+
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
 				search = search_term[1].split("+").join(" ");
 
 				$('#searchTerm > i').html(search);
 				$('#searchField').attr("value", search);
-
+								
 				$.get("php/search.php?search=" + search_term[1], 
 					function(response){
 						displaySearchResults(response);
 					},
 					"json");
+			});
+
+			$(document).ajaxStart(function(){
+				$('#loading').fadeIn(1000);
+			});
+
+			$(document).ajaxStop(function(){
+				$('#loading').fadeOut(700, function(){
+					$('#searchResultsWrapper').fadeIn(700);
+				});
 			});
 		</script> 
 	

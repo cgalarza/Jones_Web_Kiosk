@@ -3,7 +3,6 @@
 	width: auto;
 	border: 1px solid gray;
 	display: block;
-	margin: 0px auto;
 }
 
 .owl-wrapper .owl-item {
@@ -19,13 +18,4 @@
 
 .owl-item a h4 {
 	margin: 0px;
-}
-
-#owl-movies-wrapper {
-	height: 100%;
-}
-
-#owl-movies {
-	height: auto;
-	min-height: 100%;
 }

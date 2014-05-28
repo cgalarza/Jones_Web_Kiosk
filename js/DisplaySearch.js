@@ -130,8 +130,9 @@ function formatImage(media, accessionNumber){
 function imageExists(url){
 	var http = new XMLHttpRequest();
 
-	http.open('GET', url, false);
+	http.open('POST', url, false);
 	http.send();
+
 	return http.status == 200;
 }
 
