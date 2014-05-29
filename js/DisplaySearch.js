@@ -1,54 +1,45 @@
 
 // Displays the record of just one item. 
 function displayEntireRecord(json){
-	console.log(json);
-
 	var jsonObj = $.parseJSON(JSON.stringify(json));
-	var movieHtml = [];
+	var movieHtml = 
+		// Add image.
+		formatImage(jsonObj.media, jsonObj.accession_number) +
 
-	// Add image.
-	movieHtml.push(formatImage(jsonObj.media, jsonObj.accession_number));
+		// Add title.
+		formatTitle(jsonObj.title, jsonObj.bibnumber) +
 
-	// Add title.
-	movieHtml.push(formatTitle(jsonObj.title, jsonObj.bibnumber));
+		// Add media.
+		formatMedia(jsonObj.media) +
 
-	// Add media.
-	movieHtml.push(formatMedia(jsonObj.media));
+		// Add summary (only if there is one)
+		formatSummary(jsonObj.summary) +
 
-	// Add summary (only if there is one)
-	movieHtml.push(formatSummary(jsonObj.summary));
+		// Add location, call number, status.
+		formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media) +
 
-	// Add location, call number, status.
-	movieHtml.push(formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media));
+		// Add cast (only if there is one)
+		formatInfo("Cast", jsonObj.cast) +
 
-	// Add cast (only if there is one)
-	movieHtml.push(formatInfo("Cast", jsonObj.cast));
+		// Add language.
+		formatInfo("Language", jsonObj.language) +
 
-	// Add language.
-	movieHtml.push(formatInfo("Language", jsonObj.language));
+		// Add rating.
+		formatInfo("Rating", jsonObj.rating) +
 
-	// Add rating.
-	movieHtml.push(formatInfo("Rating", jsonObj.rating));
-
-	movieHtml.push("<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + ">See library catalog entry</a>");
-
-	// Closing the information div. 
-	movieHtml.push("</div>");
+		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + ">See library catalog entry</a></div>";
 
 	var movie = $('<div>', {
 		'class' : 'movieResult',
-		html : movieHtml.join('')
+		html : movieHtml
 	});
 	
 	movie.appendTo($('#entireRecord'));
-
 }
 
 
 // Displays search results given a json with the information of all the search results.
 function displaySearchResults(json){
-	console.log(json);
-
 	// Parse the JSON object that is returned
 	var jsonObj = $.parseJSON(JSON.stringify(json));
 
@@ -65,32 +56,32 @@ function displaySearchResults(json){
 
 	$.each(jsonObj, function(index, obj){
 		
-		var movieHtml = [];
+		var movieHtml = 
+			// Add image.
+			formatImage(obj.media, obj.accession_number) +
 
-		// Add image.
-		movieHtml.push(formatImage(obj.media, obj.accession_number));
+			// Add title.
+			formatTitle(obj.title, obj.bibnumber) +
 
-		// Add title.
-		movieHtml.push(formatTitle(obj.title, obj.bibnumber));
+			// Add media.
+			formatMedia(obj.media) +
 
-		// Add media.
-		movieHtml.push(formatMedia(obj.media));
-
-		// Add summary (only if there is one)
-		movieHtml.push(formatSummary(obj.summary, 400));
+			// Add summary (only if there is one)
+			formatSummary(obj.summary, 400) +
 	
-		// Add location, call number, status.
-		movieHtml.push(formatCallNumber(obj.accession_number, obj.location, obj.media));
+			// Add location, call number, status.
+			formatCallNumber(obj.accession_number, obj.location, obj.media) +
 
-		// Add cast (only if there is something in the case field).
-		movieHtml.push(formatInfo("Cast", obj.cast));
+			// Add cast (only if there is something in the case field).
+			formatInfo("Cast", obj.cast) +
 
-		// Closing the information div. 
-		movieHtml.push("</div>");
+			// Closing the information div. 
+			"</div>";
+		
 
 		var movie = $('<div>', {
 			'class' : 'movieResult',
-			html : movieHtml.join('')
+			html : movieHtml
 		});
 
 		if (index % 2 == 0)
@@ -167,20 +158,17 @@ function formatSummary(summary, length){
 
 // Given the locations table, accession_number and type of media
 function formatCallNumber(accession_number, locations, media){
-	var strings = []; 
+	var strings = [];
 	// If there is only one item associated with the record display the call number and availability
 	if (locations.length == 1) {
-		if (media == "DVD" || media == "VHS"){
-			strings.push("<br/><strong>Call Number:</strong> " + 
-				accession_number);
-		} else {
+		if (media == "DVD" || media == "VHS")
+			strings.push("<br/><strong>Call Number:</strong> " + accession_number);
+		else 
 			strings.push("<br/>On Reserve for " + locations[0].callnumber);
-		}
+		
+		strings.push(formatStatus(locations[0].status));
 
-		strings.push(formatStatus(locations[0].status))
-
-	}
-	else if (media == "DVD Set") {
+	} else if (media == "DVD Set") {
 		// If it is a DVD set display the call number and that there are multiple disc
 		// and under that display the disc number and whether or not its available.
 		strings.push("<br><strong>Call Number: </strong>" + accession_number + " (Multiple Discs)<br/>");
@@ -193,18 +181,16 @@ function formatCallNumber(accession_number, locations, media){
 				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " (On Reserve for " + discString[0].trim() + ") " + formatStatus(row.status) + "</span>");
 			else	
 				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " " + formatStatus(row.status) + "</span>");
-		})
+		});
 
-	}
-	else {
+	} else {
 		$.each(locations, function(index, row){
- 			strings.push("<br/>" + row.type + "  " +
-	 		row.callnumber + "  " +
-	 		formatStatus(row.status));
-		 })
+ 			strings.push("<br/>" + row.type + "  " + row.callnumber + "  " +
+	 			formatStatus(row.status));
+		 });
 	}
 
-	return strings.join('');
+	return strings.join("");
 }
 
 function formatStatus(status){

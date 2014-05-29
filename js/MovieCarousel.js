@@ -8,10 +8,10 @@ function movieCarousel(){
 	$("#owl-movies").owlCarousel({
 		itemsCustom : [
 			[0, 1],
-			[800, 2],
-			[1200, 3], 
-			[1600, 4],
-			[1500, 5]
+			[650, 2],
+			[975, 3], 
+			[1300, 4],
+			[1625, 5]
 		],
 		jsonPath : getPromotionalMoviesJSON(),
 		jsonSuccess: addMovies
@@ -36,11 +36,8 @@ function addMovies(data){
 
 function promotionalMovie(title, accessionNumber, bibnumber){
 
-	var movie = [];
-
 	// Check if image exists. Easier to do once its on the server?
 
-	//var url = "http://www.dartmouth.edu/~library/mediactr/images/dvd/" + accessionNumber + ".jpg";
 	var url = "../images/dvd/" + accessionNumber + ".jpg";
 
 	if (!imageExists(url)){
@@ -48,14 +45,12 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 		return "";
 	}
 
-	movie.push("<a href=\"entire_record.html?bibnumber=" + bibnumber + "\">");
-	movie.push("<img src=\"" + url + "\"/>");
-	movie.push('<h3>' + title + '</h3>');
-	movie.push('<h4>' + accessionNumber + '</h3>');
+	var movie = '<a href=\"entire_record.html?bibnumber=' + bibnumber + 
+		'\"><img src=\"' + url + '\"/><h3>' +
+		title + '</h3><h4>' +
+		accessionNumber + '</h3></a>';
 
-	movie.push("</a>");
-
-	return movie.join("");
+	return movie;
 	
 }
 
@@ -75,15 +70,33 @@ function getPromotionalMoviesJSON(){
 	var day = date.getDate(); // Get Month
 	var month = date.getMonth() + 1; // Get Date
 
+	// If the date is between Feb 5 - Feb 14, then display valentines day movies
+	if ((month === 2) && (day > 5) && (day <= 4))
+		return "promotional_movies/valentines.json";
+	// if its a week before mlk day
+
+	// If its a week before earth day (april 22)
+
+	// Week before mothers day
+
+	// Week before memorial day 
+
+	// Week before fathers day
+
+	// Week before July forth
+
+	// labor day movies a week before labor day to labor day
+
+	// Back to school films from labor day to the end of september
+
 	// If the date is between Oct 15 - Oct 31, then display halloween movies.
-	if ((month === 10) && (day > 15) && (day <= 31))
+	else if ((month === 10) && (day > 15) && (day <= 31))
 		return "promotional_movies/halloween.json";
 	// If the date is between Nov 17 - 28, then display thanksgiving movies
 	else if ((month === 11) && (day > 16) && (day <=28))
 		return "promotional_movies/thanksgiving.json";
 	else if (month === 12)
 		return "promotional_movies/holiday.json";
-	// valentines day movies
 
 	//forth of july movies
 	else {

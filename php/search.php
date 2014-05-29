@@ -94,7 +94,6 @@
 
 
 			} else {
-
 				// Bib numbers of items on search result page
 				return $bib_number_nodes;
 			}

@@ -1,6 +1,6 @@
 .owl-item a img {
 	height: 425px;
-	width: auto;
+	/*width: auto;*/
 	border: 1px solid gray;
 	display: block;
 }
@@ -10,7 +10,6 @@
 }
 
 .owl-item a h3, h4 {
-	text-align: center;
 	font-weight: 300;
 	margin: 5px 0px;
 	color: black;

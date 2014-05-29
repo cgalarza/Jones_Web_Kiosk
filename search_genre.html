@@ -46,8 +46,8 @@
 			<li class="button"><a href="search_genre.html?genre=western">western</a></li>
 		</ul>
 
-		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
-		<img id="loading" src="images/Loader.gif"></img>
+		<!-- Loading Image. Only shown when AXAJ call has been made and hasn't returned. -->
+		<div id="loading"></div>
 
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
@@ -61,9 +61,9 @@
 		<script>
 			$(document).ready(function(){
 				
+				$('#searchResultsWrapper').hide();
 				$('#loading').hide();
 				$('.last-updated').hide();
-				$('#searchResultsWrapper').hide();
 				
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
@@ -89,6 +89,7 @@
 				});
 
 				$(document).ajaxStart(function(){
+					$('#loading').html("<img id=\"loading\" src=\"images/Loader.gif\"></img>");
 					$('#loading').fadeIn(1000);
 				});
 

@@ -33,7 +33,7 @@
 		</h3>
 
 		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
-		<img id="loading" src="images/Loader.gif"></img>
+		<div id="loading"></div>
 		
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
@@ -68,6 +68,7 @@
 			});
 
 			$(document).ajaxStart(function(){
+				$('#loading').html("<img id=\"loading\" src=\"images/Loader.gif\"></img>");
 				$('#loading').fadeIn(1000);
 			});
 
