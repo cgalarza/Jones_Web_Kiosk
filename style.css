@@ -205,9 +205,11 @@ span.available {
 span.media{
 	background-color: #3F5765;
 	color: #FFFFFF;
-	float: right;
-	font-size: 90%;
+	font-size: 80%;
 	padding: 3px;
+	margin-left: 10px;
+	display: inline;
+	vertical-align: text-top;
 }
 
 span.multipleDiscs {

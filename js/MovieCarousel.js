@@ -27,7 +27,8 @@ function addMovies(data){
 
 	// Add each film to the caurosel. 
 	$.each(data.movies, function(index, obj){
-		content.push(promotionalMovie(obj.title, obj.accession_number, obj.bibnumber));
+		content.push(
+			promotionalMovie(obj.title, obj.accession_number, obj.bibnumber));
 	});
 
 	$("#owl-movies").html(content.join(""));
@@ -36,10 +37,9 @@ function addMovies(data){
 
 function promotionalMovie(title, accessionNumber, bibnumber){
 
-	// Check if image exists. Easier to do once its on the server?
-
 	var url = "../images/dvd/" + accessionNumber + ".jpg";
 
+	// Check if image exists. 
 	if (!imageExists(url)){
 		console.log("Get Image for: " + title + ", " + accessionNumber);
 		return "";

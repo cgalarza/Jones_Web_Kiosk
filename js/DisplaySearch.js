@@ -7,7 +7,7 @@ function displayEntireRecord(json){
 		formatImage(jsonObj.media, jsonObj.accession_number) +
 
 		// Add title.
-		formatTitle(jsonObj.title, jsonObj.bibnumber) +
+		formatTitle(jsonObj.title, jsonObj.bibnumber) + 
 
 		// Add media.
 		formatMedia(jsonObj.media) +
@@ -107,7 +107,8 @@ function formatImage(media, accessionNumber){
 	if (media == "On Reserve")
 		path = "images/On_Reserve_at_Jones.png";
 	// if the image exists but its not a DVD or a DVD Set
-	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') && (media === 'DVD' || media === 'DVD Set'))
+	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') 
+			&& (media === 'DVD' || media === 'DVD Set'))
 		path = '../images/dvd/' +  accessionNumber + '.jpg';
 	// Otherwise, display default image. 
 	else 
