@@ -208,8 +208,8 @@ span.media{
 	font-size: 80%;
 	padding: 3px;
 	margin-left: 10px;
-	display: inline;
-	vertical-align: text-top;
+	display: inline-block;
+	vertical-align: text-bottom;
 }
 
 span.multipleDiscs {
