@@ -13,19 +13,19 @@ function displayEntireRecord(json){
 		formatMedia(jsonObj.media) +
 
 		// Add summary (only if there is one)
-		formatSummary(jsonObj.summary) +
+		formatInfo("", jsonObj.summary) + "<br/>" +
 
 		// Add location, call number, status.
 		formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media) +
 
 		// Add cast (only if there is one)
-		formatInfo("Cast", jsonObj.cast) +
+		"<br/>" + formatInfo("Cast: ", jsonObj.cast) +
 
 		// Add language.
-		formatInfo("Language", jsonObj.language) +
+		"<br/>" + formatInfo("Language: ", jsonObj.language) +
 
 		// Add rating.
-		formatInfo("Rating", jsonObj.rating) +
+		"<br/>" + formatInfo("Rating: ", jsonObj.rating) +
 
 		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + ">See library catalog entry</a></div>";
 
@@ -67,13 +67,13 @@ function displaySearchResults(json){
 			formatMedia(obj.media) +
 
 			// Add summary (only if there is one)
-			formatSummary(obj.summary, 400) +
+			formatInfo("", obj.summary, 400) + "<br/>" +
 	
 			// Add location, call number, status.
 			formatCallNumber(obj.accession_number, obj.location, obj.media) +
 
 			// Add cast (only if there is something in the case field).
-			formatInfo("Cast", obj.cast) +
+			"<br/>" + formatInfo("Cast: ", obj.cast, 200) +
 
 			// Closing the information div. 
 			"</div>";
@@ -92,11 +92,22 @@ function displaySearchResults(json){
 	});
 }
 
-function formatInfo(tagTitle, information){
-	if (information != "")
-		return '<br/><br/><strong>' + tagTitle + ': </strong>' + information;
-	else
+function formatInfo(tagTitle, information, length){
+	if (information === "")
 		return '';
+
+	if (typeof(length)==='undefined'){
+		return '<br/><strong>' + tagTitle + '</strong>' + information;
+	} else {
+
+		var trimed_info = information.substr(0, length);
+		var str = '<br/><strong>' + tagTitle + '</strong>' + trimed_info;
+
+		if (information.length > trimed_info.length)
+			str += '...';
+
+		return str;
+	}
 }
 
 function formatImage(media, accessionNumber){
@@ -134,27 +145,6 @@ function formatTitle(title, bibnumber){
 
 function formatMedia(media){
 	return '<span class="media">' + media + ' </span>';
-}
-
-function formatSummary(summary, length){
-	
-	var str = summary;
-	if (!(typeof(length)==='undefined'))
-		str = summary.substr(0, length);
-
-	var strings = [];
-
-	if (summary != ""){
-		strings.push('<div class="summary">' + str);
-
-		if (summary.length > str.length)
-			strings.push('...</div>');
-		else
-			strings.push('</div>');
-	}
-
-	return strings.join('');
-
 }
 
 // Given the locations table, accession_number and type of media
