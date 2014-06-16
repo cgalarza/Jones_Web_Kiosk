@@ -1,5 +1,7 @@
 
-// Displays the record of just one item. 
+/** 
+	Displays the record of just one item. 
+*/
 function displayEntireRecord(json){
 	var jsonObj = $.parseJSON(JSON.stringify(json));
 	var movieHtml = 
@@ -16,7 +18,8 @@ function displayEntireRecord(json){
 		formatInfo("", jsonObj.summary) + "<br/>" +
 
 		// Add location, call number, status.
-		formatCallNumber(jsonObj.accession_number, jsonObj.location, jsonObj.media) +
+		formatCallNumber(jsonObj.accession_number, 
+			jsonObj.location, jsonObj.media) +
 
 		// Add cast (only if there is one)
 		"<br/>" + formatInfo("Cast: ", jsonObj.cast) +
@@ -27,7 +30,9 @@ function displayEntireRecord(json){
 		// Add rating.
 		"<br/>" + formatInfo("Rating: ", jsonObj.rating) +
 
-		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + ">See library catalog entry</a></div>";
+		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + 
+
+		">See library catalog entry</a></div>";
 
 	var movie = $('<div>', {
 		'class' : 'movieResult',
@@ -38,7 +43,10 @@ function displayEntireRecord(json){
 }
 
 
-// Displays search results given a json with the information of all the search results.
+/** 
+	Displays search results given a json with the information of all the search 
+	results.
+*/
 function displaySearchResults(json){
 	// Parse the JSON object that is returned
 	var jsonObj = $.parseJSON(JSON.stringify(json));
@@ -92,13 +100,25 @@ function displaySearchResults(json){
 	});
 }
 
+/**
+	Generic function that can be used to display different bits of information. 
+
+	The tagTitle is in bold and displayed before the information string. If a 
+	length is provided then the information string is trimmed.
+*/
+
 function formatInfo(tagTitle, information, length){
+	// If the information string is empty return an empty string.	
 	if (information === "")
 		return '';
 
 	if (typeof(length)==='undefined'){
 		return '<br/><strong>' + tagTitle + '</strong>' + information;
-	} else {
+	} 
+	// If a length is provided then the information string is trimmed to that 
+	// length and three dots are added to the end of the string to signify that
+	// the string is longer.
+	else {
 
 		var trimed_info = information.substr(0, length);
 		var str = '<br/><strong>' + tagTitle + '</strong>' + trimed_info;
@@ -110,14 +130,19 @@ function formatInfo(tagTitle, information, length){
 	}
 }
 
+/**
+	If there is an image corresponding to the given accession number then that
+	image is displayed. Otherwise, a default image is shown.
+*/
 function formatImage(media, accessionNumber){
 
 	var path = '';
 
-	// If the item is on reserve
+	// Find the correct image path.
+	// If the item is on reserve.
 	if (media == "On Reserve")
 		path = "images/On_Reserve_at_Jones.png";
-	// if the image exists but its not a DVD or a DVD Set
+	// If the image exists, but its not a DVD or a DVD Set.
 	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') 
 			&& (media === 'DVD' || media === 'DVD Set'))
 		path = '../images/dvd/' +  accessionNumber + '.jpg';
@@ -139,18 +164,35 @@ function imageExists(url){
 	return http.status == 200;
 }
 
+/**
+	The title is created as a link, linking the user to the correct catalog
+	entry.
+*/
 function formatTitle(title, bibnumber){
-	return '<div class="movieInfo"><a href=\"entire_record.html?bibnum=' + bibnumber + '\"><h2 class="title">' + title + '</h2></a>';
+	return '<div class="movieInfo"><a href=\"entire_record.html?bibnum=' 
+		+ bibnumber + '\"><h2 class="title">' + title + '</h2></a>';
 }
 
+/**
+	The media type tag is formated with its class.
+*/
 function formatMedia(media){
 	return '<span class="media">' + media + ' </span>';
 }
 
-// Given the locations table, accession_number and type of media
+/** 
+	Given the accession_number, locations table, and type of media format the 
+	call number appropriately.
+
+	If the item is on reserve display the call number information clearly states
+	that the item is on reserve. If there are multiple discs attached to a
+	record, the call number is display only once and each disc has its
+	corresponding status next to it.
+*/
 function formatCallNumber(accession_number, locations, media){
 	var strings = [];
-	// If there is only one item associated with the record display the call number and availability
+	// If there is only one item associated with the record display the call 
+	// number and availability.
 	if (locations.length == 1) {
 		if (media == "DVD" || media == "VHS")
 			strings.push("<br/><strong>Call Number:</strong> " + accession_number);
@@ -160,18 +202,24 @@ function formatCallNumber(accession_number, locations, media){
 		strings.push(formatStatus(locations[0].status));
 
 	} else if (media == "DVD Set") {
-		// If it is a DVD set display the call number and that there are multiple disc
-		// and under that display the disc number and whether or not its available.
-		strings.push("<br><strong>Call Number: </strong>" + accession_number + " (Multiple Discs)<br/>");
+		// If it is a DVD set display the call number and that there are 
+		// multiple disc and under that display the disc number and whether or 
+		// not its available.
+		strings.push("<br><strong>Call Number: </strong>" + accession_number 
+			+ " (Multiple Discs)<br/>");
 		$.each(locations, function(index, row){
 
 			var discString = row.callnumber.split(" ");
 
-			// If the first part of the string does not only contain numbers then its on reserve. 
+			// If the first part of the string does not only contain numbers 
+			// then its on reserve. 
 			if (!(/^\d+$/.test(discString[0])))
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " (On Reserve for " + discString[0].trim() + ") " + formatStatus(row.status) + "</span>");
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] 
+					+ " (On Reserve for " + discString[0].trim() + ") " 
+					+ formatStatus(row.status) + "</span>");
 			else	
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] + " " + formatStatus(row.status) + "</span>");
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] 
+					+ " " + formatStatus(row.status) + "</span>");
 		});
 
 	} else {
@@ -184,11 +232,18 @@ function formatCallNumber(accession_number, locations, media){
 	return strings.join("");
 }
 
+/**
+	The status color changes based on what the status is.
+
+	If the item is available then the status text is green, otherwise it's red.
+*/
 function formatStatus(status){
 	if (status == "AVAILABLE")
-		return "&nbsp&nbsp<span class=\"available\"><strong>" + status.trim() + "</strong></span>";
+		return "&nbsp&nbsp<span class=\"available\"><strong>" + status.trim() 
+			+ "</strong></span>";
 	else
-		return "&nbsp&nbsp<span class=\"notAvailable\"><strong>" + status.trim() + "</strong></span>";
+		return "&nbsp&nbsp<span class=\"notAvailable\"><strong>" + status.trim() 
+			+ "</strong></span>";
 }
 
 

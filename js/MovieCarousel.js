@@ -1,10 +1,9 @@
 $(document).ready(movieCarousel);
 
 function movieCarousel(){
-	console.log('ready!');
+	console.log('Creating Movies Carousel');
 
-	// Check date and use appropriate json
-
+	// Creates carousel and uses json to populate the films.
 	$("#owl-movies").owlCarousel({
 		itemsCustom : [
 			[0, 1],
@@ -16,9 +15,11 @@ function movieCarousel(){
 		jsonPath : getPromotionalMoviesJSON(),
 		jsonSuccess: addMovies
 	});
-
 }
 
+/**
+	Carousel is populated by the json data given. 
+*/
 function addMovies(data){
 	var content = [];
 
@@ -34,7 +35,10 @@ function addMovies(data){
 	$("#owl-movies").html(content.join(""));
 }
 
-
+/**
+	Using the parameters given the html for a promotional movie is created and 
+	returned.
+*/
 function promotionalMovie(title, accessionNumber, bibnumber){
 
 	var url = "../images/dvd/" + accessionNumber + ".jpg";
@@ -45,16 +49,17 @@ function promotionalMovie(title, accessionNumber, bibnumber){
 		return "";
 	}
 
+	// Creates html for one promotional film. 
 	var movie = '<a href=\"entire_record.html?bibnumber=' + bibnumber + 
-		'\"><img src=\"' + url + '\"/><h3>' +
-		title + '</h3><h4>' +
+		'\"><img src=\"' + url + '\"/><h3>' + title + '</h3><h4>' +
 		accessionNumber + '</h3></a>';
 
 	return movie;
-	
 }
 
-// Return true if image exist, false if it doesnt
+/** 
+	Returns true if image exist, false if it doesn't.
+*/
 function imageExists(url){
 	var http = new XMLHttpRequest();
 
@@ -63,7 +68,9 @@ function imageExists(url){
 	return http.status == 200;
 }
 
-// Checks the date and uses the appropriate json. 
+/** 
+	Checks the date and uses the appropriate json based on the date. 
+*/
 function getPromotionalMoviesJSON(){
 	
 	var date = new Date(); // Gets current date and time
@@ -106,4 +113,3 @@ function getPromotionalMoviesJSON(){
 	}
 
 }
-
