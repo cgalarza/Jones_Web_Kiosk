@@ -39,8 +39,8 @@ form {
 /* ---------->>> HEADER <<<-----------*/
 /* -----------------------------------*/
 
-#logo {
-	content:url('images/Jones_Logo.png');
+#logo:before {
+	content: url('images/Jones_Logo.png');
 }
 
 div#header {
