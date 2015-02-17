@@ -1,0 +1,105 @@
+{
+	"carousel_title": "Hot Summer Films",
+	"movies": [
+		{	
+			"title": "Do The Right Thing",
+			"accession_number": "234",
+			"bibnumber": "b2771674"
+		},
+		{	
+			"title": "Walkabout",
+			"accession_number": "899",
+			"bibnumber": "b2946620"
+		},
+		{	
+			"title": "The Endless Summer",
+			"accession_number": "1263",
+			"bibnumber": "b2937413"
+		},
+		{	
+			"title": "The Long, Hot Summer",
+			"accession_number": "1324",
+			"bibnumber": "b3000777"
+		},
+		{	
+			"title": "Last Summer in the Hamptons",
+			"accession_number": "1387",
+			"bibnumber": "b2995146"
+		},
+		{	
+			"title": "Blue Crush",
+			"accession_number": "1743",
+			"bibnumber": "b3158192"
+		},
+		{	
+			"title": "Bride and Prejudice",
+			"accession_number": "2926",
+			"bibnumber": "b3525295"
+		},
+		{	
+			"title": "Dazed and Confused",
+			"accession_number": "3373",
+			"bibnumber": "b3544883"
+		},
+		{	
+			"title": "Les vacances de Monsieur Hulot (Mr. Hulot's holiday)",
+			"accession_number": "4006",
+			"bibnumber": "b3801054"
+		},
+		{	
+			"title": "A Summer Place",
+			"accession_number": "4724",
+			"bibnumber": "b3934272"
+		},
+		{	
+			"title": "Caddyshack",
+			"accession_number": "7564",
+			"bibnumber": "b4353561"
+		},
+		{	
+			"title": "Bakushu (Early Summer)",
+			"accession_number": "8634",
+			"bibnumber": "b4673136"
+		},
+		{	
+			"title": "(500) Days of Summer",
+			"accession_number": "9439",
+			"bibnumber": "b4722915"
+		},
+		{	
+			"title": "Under the Tuscan Sun",
+			"accession_number": "9862",
+			"bibnumber": "b4739495"
+		},
+		{	
+			"title": "Pranzo di Ferragosto (Mid-August Lunch)",
+			"accession_number": "10707",
+			"bibnumber": "b4887832"
+		},
+		{	
+			"title": "Death on the Nile",
+			"accession_number": "10978",
+			"bibnumber": "b4894338"
+		},
+		{	
+			"title": "Sommer vorm Balkon (Summer in Berlin)",
+			"accession_number": "12810",
+			"bibnumber": "b4099855"
+		},
+		{	
+			"title": "Summer Wars",
+			"accession_number": "12831",
+			"bibnumber": "b4951835"
+		},
+		{	
+			"title": "Moonrise Kingdom",
+			"accession_number": "15380",
+			"bibnumber": "b5322889"
+		},
+		{	
+			"title": "Meatballs",
+			"accession_number": "16231",
+			"bibnumber": "b5409878"
+		}	
+	]
+}
