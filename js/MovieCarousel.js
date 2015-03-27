@@ -77,22 +77,22 @@ function getPromotionalMoviesJSON(){
 	var day = date.getDate(); // Get Month
 	var month = date.getMonth() + 1; // Get Date
 
-	// If the date is between Feb 5 - Feb 14, then display valentines day movies
+	// If the date is between Feb 5 - Feb 14, then display Valentines Day movies
 	if ((month === 2) && (day > 5) && (day <= 4))
 		return "promotional_movies/valentines.json";
-	// if its a week before mlk day
+	// if its a week before mlk day (Third Monday in January)
 
-	// If its a week before earth day (april 22)
+	// If its a week before earth day (April 22)
 
-	// Week before mothers day
+	// Week before mothers day ()
 
-	// Week before memorial day 
+	// Week before memorial day (Third Monday in May)
 
 	// Week before fathers day
 
 	// Week before July forth
 
-	// labor day movies a week before labor day to labor day
+	// Labor day: a week before labor day to labor day
 
 	// Back to school films from labor day to the end of september
 
