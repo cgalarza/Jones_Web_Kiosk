@@ -1,4 +1,4 @@
-Jones Web Kiosk (Jones Movies Search)
+Jones Web Kiosk (Jones Movie Search)
 =====================================
 
 Author
