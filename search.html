@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 	<head>
@@ -28,13 +29,13 @@
 			<a href="fandq.html" id="questions">Frequently Asked<br/>Questions</a>
 		</div>
 
-		<h3 id='displaySearchTerm'>
-			Search results for:&nbsp;<span id='searchTerm'><i></i></span>
+		<h3 id="displaySearchTerm">
+			Search results for:&nbsp;<span id="searchTerm"><i></i></span>
 		</h3>
 
 		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
 		<div id="loading"></div>
-		
+
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
 			<div id="searchResults">
@@ -42,8 +43,8 @@
 			</div>
 		</div>
 
-		<script src='js/jquery-1.11.0.js'></script>
-		<script src='js/DisplaySearch.js'></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/DisplaySearch.js"></script>
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 		<script>
@@ -59,8 +60,8 @@
 
 				$('#searchTerm > i').html(search);
 				$('#searchField').attr("value", search);
-								
-				$.get("php/search.php?search=" + search_term[1], 
+
+				$.get("php/search.php?search=" + search_term[1],
 					function(response){
 						displaySearchResults(response);
 					},
@@ -77,8 +78,9 @@
 					$('#searchResultsWrapper').fadeIn(700);
 				});
 			});
-		</script> 
-	
+
+		</script>
+
 	</body>
 
 </html>

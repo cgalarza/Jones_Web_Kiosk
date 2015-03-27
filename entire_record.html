@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	
+
 	<head>
 		<title>Jones DVD Search</title>
 
@@ -28,7 +28,7 @@
 			<!--link to f&q page -->
 			<a href="fandq.html" id="questions">Frequently Asked<br/>Questions</a>
 		</div>
-		
+
 		<br />
 		<div id="entireRecordWrapper">
 			<div id="entireRecord"></div>
@@ -42,7 +42,7 @@
 				$('.last-updated').hide();
 				var get_results = window.location.search.substring(1);
 				var bibnum_split= get_results.split("=");
-				$.get("php/entire_record.php?bibnum=" + bibnum_split[1], 
+				$.get("php/entire_record.php?bibnum=" + bibnum_split[1],
 					function(response){
 						displayEntireRecord(response);
 					},
