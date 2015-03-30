@@ -1,15 +1,15 @@
 
-/** 
-	Displays the record of just one item. 
+/**
+	Displays the record of just one item.
 */
 function displayEntireRecord(json){
 	var jsonObj = $.parseJSON(JSON.stringify(json));
-	var movieHtml = 
+	var movieHtml =
 		// Add image.
 		formatImage(jsonObj.media, jsonObj.accession_number) +
 
 		// Add title.
-		formatTitle(jsonObj.title, jsonObj.bibnumber) + 
+		formatTitle(jsonObj.title, jsonObj.bibnumber) +
 
 		// Add media.
 		formatMedia(jsonObj.media) +
@@ -18,7 +18,7 @@ function displayEntireRecord(json){
 		formatInfo("", jsonObj.summary) + "<br/>" +
 
 		// Add location, call number, status.
-		formatCallNumber(jsonObj.accession_number, 
+		formatCallNumber(jsonObj.accession_number,
 			jsonObj.location, jsonObj.media) +
 
 		// Add cast (only if there is one)
@@ -30,7 +30,7 @@ function displayEntireRecord(json){
 		// Add rating.
 		"<br/>" + formatInfo("Rating: ", jsonObj.rating) +
 
-		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url + 
+		"<br/><br/><a class=\"catalogLink\" href=" + jsonObj.url +
 
 		">See library catalog entry</a></div>";
 
@@ -38,33 +38,34 @@ function displayEntireRecord(json){
 		'class' : 'movieResult',
 		html : movieHtml
 	});
-	
+
 	movie.appendTo($('#entireRecord'));
 }
 
 
-/** 
-	Displays search results given a json with the information of all the search 
+/**
+	Displays search results given a json with the information of all the search
 	results.
 */
 function displaySearchResults(json){
 	// Parse the JSON object that is returned
+	console.log("in displaySearchResults");
 	var jsonObj = $.parseJSON(JSON.stringify(json));
 
-	// If the json is empty then no search results were found. 
+	// If the json is empty then no search results were found.
 	// Displays a message saying no results were found.
-	if (jsonObj.length == 0){
+	if (jsonObj.length === 0){
 		console.log("Empty Json");
 		var movie = $('<div>', {
-			'class' : 'movieResult noResults',
+			'class' : 'noResults',
 			html : "No search results found."
 		});
 		movie.appendTo($('#searchResults'));
 	}
 
 	$.each(jsonObj, function(index, obj){
-		
-		var movieHtml = 
+
+		var movieHtml =
 			// Add image.
 			formatImage(obj.media, obj.accession_number) +
 
@@ -76,24 +77,25 @@ function displaySearchResults(json){
 
 			// Add summary (only if there is one)
 			formatInfo("", obj.summary, 400) + "<br/>" +
-	
+
 			// Add location, call number, status.
 			formatCallNumber(obj.accession_number, obj.location, obj.media) +
 
 			// Add cast (only if there is something in the case field).
 			"<br/>" + formatInfo("Cast: ", obj.cast, 200) +
 
-			// Closing the information div. 
+			// Closing the information div.
 			"</div>";
-		
+
 
 		var movie = $('<div>', {
-			'class' : 'movieResult',
+			'class' : 'panel panel-default',
 			html : movieHtml
-		});
+		}).wrap('<div class="panel panel-default">')
+			.wrap('<div class="media">');
 
 		if (index % 2 == 0)
-			movie.attr('class', 'movieResult altColor');
+			movie.addClass('altColor');
 
 		movie.appendTo($('#searchResults'));
 
@@ -101,21 +103,21 @@ function displaySearchResults(json){
 }
 
 /**
-	Generic function that can be used to display different bits of information. 
+	Generic function that can be used to display different bits of information.
 
-	The tagTitle is in bold and displayed before the information string. If a 
+	The tagTitle is in bold and displayed before the information string. If a
 	length is provided then the information string is trimmed.
 */
 
 function formatInfo(tagTitle, information, length){
-	// If the information string is empty return an empty string.	
+	// If the information string is empty return an empty string.
 	if (information === "")
 		return '';
 
 	if (typeof(length)==='undefined'){
 		return '<br/><strong>' + tagTitle + '</strong>' + information;
-	} 
-	// If a length is provided then the information string is trimmed to that 
+	}
+	// If a length is provided then the information string is trimmed to that
 	// length and three dots are added to the end of the string to signify that
 	// the string is longer.
 	else {
@@ -143,14 +145,14 @@ function formatImage(media, accessionNumber){
 	if (media == "On Reserve")
 		path = "images/On_Reserve_at_Jones.png";
 	// If the image exists, but its not a DVD or a DVD Set.
-	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') 
-			&& (media === 'DVD' || media === 'DVD Set'))
+	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') &&
+		(media === 'DVD' || media === 'DVD Set'))
 		path = '../images/dvd/' +  accessionNumber + '.jpg';
-	// Otherwise, display default image. 
-	else 
+	// Otherwise, display default image.
+	else
 		path = 'images/Image_Not_Available.png';
 
-	return '<div><img class="movieImage" src=\"' + path + '\"></img></div>';
+	return '<div class="media-left"><img class="media-object movieImage" src=\"' + path + '\"></img></div>';
 }
 
 // Return true if image exist, false if it doesnt
@@ -169,19 +171,19 @@ function imageExists(url){
 	entry.
 */
 function formatTitle(title, bibnumber){
-	return '<div class="movieInfo"><a href=\"entire_record.html?bibnum=' 
-		+ bibnumber + '\"><h2 class="title">' + title + '</h2></a>';
+	return '<div class="media-body"><a href=\"entire_record.html?bibnum=' +
+		bibnumber + '\"><h2 class="media-heading title">' + title + '</h2></a>';
 }
 
 /**
 	The media type tag is formated with its class.
 */
 function formatMedia(media){
-	return '<span class="media">' + media + ' </span>';
+	return ' <span class="label label-primary">' + media + '</span>';
 }
 
-/** 
-	Given the accession_number, locations table, and type of media format the 
+/**
+	Given the accession_number, locations table, and type of media format the
 	call number appropriately.
 
 	If the item is on reserve display the call number information clearly states
@@ -191,35 +193,35 @@ function formatMedia(media){
 */
 function formatCallNumber(accession_number, locations, media){
 	var strings = [];
-	// If there is only one item associated with the record display the call 
+	// If there is only one item associated with the record display the call
 	// number and availability.
 	if (locations.length == 1) {
 		if (media == "DVD" || media == "VHS")
 			strings.push("<br/><strong>Call Number:</strong> " + accession_number);
-		else 
+		else
 			strings.push("<br/>On Reserve for " + locations[0].callnumber);
-		
+
 		strings.push(formatStatus(locations[0].status));
 
 	} else if (media == "DVD Set") {
-		// If it is a DVD set display the call number and that there are 
-		// multiple disc and under that display the disc number and whether or 
+		// If it is a DVD set display the call number and that there are
+		// multiple disc and under that display the disc number and whether or
 		// not its available.
-		strings.push("<br><strong>Call Number: </strong>" + accession_number 
-			+ " (Multiple Discs)<br/>");
+		strings.push("<br><strong>Call Number: </strong>" + accession_number +
+			" (Multiple Discs)<br/>");
 		$.each(locations, function(index, row){
 
 			var discString = row.callnumber.split(" ");
 
-			// If the first part of the string does not only contain numbers 
-			// then its on reserve. 
+			// If the first part of the string does not only contain numbers
+			// then its on reserve.
 			if (!(/^\d+$/.test(discString[0])))
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] 
-					+ " (On Reserve for " + discString[0].trim() + ") " 
-					+ formatStatus(row.status) + "</span>");
-			else	
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] 
-					+ " " + formatStatus(row.status) + "</span>");
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] +
+					" (On Reserve for " + discString[0].trim() + ") " +
+					formatStatus(row.status) + "</span>");
+			else
+				strings.push("<span class=\"multipleDiscs\">" + discString[1] +
+					" " + formatStatus(row.status) + "</span>");
 		});
 
 	} else {
@@ -239,11 +241,9 @@ function formatCallNumber(accession_number, locations, media){
 */
 function formatStatus(status){
 	if (status == "AVAILABLE")
-		return "&nbsp&nbsp<span class=\"available\"><strong>" + status.trim() 
-			+ "</strong></span>";
+		return "&nbsp&nbsp<span class=\"label label-success\"><strong>" + status.trim() +
+			"</strong></span>";
 	else
-		return "&nbsp&nbsp<span class=\"notAvailable\"><strong>" + status.trim() 
-			+ "</strong></span>";
+		return "&nbsp&nbsp<span class=\"label label-danger\"><strong>" + status.trim() +
+			"</strong></span>";
 }
-
-
