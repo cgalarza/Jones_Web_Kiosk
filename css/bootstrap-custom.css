@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(bootstrap/css/bootstrap.min.css);
+
+/* -----------------------------------*/
+/* ---------->>> GLOBAL <<<-----------*/
+/* -----------------------------------*/
+.last-updated {
+	margin: 10px;
+	font-size: 10px;
+}
+
+
+body {
+	padding-top: 70px;
+}
+
+/* -----------------------------------*/
+/* ----------->>> NAVBAR <<<----------*/
+/* -----------------------------------*/
+
+.navbar-nav>li {
+	font-weight: 300;
+	font-size: 18px;
+}
+.navbar-nav>li>.questions-link{
+	text-align: center;
+	padding-top: 10.75px;
+	padding-bottom: 10.75px;
+}
+
+.navbar-brand {
+	padding: 0px;
+}
+
+/* -----------------------------------*/
+/* ----->>> GENRE NAVIGATION <<<------*/
+/* -----------------------------------*/
+
+#genreNavigationBar {
+	padding: 0px;
+	margin-top:  20px;
+	font-size: 20px;
+	font-weight: 300;
+	list-style-type: none;
+	text-align: center;
+	display: inline-block;
+}
+
+li#pickGenre {
+	background-color: #F5C068;
+}
+
+li.button {
+	margin-bottom: 5px;
+	padding: 10px 16px;
+	line-height: 100%;
+	background-color: #5E5D7D;
+	list-style-type: none;
+	display: inline-block;
+	text-align: center;
+}
+
+li.button a {
+	color: white;
+}
+
+li.button:hover {
+	background-color: #F5C068;
+	color: black;
+}
+
+li.button:hover a{
+	color: black;
+}
+
+li#genreSelected {
+	background-color: #F5C068;
+	color: black;
+}
+
+li#genreSelected a{
+	background-color: #F5C068;
+	color: black;
+}
+
+
+/* -----------------------------------*/
+/* ------>>> SEARCH RESULTS <<<-------*/
+/* -----------------------------------*/
+
+h2.title {
+	display: inline;
+	color: #F36C6E;
+}
+
+/*#searchResults {
+	margin: auto;
+	width: 90%;
+	height: auto;
+	min-height: 100%;
+}*/
+
+.noResults{
+	color: red;
+	font-size: 200%;
+}
+
+.movieResult {
+	display: block;
+	padding: 15px;
+	margin: auto;
+	max-width: 800px;
+	min-height: 250px;
+}
+
+span.multipleDiscs {
+	display: inline-block;
+	padding: 0px 10px;
+}
+
+.altColor {
+	background-color: #DCE3E8;
+}
+
+.movieImage {
+	max-width: 220px;
+	max-height: 250px;
+}
+
+#loading {
+	display: block;
+	margin: auto;
+	padding-top: 40px;
+}
+
+
+/* -----------------------------------*/
+/* --->>> Entire Catalog Entry <<<----*/
+/* -----------------------------------*/
+
+#entireRecordWrapper {
+	height: 100%;
+}
+
+#entireRecord {
+	min-height: 100%;
+	height: auto;
+}
+
+div#entireRecord div.movieResult {
+	max-width: 1000px;
+	font-size: 105%;
+}
+
+div#entireRecord div.movieResult a.catalogLink {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+div#entireRecord div.movieResult .movieImage {
+	max-width: 400px;
+	max-height: 450px;
+}
+
+div#entireRecord div.movieResult .movieInfo {
+	margin-left: 325px;
+}
+
+
+/* -----------------------------------*/
+/* ------->>> F & Q <<<--------*/
+/* -----------------------------------*/
+
+hr {
+	height: 4px;
+	width: 75%;
+	color: #0C7FBA;
+	background: #0C7FBA;
+	border: none;
+}
+
+h3.questionsLink a {
+	margin-left: 100px;
+	font-weight: 300;
+	padding-left: 5px;
+	color: #000;
+}
+
+h3.questionsLink a:hover{
+	border-left: thick solid #F5C068;
+}
+
+h3.questionsAnchor a {
+	margin-left: 100px;
+	font-weight: 400;
+	padding-left: 5px;
+	border-left: thick solid #F5C068;
+}
+
+p.answers {
+	margin-left: 125px;
+	font-weight: 300;
+}
