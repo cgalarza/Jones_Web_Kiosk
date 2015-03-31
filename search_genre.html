@@ -3,10 +3,10 @@
 
 	<head>
 		<title>Jones DVD Search</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css"/>
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-custom.css"/>
 		
-		<script type="text/javascript" src='js/jquery-1.11.0.js'></script>
-		<script type="text/javascript" src='js/DisplaySearch.js'></script>
+		<script type="text/javascript" src='libraries/jquery/js/jquery-1.11.0.js'></script>
+		<script type="text/javascript" src='resources/js/DisplaySearch.js'></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 
@@ -32,7 +32,7 @@
 				($("a:contains('" + genreWithSpaces + "')").parent()).attr("class", "active");
 				$("#genre-title").html("Genre: " + genreWithSpaces);
 
-				$.get("php/search.php?genre=" + search_term[1],
+				$.get("resources/php/search.php?genre=" + search_term[1],
 					function(response){
 						displaySearchResults(response);
 					},
@@ -40,7 +40,7 @@
 				});
 
 				$(document).ajaxStart(function(){
-					$('#loading').html("<img id=\"loading\" src=\"images/Loader.gif\"></img>");
+					$('#loading').html("<img id=\"loading\" src=\"resources/images/Loader.gif\"></img>");
 					$('#loading').fadeIn(1000);
 				});
 

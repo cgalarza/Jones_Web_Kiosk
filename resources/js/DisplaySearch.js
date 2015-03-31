@@ -143,14 +143,14 @@ function formatImage(media, accessionNumber){
 	// Find the correct image path.
 	// If the item is on reserve.
 	if (media == "On Reserve")
-		path = "images/On_Reserve_at_Jones.png";
+		path = "resources/images/On_Reserve_at_Jones.png";
 	// If the image exists, but its not a DVD or a DVD Set.
 	else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') &&
 		(media === 'DVD' || media === 'DVD Set'))
 		path = '../images/dvd/' +  accessionNumber + '.jpg';
 	// Otherwise, display default image.
 	else
-		path = 'images/Image_Not_Available.png';
+		path = 'resources/images/Image_Not_Available.png';
 
 	return '<div class="media-left"><img class="media-object movieImage" src=\"' + path + '\"></img></div>';
 }
