@@ -10,8 +10,12 @@
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 		<script type="text/javascript">
+		
 			$(document).ready(function(){
 
+				$('#header').load('header.html', function(){
+					$('.search-field').attr("value", search);
+				});
 				$('#loading').hide();
 				$('.last-updated').hide();
 				$('#searchResultsWrapper').hide();
@@ -21,7 +25,6 @@
 				var search = search_term[1].split("+").join(" ");
 
 				$('#searchTerm > i').html(search);
-				$('.search-field').attr("value", search);
 
 
 				$.get( "php/search.php", { search: search_term[1] }, function(response) {
@@ -31,14 +34,6 @@
 					    alert( "error" );
 						console.log(data);
 					});
-					  
-
-
-				// $.get("php/search.php", { search: search_term[1] }, 
-				// 	function(response){
-				// 		console.log("in annonymous function...");
-				// 		//displaySearchResults(response);
-				// 	}, "json");
 	
 			});
 
@@ -58,46 +53,7 @@
 
 	<body>
 
-		<div id="header"/>
-		
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				
-				<!-- Jones Media Center Logo -->
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">
-						<img alt="Brand" src="images/Jones_Logo.png">
-					</a>
-				</div>
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      				<ul class="nav navbar-nav">
-
-						<!-- Link to home -->
-						<li><a href="index.html" id="home">Home</a></li>
-
-						<!-- Link to search by genre -->
-						<li><a href="search_genre.html">Search by Genre</a></li>
-
-						<!-- Searching by keyword -->
-						<form action="search.html" class="navbar-form navbar-left" role="search" method="get">
-							<div class="form-group">
-								<input name="search" type="text" class="form-control search-field" placeholder="Search by Keyword">
-							</div>
-						
-						</form>
-
-					</ul>
-					
-					<!--link to f&q page -->
-					<ul class="nav navbar-nav navbar-right">
-						<li><a class="questions-link" href="fandq.html">Frequently Asked<br/>Questions</a></li>
-					</ul>
-
-					
-				</div>
-			</div>
-		</nav>
+		<div id="header"></div>
 
 		<div class="container">
 			<h3 id="displaySearchTerm">

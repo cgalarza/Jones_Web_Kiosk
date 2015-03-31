@@ -1,57 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html">
 <html>
 
 	<head>
 		<title>Jones DVD Search</title>
 
-		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css" />
 
 		<!-- Owl Carousel Scripts -->
 		<!-- Important Owl stylesheet -->
-		<link rel="stylesheet" href="owl-carousel/owl.carousel.css" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.carousel.css" />
 
-		<link rel="stylesheet" href="owl.css" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="owl.css" />
 
 		<!-- Default Theme -->
 		<link rel="stylesheet" href="owl-carousel/owl.theme.css" type="text/css"/>
+		
+		<script type="text/javascript" src='js/jquery-1.11.0.js'></script>
+
+		<!-- Include js plugin -->
+		<script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
+
+		<script type="text/javascript" src='js/MovieCarousel.js'></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#header').load('header.html');
+			});
+		</script>
 	</head>
 
 	<body>
-		<div id="header">
-			<!-- Jones Media Center Logo -->
-			<a href="index.html" id="logo"></a>
-
-			<!-- Link to home -->
-			<a href="index.html" id="home" class="bottomBorder">Home</a>
-
-			<!-- Link to search by genre -->
-			<a href="search_genre.html" id="searchByGenre">Search by Genre</a>
-
-			<!-- Searching by keyword -->
-			<span id="searchByKeyword">
-				<form action="search.html" method="get">
-					<input id="searchField" type="text" name="search" value="Search by Keyword" >
-				</form>
-			</span>
-
-			<!--link to f&q page -->
-			<a href="fandq.html" id="questions">Frequently Asked<br/>Questions</a>
-		</div>
+		<div id="header"></div>
 
 		<br />
 
-		<center><h1 id="promotionalMovies"></h1></center>
+		<h1 id="promotionalMovies"></h1>
 
 		<div id="owl-movies-wrapper">
 			<div id="owl-movies" class="owl-carousel"></div>
-		</div>
-
-		<script src='js/jquery-1.11.0.js'></script>
-
-		<!-- Include js plugin -->
-		<script src="owl-carousel/owl.carousel.js"></script>
-
-		<script src='js/MovieCarousel.js'></script>
+		</div>		
 
 	</body>
 

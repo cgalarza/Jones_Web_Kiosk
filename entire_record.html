@@ -1,44 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 
 	<head>
 		<title>Jones DVD Search</title>
 
-		<link rel="stylesheet" href="style.css" type="text/css"/>
-	</head>
-
-	<body>
-		<div id="header">
-			<!-- Jones Media Center Logo -->
-			<a href="index.html" id="logo"></a>
-
-			<!-- Link to home -->
-			<a href="index.html" id="home">Home</a>
-
-			<!-- Link to search by genre -->
-			<a href="search_genre.html" id="searchByGenre">Search by Genre</a>
-
-			<!-- Searching by keyword -->
-			<span id="searchByKeyword">
-				<form action="search.html" method="get">
-					<input id="searchField" type="text" name="search" value="Search by Keyword">
-				</form>
-			</span>
-
-			<!--link to f&q page -->
-			<a href="fandq.html" id="questions">Frequently Asked<br/>Questions</a>
-		</div>
-
-		<br />
-		<div id="entireRecordWrapper">
-			<div id="entireRecord"></div>
-		</div>
-
-		<script src='js/jquery-1.11.0.js'></script>
-		<script src='js/DisplaySearch.js'></script>
-
-		<script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css"/>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/DisplaySearch.js"></script>
+		
+		<script type="text/javascript">
 			$(document).ready(function(){
+				$('#header').load('header.html');
+
 				$('.last-updated').hide();
 				var get_results = window.location.search.substring(1);
 				var bibnum_split= get_results.split("=");
@@ -49,6 +23,17 @@
 					"json");
 			});
 		</script>
+		
+	</head>
+
+	<body>
+		<div id="header"></div>
+
+		<br />
+
+		<div id="entireRecordWrapper">
+			<div id="entireRecord"/>
+		</div>
 
 	</body>
 

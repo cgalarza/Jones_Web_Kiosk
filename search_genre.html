@@ -1,66 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 
 	<head>
 		<title>Jones DVD Search</title>
-		<link rel="stylesheet" href="style.css" type="text/css"/>
-	</head>
-
-	<body>
-		<div id="header">
-			<!-- Jones Media Center Logo -->
-			<a href="index.html" id="logo"></a>
-
-			<!-- Link to home -->
-			<a href="index.html" id="home">Home</a>
-
-			<!-- Link to search by genre -->
-			<a href="search_genre.html" id="searchByGenre" class="bottomBorder">Search by Genre</a>
-
-			<!-- Searching by keyword -->
-			<span id="searchByKeyword">
-				<form action="search.html" method="get">
-					<input id="searchField" type="text" name="search" value="Search by Keyword">
-				</form>
-			</span>
-
-			<!--link to f&q page -->
-			<a href="fandq.html" id="questions">Frequently Asked<br/>Questions</a>
-		</div>
-
-		<ul id="genreNavigationBar">
-			<li class="button" id="pickGenre">Searching for titles in...</li>
-			<li class="button"><a href="search_genre.html?genre=adventure">adventure</a></li>
-			<li class="button"><a href="search_genre.html?genre=animation">animation</a></li>
-			<li class="button"><a href="search_genre.html?genre=children">children's</a></li>
-			<li class="button"><a href="search_genre.html?genre=comedy">comedy</a></li>
-			<li class="button"><a href="search_genre.html?genre=crime">crime</a></li>
-			<li class="button"><a href="search_genre.html?genre=documentary">documentary</a></li>
-			<li class="button"><a href="search_genre.html?genre=drama">drama</a></li>
-			<li class="button"><a href="search_genre.html?genre=historical">historical</a></li>
-			<li class="button"><a href="search_genre.html?genre=horror">horror</a></li>
-			<li class="button"><a href="search_genre.html?genre=romance">romance</a></li>
-			<li class="button"><a href="search_genre.html?genre=science_fiction">science fiction</a></li>
-			<li class="button"><a href="search_genre.html?genre=television_programs">television programs</a></li>
-			<li class="button"><a href="search_genre.html?genre=war">war</a></li>
-			<li class="button"><a href="search_genre.html?genre=western">western</a></li>
-		</ul>
-
-		<!-- Loading Image. Only shown when AXAJ call has been made and hasn't returned. -->
-		<div id="loading"></div>
-
-		<!-- Where search results will be displayed -->
-		<div id="searchResultsWrapper">
-			<br/>
-			<div id="searchResults">
-			</div>
-		</div>
-
-		<script src='js/jquery-1.11.0.js'></script>
-		<script src='js/DisplaySearch.js'></script>
-		<script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css"/>
+		
+		<script type="text/javascript" src='js/jquery-1.11.0.js'></script>
+		<script type="text/javascript" src='js/DisplaySearch.js'></script>
+		<script type="text/javascript">
 			$(document).ready(function(){
 
+				$('#header').load('header.html');
+				
 				$('#searchResultsWrapper').hide();
 				$('#loading').hide();
 				$('.last-updated').hide();
@@ -70,7 +21,7 @@
 
 				// If there isn't a genre change the first tile to say "Pick a genre" and return
 				if (search_term[1] == undefined){
-					$("#pickGenre").html("Pick a Genre");
+					$("#genre-title").html("Choose a Genre...");
 					return;
 				}
 
@@ -78,8 +29,8 @@
 				var genreWithSpaces = search_term[1].replace("_", " ");
 
 				console.log(genreWithSpaces);
-				($("a:contains('" + genreWithSpaces + "')").parent()).attr("id", "genreSelected");
-				//$("#genreHeader").replaceWith(genreWithSpaces);
+				($("a:contains('" + genreWithSpaces + "')").parent()).attr("class", "active");
+				$("#genre-title").html("Genre: " + genreWithSpaces);
 
 				$.get("php/search.php?genre=" + search_term[1],
 					function(response){
@@ -100,6 +51,37 @@
 				});
 
 		</script>
+		
+	</head>
+
+	<body>
+		<div id="header"></div>
+
+		<h2 id="genre-title"></h2>
+		<ul class="nav nav-pills nav-genre">
+			<li><a href="search_genre.html?genre=adventure">adventure</a></li>
+			<li><a href="search_genre.html?genre=animation">animation</a></li>
+			<li><a href="search_genre.html?genre=children">children's</a></li>
+			<li><a href="search_genre.html?genre=comedy">comedy</a></li>
+			<li><a href="search_genre.html?genre=crime">crime</a></li>
+			<li><a href="search_genre.html?genre=documentary">documentary</a></li>
+			<li><a href="search_genre.html?genre=drama">drama</a></li>
+			<li><a href="search_genre.html?genre=historical">historical</a></li>
+			<li><a href="search_genre.html?genre=horror">horror</a></li>
+			<li><a href="search_genre.html?genre=romance">romance</a></li>
+			<li><a href="search_genre.html?genre=science_fiction">science fiction</a></li>
+			<li><a href="search_genre.html?genre=television_programs">television programs</a></li>
+			<li><a href="search_genre.html?genre=war">war</a></li>
+			<li><a href="search_genre.html?genre=western">western</a></li>
+		</ul>
+
+		<!-- Loading Image. Only shown when AXAJ call has been made and hasn't returned. -->
+		<div id="loading"></div>
+
+		<!-- Where search results will be displayed -->
+		<div id="searchResultsWrapper">
+			<div id="searchResults"></div>
+		</div>
 
 		<p class="last-updated"><a href="google.com">google</a></p>
 

@@ -404,8 +404,12 @@
     "panels.less",
     "responsive-embed.less",
     "wells.less",
-    "close.less"
+    "close.less",
+    "component-animations.less"
   ],
-  "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=864085dccffffbd9952b"
+  "js": [
+    "collapse.js",
+    "transition.js"
+  ],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=f9dc4ae3e1938579963b"
 }

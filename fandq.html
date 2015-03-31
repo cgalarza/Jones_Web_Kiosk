@@ -1,67 +1,114 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 
 	<head>
 		<title>Jones DVD Search</title>
-		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-custom.css"/>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#header').load('header.html');
+			});
+		</script>
+	
 	</head>
 
 	<body>
-		<div id="header">
-			<!-- Jones Media Center Logo -->
-			<a href="index.html" id="logo"></a>
-
-			<!-- Link to home -->
-			<a href="index.html" id="home">Home</a>
-
-			<!-- Link to search by genre -->
-			<a href="search_genre.html" id="searchByGenre">Search by Genre</a>
-
-			<!-- Searching by keyword -->
-			<span id="searchByKeyword">
-				<form action="search.html" method="get">
-					<input id="searchField" type="text" name="search" value="Search by Keyword">
-				</form>
-			</span>
-
-			<!--link to f&q page -->
-			<a href="fandq.html" id="questions" class="bottomBorder">Frequently Asked<br/>Questions</a>
-		</div>
-
-		<br/></br>
+		<div id="header"></div>
 
 		<!--Title-->
-		<center><h1 id="questionsTitle">Frequently Asked Questions</h1></center>
+		<h1>Frequently Asked Questions</h1>
 
 		<!--Questions at the top of page-->
-		<h3 class="questionsLink"><a href="#q1">How do I check out DVDs from the Jones Media Center?</a></h3>
-		<h3 class="questionsLink"><a href="#q2">How long is the loan period?</a></h3>
-		<h3 class="questionsLink"><a href="#q3">What is the late fee?</a></h3>
-		<h3 class="questionsLink"><a href="#q4">What does it mean when an item is "on reserve"?</a></h3>
-		<h3 class="questionsLink"><a href="#q5">How many DVDs can I check out at once?</a></h3>
-		<h3 class="questionsLink"><a href="#q6">Can I place an item on hold?</a></h3>
-
-		<hr/>
-
-		<!--Questions with answers at the bottom of the page-->
-		<h3 class="questionsAnchor"><a id="q1">How do I check out DVDs from the Jones Media Center?</a></h3>
-		<p class="answers"> Simply, write down the DVD's call number and take it to the Jones Media circulation desk. One of our staff members will retrieve the DVD(s) from our collection. </p>
-
-		<h3 class="questionsAnchor"><a id="q2">How long is the loan period?</a></h3>
-		<p class="answers">For students and staff, the loan period is 3 days. For faculty, the loan period is 7 days.</p>
-
-		<h3 class="questionsAnchor"><a id="q3">What is the late fee?</a></h3>
-		<p class="answers">The late fee is $1 per day per item.</p>
-
-		<h3 class="questionsAnchor"><a id="q4">What does it mean when an item is "on reserve"?</a></h3>
-		<p class="answers">The item is on reserve for a class and it can only be watched in the media center.</p>
-
-		<h3 class="questionsAnchor"><a id="q5">How many DVDs can I check out at once?</a></h3>
-		<p class="answers">Students and staff can checkout a maximum of 3 items. Faculty members can check out an unlimited number of items.</p>
-
-		<h3 class="questionsAnchor"><a id="#q6">Can I place an item on hold?</a></h3>
-		<p class="answers">Items can only be placed on hold for faculty members.</p>
-
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							How do I check out DVDs from the Jones Media Center?
+			        	</a>
+			      	</h4>
+			    </div>
+				<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			      	<div class="panel-body">
+						Simply, write down the DVD's call number and take it to the Jones Media circulation desk. One of our staff members will retrieve the DVD(s) from our collection.
+					</div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							How long is the loan period?
+						</a>
+			      	</h4>
+			    </div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			      	<div class="panel-body">
+						For students and staff, the loan period is 3 days. For faculty, the loan period is 7 days.
+					</div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							What is the late fee?
+						</a>
+			      	</h4>
+			    </div>
+				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+			      	<div class="panel-body">
+						The late fee is $1 per day per item.
+					</div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingFour">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							What does it mean when an item is "on reserve"?
+						</a>
+			      	</h4>
+			    </div>
+				<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+			      	<div class="panel-body">
+						The item is on reserve for a class and it can only be watched in the media center.
+					</div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingFive">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							How many DVDs can I check out at once?
+						</a>
+			      	</h4>
+			    </div>
+				<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+			      	<div class="panel-body">
+						Students and staff can checkout a maximum of 3 items. Faculty members can check out an unlimited number of items.
+					</div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingSix">
+			    	<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							Can I place an item on hold?
+						</a>
+			      	</h4>
+			    </div>
+				<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+			      	<div class="panel-body">
+						Items can only be placed on hold for faculty members.
+					</div>
+			    </div>
+			</div>
+		</div>
+		
 	</body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-	
+
 	class LongMovieRecord extends MovieRecord{
 		protected $language;
 		protected $note;
@@ -82,7 +82,7 @@
 
 			$doc = new DOMDocument();
 			$doc->loadHTML($html);
-		
+
 			return new DOMXPATH($doc);
 		}
 
@@ -100,7 +100,12 @@
 			// Getting Cast.
 			$cast_node = $xpath->query(
 				"//td[@class='bibInfoLabel' and text()='Performer']/following-sibling::td[@class='bibInfoData']");
-			$this->cast = trim($cast_node->item(0)->nodeValue);
+			// FIX ME: Potentially need to do this check for every item.
+			$this->cast = (isset($cast_node->item(0)->nodeValue)) ?
+							trim($cast_node->item(0)->nodeValue) :
+							'';
+
+			
 
 			// Getting location array information.
 			$this->location_array = $this->get_locations($xpath->query(
@@ -110,7 +115,7 @@
 
 			// Creating image path based on the accession number and media type.
 			$this->image_path = $this->get_img_path();
-		
+
 		}
 
 		function get_type_and_accession_num(){
@@ -118,7 +123,7 @@
 			$this->accession_number = -1;
 
 			if (sizeof($this->location_array) == 1){
-				// If there is only one item then the type can only be DVD, 
+				// If there is only one item then the type can only be DVD,
 				// VHS or On Reserve.
 				$location_info = $this->location_array[0];
 
@@ -131,7 +136,7 @@
 					$this->media = self::RESERVE;
 					return;
 				}
-				
+
 				else if ($location_info['type'] == self::MEDIA_VHS){
 					$this->media = self::VHS;
 					$this->accession_number = $this->get_accession_num($location_info['callnumber']);
@@ -140,30 +145,30 @@
 			}
 
 			else {
-				// There are multiple discs for this item. It has to be 
+				// There are multiple discs for this item. It has to be
 				// On Reserve, a DVD set, a VHS set, or Multiple Types.
 
 				// Sets the type to the first type in the locations array.
-				$loc = $this->location_array[0]['type']; 
+				$loc = $this->location_array[0]['type'];
 
 				// Sets the accession number to the first callnumber in the locations array.
-				$this->accession_number = 
+				$this->accession_number =
 					$this->get_accession_num(
-						$this->location_array[0]['callnumber']); 
+						$this->location_array[0]['callnumber']);
 
 				// Check to see if all the items have the same type. Items are consireded to have the same types even if some
 				// discs are on reserve.
 				foreach ($this->location_array as $location_info){
 					$new_loc = $location_info['type'];
-					
-					if (($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_DVD) || 
+
+					if (($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_DVD) ||
 						($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_VHS)) {
 						$loc = $new_loc;
 					$this->accession_number = $this->get_accession_num($location_info['callnumber']);
 
 					}
 
-					// If one item is different (not including items on 
+					// If one item is different (not including items on
 					// reserve), the type  is set to "Multiple Types."
 					if ($new_loc != $loc && $new_loc != self::ON_RESERVE_AT_JMC){
 						$this->media = self::MULTIPLE_TYPE;
@@ -171,7 +176,7 @@
 					}
 				}
 
-				// If all types are the same (even if some discs are on reserve) 
+				// If all types are the same (even if some discs are on reserve)
 				// set to Multiple DVD or Multiple VHS.
 				// If all items are on reserve then set the type to On Reserve.
 				if ($loc == self::MEDIA_DVD)
@@ -206,9 +211,9 @@
 
 				if (trim(str_replace("\xA0", "", utf8_decode($columns->item(4)->nodeValue))) == 'LIBRARY HAS')
 					continue;
-				
+
 				$type = trim(str_replace("\xA0", "", utf8_decode($columns->item(0)->nodeValue)));
-				
+
 				$call_number = trim(str_replace("Browse Nearby Items", "", str_replace("\xA0", "", utf8_decode($columns->item(2)->nodeValue))));
 
 				$status = trim(str_replace("\xA0", "", utf8_decode($columns->item(4)->nodeValue)));
@@ -227,21 +232,21 @@
 				return $img_file;
 			else if (file_exists($img_file) && $this->media == self::MULTIPLE_DVD)
 				return $img_file;
-			else if ($this->media == self::RESERVE) 
+			else if ($this->media == self::RESERVE)
 				return self::IMG_ON_RESERVE;
-			else 
+			else
 				return self::IMG_NOT_AVAILABLE;
 		}
 
 		function create_JSON_representation(){
 			$json_array = array(
-				"title" => $this->title, 
+				"title" => $this->title,
 				"media" => $this->media,
 				"accession_number" => $this->accession_number,
 				"summary" => $this->summary,
-				"url" => $this->url, 
+				"url" => $this->url,
 				"bibnumber" => $this->bib_number,
-				"cast" => $this->cast, 
+				"cast" => $this->cast,
 				"image_path" => $this->image_path,
 				"location" => $this->location_array
 			);

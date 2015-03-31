@@ -1,10 +1,10 @@
 <?php
-	
+
 	require 'movie_records.php';
-	
+
 	new Search();
 
-	class Search{	
+	class Search{
 
 		const KEYWORD_SEARCH_BEG = "http://libcat.dartmouth.edu/search/X?SEARCH=";
 		const KEYWORD_SEARCH_END = "and+(branch%3Abranchbajmz+or+branch%3Abranchbajmv+or+branch%3Abranchrsjmc)&searchscope=4&SORT=R&Da=&Db=&p=";
@@ -12,14 +12,14 @@
 		const GENRE_URL_END = "%20and%20branch:branchbajmz";
 
 		function __construct(){
-			$genre = $_GET["genre"];
-			$search_term = $_GET["search"];
+			$genre = (isset($_GET["genre"])) ? $_GET["genre"] : '';
+			$search_term = (isset($_GET["search"])) ? $_GET["search"] : '';
 
 			//TO DO: Check for an empty search term.
-			
-			if (!is_null($genre))
+
+			if (!empty($genre))
 				$url = $this->genre_url($genre);
-			else if (!is_null($search_term))
+			else if (!empty($search_term))
 				$url = $this->search_url($search_term);
 
 			$html = file_get_contents($url);
@@ -61,8 +61,8 @@
 		}
 
 		/*
-			Given the search results DOMXPath a DOMNodeList is returned, in which each node is 
-			a seperate search result. 
+			Given the search results DOMXPath a DOMNodeList is returned, in which each node is
+			a seperate search result.
 
 			@params DOMXPath $xpath Path of search results webpage
 			@return DOMNodeList List of nodes; each node contains a search result.
@@ -101,9 +101,9 @@
 		}
 
 		/*
-			Creates a search URL based on the terms entered by the user. 
+			Creates a search URL based on the terms entered by the user.
 
-			@param string $search_term Search term entered by the user. 
+			@param string $search_term Search term entered by the user.
 			@return string Search result URL.
 		 */
 		function search_url($search_term){
@@ -115,7 +115,7 @@
 			Creates a URL that displays the results of a particular genre.
 
 			@param string $genre Genre given
-			@return string URL that links to the results of the given genre. 
+			@return string URL that links to the results of the given genre.
 		*/
 		function genre_url($genre){
 
@@ -135,7 +135,7 @@
 				case "drama":
 					return $this->general_genre_url("drama%20films");
 				case "historical":
-					return $this->general_genre_url("Historical%20films"); 
+					return $this->general_genre_url("Historical%20films");
 				case "horror":
 					return $this->general_genre_url("horror%20films");
 				case "romance":
@@ -152,11 +152,11 @@
 					return "";
 			}
 		}
-	
-		/*
-			Create a genre URL using constants. 
 
-			@param string $genre_string Genre Search constraints needed to make the link. 
+		/*
+			Create a genre URL using constants.
+
+			@param string $genre_string Genre Search constraints needed to make the link.
 			@return string URL that links to the results of the genre given.
 		*/
 		function general_genre_url($genre_string){
