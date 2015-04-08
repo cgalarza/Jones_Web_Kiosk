@@ -9,12 +9,12 @@
 		<script type="text/javascript" src='resources/js/DisplaySearch.js'></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-
-				$('#header').load('header.html');
 				
+				$('.loading').hide();
 				$('#searchResultsWrapper').hide();
-				$('#loading').hide();
 				$('.last-updated').hide();
+				
+				$('#header').load('header.html');
 
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
@@ -40,12 +40,12 @@
 				});
 
 				$(document).ajaxStart(function(){
-					$('#loading').html("<img id=\"loading\" src=\"resources/images/Loader.gif\"></img>");
-					$('#loading').fadeIn(1000);
+					$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
+					$('.loading').fadeIn(1000);
 				});
 
 				$(document).ajaxStop(function(){
-					$('#loading').fadeOut(700, function(){
+					$('.loading').fadeOut(700, function(){
 						$('#searchResultsWrapper').fadeIn(700);
 					});
 				});
@@ -57,7 +57,7 @@
 	<body>
 		<div id="header"></div>
 
-		<h2 id="genre-title"></h2>
+		<h2 class="text-center" id="genre-title"></h2>
 		<ul class="nav nav-pills nav-genre">
 			<li><a href="search_genre.html?genre=adventure">adventure</a></li>
 			<li><a href="search_genre.html?genre=animation">animation</a></li>
@@ -76,14 +76,12 @@
 		</ul>
 
 		<!-- Loading Image. Only shown when AXAJ call has been made and hasn't returned. -->
-		<div id="loading"></div>
+		<div class="loading"></div>
 
 		<!-- Where search results will be displayed -->
 		<div id="searchResultsWrapper">
 			<div id="searchResults"></div>
 		</div>
-
-		<p class="last-updated"><a href="google.com">google</a></p>
 
 	</body>
 

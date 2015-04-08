@@ -12,14 +12,14 @@
 		<script type="text/javascript">
 		
 			$(document).ready(function(){
-
+				$('.loading').hide();
+				$('.last-updated').hide(); // Hiding a tag added in by omni update.
+				$('#searchResultsWrapper').hide();
+				
 				$('#header').load('header.html', function(){
 					$('.search-field').attr("value", search);
 				});
-				$('#loading').hide();
-				$('.last-updated').hide();
-				$('#searchResultsWrapper').hide();
-
+				
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
 				var search = search_term[1].split("+").join(" ");
@@ -38,12 +38,12 @@
 			});
 
 			$(document).ajaxStart(function(){
-				$('#loading').html("<img id=\"loading\" src=\"resources/images/Loader.gif\"></img>");
-				$('#loading').fadeIn(1000);
+				$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
+				$('.loading').fadeIn(1000);
 			});
 
 			$(document).ajaxStop(function(){
-				$('#loading').fadeOut(700, function(){
+				$('.loading').fadeOut(700, function(){
 					$('#searchResultsWrapper').fadeIn(700);
 				});
 			});
@@ -61,7 +61,7 @@
 			</h3>
 
 			<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
-			<div id="loading"></div>
+			<div class="loading"></div>
 
 			<!-- Where search results will be displayed -->
 			<div id="searchResultsWrapper">

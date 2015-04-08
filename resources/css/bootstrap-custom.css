@@ -4,22 +4,12 @@
 /* -----------------------------------*/
 /* ---------->>> GLOBAL <<<-----------*/
 /* -----------------------------------*/
-.last-updated {
-	margin: 10px;
-	font-size: 10px;
-}
-
 body {
 	padding-top: 70px;
 }
 
 h1 {
 	color: #0C7FBA;
-	text-align: center;
-}
-
-h2 {
-	text-align: center;
 }
 
 /* -----------------------------------*/
