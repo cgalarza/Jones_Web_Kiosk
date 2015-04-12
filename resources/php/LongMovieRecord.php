@@ -7,10 +7,6 @@
 		protected $note;
 		protected $rating;
 
-		// function __construct(){
-		// 	parent::__construct();
-		// }
-
 		function load_information($xpath){
 			parent::load_information($xpath);
 

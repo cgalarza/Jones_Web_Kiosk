@@ -12,8 +12,8 @@
 		const GENRE_URL_END = "%20and%20branch:branchbajmz";
 
 		function __construct(){
-			$genre = Utilities::get("genre");
-			$search_term = Utilities::get("search");
+			$genre = Utilities::getParam("genre");
+			$search_term = Utilities::getParam("search");
 
 			//TO DO: Check for an empty search term.
 

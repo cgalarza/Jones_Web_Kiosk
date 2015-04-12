@@ -3,8 +3,8 @@
 	require 'LongMovieRecord.php';
 	require 'Utilities.php';
 
-	$bibnum = Utilities::get('bibnum');
-	$long 	= Utilities::get('long');
+	$bibnum = Utilities::getParam('bibnum');
+	$long 	= Utilities::getParam('long');
 
 	if (!empty($bibnum) && !empty($long)){
 		new LongMovieRecord($bibnum);

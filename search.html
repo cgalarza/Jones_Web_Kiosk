@@ -12,50 +12,82 @@
 		<script type="text/javascript">
 
 			$(document).ready(function(){
+				var genre = getParam('genre');
+				var search_term = getParam('search');
+
 				$('.loading').hide();
 				$('.last-updated').hide(); // Hiding a tag added in by omni update.
-				$('#searchResultsWrapper').hide();
+				$('#search-results-wrapper').hide();
 
 				$('#header').load('header.html', function(){
-					$('.search-field').attr("value", search);
+					if (genre){
+						$('.search-field').attr("value", search_term);
+					}
 				});
 
-				var get_results = window.location.search.substring(1);
-				var search_term = get_results.split("=");
-				var search = search_term[1].split("+").join(" ");
+				// Specific visual changes for genre and search.
+				if (genre){
+					$('#displaySearchTerm').hide();
+					// If the genre is set to 'none' change the title to say "Pick a genre" and return.
+					if (genre == 'none'){
+						$("#genre-title").html("Choose a Genre...");
+						return;
+					}
 
-				$('#searchTerm > i').html(search);
+					// Make the genre selected yellow.
+					($("a:contains('" + genre + "')").parent()).attr("class", "active");
+					$("#genre-title").html("Genre: " + genre);
+				} else if (search_term) {
+					$('#searchTerm > i').html(search_term);
+					$('.nav-genre').hide();
+				}
 
-
-				$.get("resources/php/search.php", { search: search_term[1] }, function(response) {
-						console.log(response);
-						$('#searchResultsWrapper').fadeIn(200);
-						$.each(response['bib_numbers'], function (k, v){
-							$.get("resources/php/MovieRecord.php", { bibnum: v }, function(info){
-								displayResult(info);
-							}, "json")
-							.fail(function(data) {
-								console.log(data);
-							});
-						});
-						$('.loading').fadeOut(200);
-					}, "json")
-					  .fail(function(data) {
-						console.log(data);
-					});
+				$.ajax({ 	url: "resources/php/search.php",
+									data: { search: search_term, genre: genre },
+									beforeSend: displayLoadingGif,
+									success: function(response) {
+														$('#search-results-wrapper').fadeIn(200);
+														$.each(response.bib_numbers, function(k, v){
+															$.ajax({	url: "resources/php/MovieRecord.php",
+																				data: { bibnum: v },
+																				success: displayResult,
+																				dataType: "json",
+																				error: errorToConsole	});
+														});
+														$('.loading').fadeOut(200);
+													},
+									dataType: "json",
+									error: errorToConsole	});
 
 			});
 
-			$(document).ajaxStart(function(){
+			function errorToConsole(jqXHR, error, exception){
+				console.log("Error: " + error + "\njqXHR: " + jqXHR + "\nException: " + exception);
+			}
+
+			function displayLoadingGif(){
 				$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
 				$('.loading').fadeIn(400);
-			});
+			}
 
 			// $(document).ajaxStop(function(){
 			// 	$('.loading').fadeOut(700, function(){
-			// 		$('#searchResultsWrapper').fadeIn(700);
+			// 		$('#search-results-wrapper').fadeIn(700);
 			// 	});
 			// });
+
+			function getParam(param){
+				var params = window.location.search.substring(1).split('&');
+
+				for(var i = 0; i < params.length; i++){
+					var sp = params[i].split('=', 2);
+					if (sp[0] === param){
+						return decodeURIComponent(sp[1].replace(/\+/g, " "));
+					}
+				}
+
+				return '';
+			}
 
 		</script>
 	</head>
@@ -64,13 +96,31 @@
 
 		<div id="header"></div>
 
+		<h2 class="text-center" id="genre-title"></h2>
+		<ul class="nav nav-pills nav-genre">
+			<li><a href="search.html?genre=adventure">adventure</a></li>
+			<li><a href="search.html?genre=animation">animation</a></li>
+			<li><a href="search.html?genre=children">children's</a></li>
+			<li><a href="search.html?genre=comedy">comedy</a></li>
+			<li><a href="search.html?genre=crime">crime</a></li>
+			<li><a href="search.html?genre=documentary">documentary</a></li>
+			<li><a href="search.html?genre=drama">drama</a></li>
+			<li><a href="search.html?genre=historical">historical</a></li>
+			<li><a href="search.html?genre=horror">horror</a></li>
+			<li><a href="search.html?genre=romance">romance</a></li>
+			<li><a href="search.html?genre=science+fiction">science fiction</a></li>
+			<li><a href="search.html?genre=television+programs">television programs</a></li>
+			<li><a href="search.html?genre=war">war</a></li>
+			<li><a href="search.html?genre=western">western</a></li>
+		</ul>
+
 		<div class="container">
 			<h3 id="displaySearchTerm">
 				Search results for:&nbsp;<span id="searchTerm"><i></i></span>
 			</h3>
 
 			<!-- Where search results will be displayed -->
-			<div id="searchResultsWrapper">
+			<div id="search-results-wrapper">
 				<div id="searchResults">
 					<!-- Need some kind of loading message -->
 				</div>
@@ -79,7 +129,6 @@
 
 		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
 		<div class="loading"></div>
-
 
 	</body>
 

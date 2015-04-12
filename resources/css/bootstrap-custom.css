@@ -12,6 +12,12 @@ h1 {
 	color: #0C7FBA;
 }
 
+
+/*.loading {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}*/
+
 /* -----------------------------------*/
 /* ----------->>> NAVBAR <<<----------*/
 /* -----------------------------------*/
@@ -101,12 +107,6 @@ span.multipleDiscs {
 .movieImage {
 	max-width: 220px;
 	max-height: 250px;
-}
-
-#loading {
-	display: block;
-	margin: auto;
-	padding-top: 40px;
 }
 
 
