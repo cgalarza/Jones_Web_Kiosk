@@ -4,22 +4,22 @@
 	<head>
 		<title>Jones DVD Search</title>
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-custom.css" />
-		
+
 		<script type="text/javascript" src="libraries/jquery/js/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="resources/js/DisplaySearch.js"></script>
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 		<script type="text/javascript">
-		
+
 			$(document).ready(function(){
 				$('.loading').hide();
 				$('.last-updated').hide(); // Hiding a tag added in by omni update.
 				$('#searchResultsWrapper').hide();
-				
+
 				$('#header').load('header.html', function(){
 					$('.search-field').attr("value", search);
 				});
-				
+
 				var get_results = window.location.search.substring(1);
 				var search_term = get_results.split("=");
 				var search = search_term[1].split("+").join(" ");
@@ -27,26 +27,35 @@
 				$('#searchTerm > i').html(search);
 
 
-				$.get( "resources/php/search.php", { search: search_term[1] }, function(response) {
-						displaySearchResults(response);
+				$.get("resources/php/search.php", { search: search_term[1] }, function(response) {
+						console.log(response);
+						$('#searchResultsWrapper').fadeIn(200);
+						$.each(response['bib_numbers'], function (k, v){
+							$.get("resources/php/MovieRecord.php", { bibnum: v }, function(info){
+								displayResult(info);
+							}, "json")
+							.fail(function(data) {
+								console.log(data);
+							});
+						});
+						$('.loading').fadeOut(200);
 					}, "json")
 					  .fail(function(data) {
-					    alert( "error" );
 						console.log(data);
 					});
-	
+
 			});
 
 			$(document).ajaxStart(function(){
 				$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
-				$('.loading').fadeIn(1000);
+				$('.loading').fadeIn(400);
 			});
 
-			$(document).ajaxStop(function(){
-				$('.loading').fadeOut(700, function(){
-					$('#searchResultsWrapper').fadeIn(700);
-				});
-			});
+			// $(document).ajaxStop(function(){
+			// 	$('.loading').fadeOut(700, function(){
+			// 		$('#searchResultsWrapper').fadeIn(700);
+			// 	});
+			// });
 
 		</script>
 	</head>
@@ -60,9 +69,6 @@
 				Search results for:&nbsp;<span id="searchTerm"><i></i></span>
 			</h3>
 
-			<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
-			<div class="loading"></div>
-
 			<!-- Where search results will be displayed -->
 			<div id="searchResultsWrapper">
 				<div id="searchResults">
@@ -70,7 +76,10 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
+		<div class="loading"></div>
+
 
 	</body>
 

@@ -102,6 +102,47 @@ function displaySearchResults(json){
 	});
 }
 
+
+function displayResult(json){
+
+	var obj = $.parseJSON(JSON.stringify(json));
+
+	var movieHtml =
+		// Add image.
+		formatImage(obj.media, obj.accession_number) +
+
+		// Add title.
+		formatTitle(obj.title, obj.bibnumber) +
+
+		// Add media.
+		formatMedia(obj.media) +
+
+		// Add summary (only if there is one)
+		formatInfo("", obj.summary, 400) + "<br/>" +
+
+		// Add location, call number, status.
+		formatCallNumber(obj.accession_number, obj.location, obj.media) +
+
+		// Add cast (only if there is something in the case field).
+		"<br/>" + formatInfo("Cast: ", obj.cast, 200) +
+
+		// Closing the information div.
+		"</div>";
+
+
+	var movie = $('<div>', {
+		'class' : 'panel panel-default',
+		html : movieHtml
+	}).wrap('<div class="panel panel-default">')
+		.wrap('<div class="media">');
+
+	// if (index % 2 == 0)
+	// 	movie.addClass('altColor');
+
+	movie.appendTo($('#searchResults'));
+
+}
+
 /**
 	Generic function that can be used to display different bits of information.
 

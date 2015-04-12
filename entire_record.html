@@ -5,10 +5,10 @@
 		<title>Jones DVD Search</title>
 
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-custom.css"/>
-		
+
 		<script type="text/javascript" src="libraries/jquery/js/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="resources/js/DisplaySearch.js"></script>
-		
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#header').load('header.html');
@@ -16,14 +16,14 @@
 				$('.last-updated').hide();
 				var get_results = window.location.search.substring(1);
 				var bibnum_split= get_results.split("=");
-				$.get("resources/php/entire_record.php?bibnum=" + bibnum_split[1],
+				$.get("resources/php/MovieRecord.php", { bibnum: bibnum_split[1], long: 1 },
 					function(response){
 						displayEntireRecord(response);
 					},
 					"json");
 			});
 		</script>
-		
+
 	</head>
 
 	<body>

@@ -1,6 +1,6 @@
 <?php
 
-	require 'movie_records.php';
+	require 'Utilities.php';
 
 	new Search();
 
@@ -12,8 +12,8 @@
 		const GENRE_URL_END = "%20and%20branch:branchbajmz";
 
 		function __construct(){
-			$genre = (isset($_GET["genre"])) ? $_GET["genre"] : '';
-			$search_term = (isset($_GET["search"])) ? $_GET["search"] : '';
+			$genre = Utilities::get("genre");
+			$search_term = Utilities::get("search");
 
 			//TO DO: Check for an empty search term.
 
@@ -36,8 +36,8 @@
 			// Empty if there aren't any results
 			$bib_number_nodes = $this->search($xpath);
 
-			// With the bib_number_nodes create a json to return.
-			echo $this->search_result_json($bib_number_nodes);
+			// With the bib_number_nodes create a json listing all the bib numbers.
+			echo $this->bib_numbers_json($bib_number_nodes);
 
 		}
 
@@ -47,18 +47,30 @@
 			@params DOMNodeList $bib_number_nodes List of nodes; each node is a search result.
 			@return JSON Search result information stored in a JSON.
 		*/
-		function search_result_json($bib_number_nodes){
-			$movies_array = array();
+		// function search_result_json($bib_number_nodes){
+		// 	$movies_array = array();
+		//
+		// 	for ($i = 0; $i < $bib_number_nodes->length; $i++){
+		// 		$movie = new MovieRecord($bib_number_nodes->item($i)->nodeValue);
+		//
+		// 		array_push($movies_array, json_decode($movie->create_JSON_representation()));
+		// 	}
+		//
+		// 	header('Content-type:application/json');
+		// 	return json_encode($movies_array);
+		// }
+
+		function bib_numbers_json($bib_number_nodes){
+			$bib_numbers = array();
 
 			for ($i = 0; $i < $bib_number_nodes->length; $i++){
-				$movie = new MovieRecord($bib_number_nodes->item($i)->nodeValue);
-
-				array_push($movies_array, json_decode($movie->create_JSON_representation()));
+				array_push($bib_numbers, $bib_number_nodes->item($i)->nodeValue);
 			}
 
 			header('Content-type:application/json');
-			return json_encode($movies_array);
+			return json_encode(array('bib_numbers' => $bib_numbers));
 		}
+
 
 		/*
 			Given the search results DOMXPath a DOMNodeList is returned, in which each node is
