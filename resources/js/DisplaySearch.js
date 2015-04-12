@@ -39,7 +39,7 @@ function displayEntireRecord(json){
 		html : movieHtml
 	});
 
-	movie.appendTo($('#entireRecord'));
+	movie.appendTo($('#entire-record'));
 }
 
 
@@ -49,7 +49,6 @@ function displayEntireRecord(json){
 */
 function displaySearchResults(json){
 	// Parse the JSON object that is returned
-	console.log("in displaySearchResults");
 	var jsonObj = $.parseJSON(JSON.stringify(json));
 
 	// If the json is empty then no search results were found.
@@ -60,7 +59,7 @@ function displaySearchResults(json){
 			'class' : 'noResults',
 			html : "No search results found."
 		});
-		movie.appendTo($('#searchResults'));
+		movie.appendTo($('#search-results'));
 	}
 
 	$.each(jsonObj, function(index, obj){
@@ -97,7 +96,7 @@ function displaySearchResults(json){
 		if (index % 2 == 0)
 			movie.addClass('altColor');
 
-		movie.appendTo($('#searchResults'));
+		movie.appendTo($('#search-results'));
 
 	});
 }
@@ -139,7 +138,7 @@ function displayResult(json){
 	// if (index % 2 == 0)
 	// 	movie.addClass('altColor');
 
-	movie.appendTo($('#searchResults'));
+	movie.appendTo($('#search-results'));
 
 }
 

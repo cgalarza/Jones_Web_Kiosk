@@ -24,7 +24,7 @@ function addMovies(data){
 	var content = [];
 
 	// Display title of promotional movies being displayed.
-	$('h1#promotionalMovies').html(data.carousel_title);
+	$('h1#promotional-movies').html(data.carousel_title);
 
 	// Add each film to the caurosel.
 	$.each(data.movies, function(index, obj){

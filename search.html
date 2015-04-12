@@ -20,14 +20,14 @@
 				$('#search-results-wrapper').hide();
 
 				$('#header').load('header.html', function(){
-					if (genre){
+					if (search_term){
 						$('.search-field').attr("value", search_term);
 					}
 				});
 
 				// Specific visual changes for genre and search.
 				if (genre){
-					$('#displaySearchTerm').hide();
+					$('#display-search-term').hide();
 					// If the genre is set to 'none' change the title to say "Pick a genre" and return.
 					if (genre == 'none'){
 						$("#genre-title").html("Choose a Genre...");
@@ -38,9 +38,9 @@
 					($("a:contains('" + genre + "')").parent()).attr("class", "active");
 					$("#genre-title").html("Genre: " + genre);
 				} else if (search_term) {
-					$('#searchTerm > i').html(search_term);
+					$('#search-term > i').html(search_term);
 					$('.nav-genre').hide();
-				}
+				} //TODO: else display error and return.
 
 				$.ajax({ 	url: "resources/php/search.php",
 									data: { search: search_term, genre: genre },
@@ -115,13 +115,13 @@
 		</ul>
 
 		<div class="container">
-			<h3 id="displaySearchTerm">
-				Search results for:&nbsp;<span id="searchTerm"><i></i></span>
+			<h3 id="display-search-term">
+				Search results for:&nbsp;<span id="search-term"><i></i></span>
 			</h3>
 
 			<!-- Where search results will be displayed -->
 			<div id="search-results-wrapper">
-				<div id="searchResults">
+				<div id="search-results">
 					<!-- Need some kind of loading message -->
 				</div>
 			</div>
