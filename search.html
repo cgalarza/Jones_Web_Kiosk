@@ -56,7 +56,7 @@
 				});
 
 
-				$.ajax({ 	url: "resources/php/search.php",
+				$.ajax({ 	url: "resources/php/Search.php",
 									data: { search: search_term, genre: genre },
 									beforeSend: displayLoadingGif,
 									success: function(response) {
@@ -83,7 +83,7 @@
 			}
 
 			function displayLoadingGif(){
-				$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
+				$('.loading').html('<img class="center-block" src="resources/images/loader.gif">');
 				$('.loading').fadeIn(400);
 			}
 

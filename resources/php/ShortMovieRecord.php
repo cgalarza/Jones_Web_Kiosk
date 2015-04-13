@@ -8,8 +8,8 @@
     const MEDIA_VHS = 'Jones Media Video tape';
     const BEG_IMG_PATH = '/library/mediactr/images/dvd/';
     const JPG_EXTENTION = '.jpg';
-    const IMG_NOT_AVAILABLE = 'images/Image_Not_Available.png';
-    const IMG_ON_RESERVE = 'images/On_Reserve_at_Jones.png';
+    const IMG_NOT_AVAILABLE = 'images/image_not_available.png';
+    const IMG_ON_RESERVE = 'images/on_reserve_at_jones.png';
     const ON_RESERVE_AT_JMC = 'On Reserve at Jones Media';
     const RESERVE = "On Reserve";
     const DVD = "DVD";

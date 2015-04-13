@@ -12,14 +12,14 @@ function imageExists(url){
 Handlebars.registerHelper('imagePath', function(media, accessionNumber){
   // If the item is on reserve.
   if (media == "On Reserve")
-    return "resources/images/On_Reserve_at_Jones.png";
+    return "resources/images/on_reserve_at_jones.png";
   // If the image exists, but its not a DVD or a DVD Set.
   else if (imageExists('../images/dvd/' +  accessionNumber + '.jpg') &&
     (media === 'DVD' || media === 'DVD Set'))
     return '../images/dvd/' +  accessionNumber + '.jpg';
   // Otherwise, display default image.
   else
-    return 'resources/images/Image_Not_Available.png';
+    return 'resources/images/image_not_available.png';
 });
 
 
