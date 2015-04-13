@@ -6,7 +6,9 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-custom.css" />
 
 		<script type="text/javascript" src="libraries/jquery/js/jquery-1.11.2.min.js"></script>
-		<script type="text/javascript" src="resources/js/DisplaySearch.js"></script>
+		<script type="text/javascript" src="libraries/handlebars/js/handlebars-3.0.1.js"></script>
+		<script type="text/javascript" src="resources/js/Utilities.js"></script>
+		<script type="text/javascript" src="resources/js/MovieRecordHelpers.js"></script>
 
 		<!-- Javascript that makes a axaj call to search.php and then takes that information and displays it on this page -->
 		<script type="text/javascript">
@@ -42,6 +44,18 @@
 					$('.nav-genre').hide();
 				} //TODO: else display error and return.
 
+
+				// Load handlebars short-movie-record template.
+				var template;
+				$.ajax({
+					url: "resources/js/templates/movie-record.handlebars",
+					cache: true,
+					success: function(source){
+						template = Handlebars.compile(source);
+					}
+				});
+
+
 				$.ajax({ 	url: "resources/php/search.php",
 									data: { search: search_term, genre: genre },
 									beforeSend: displayLoadingGif,
@@ -50,7 +64,10 @@
 														$.each(response.bib_numbers, function(k, v){
 															$.ajax({	url: "resources/php/MovieRecord.php",
 																				data: { bibnum: v },
-																				success: displayResult,
+																				success: function(data){
+																					var render = template(data);
+																					$('#search-results').append(render);
+																				},
 																				dataType: "json",
 																				error: errorToConsole	});
 														});
@@ -68,25 +85,6 @@
 			function displayLoadingGif(){
 				$('.loading').html('<img class="center-block" src="resources/images/Loader.gif">');
 				$('.loading').fadeIn(400);
-			}
-
-			// $(document).ajaxStop(function(){
-			// 	$('.loading').fadeOut(700, function(){
-			// 		$('#search-results-wrapper').fadeIn(700);
-			// 	});
-			// });
-
-			function getParam(param){
-				var params = window.location.search.substring(1).split('&');
-
-				for(var i = 0; i < params.length; i++){
-					var sp = params[i].split('=', 2);
-					if (sp[0] === param){
-						return decodeURIComponent(sp[1].replace(/\+/g, " "));
-					}
-				}
-
-				return '';
 			}
 
 		</script>

@@ -31,6 +31,7 @@
 			$json_array["language"] = $this->language;
 			$json_array["note"] = $this->note;
 			$json_array["rating"] = $this->rating;
+      $json_array["url"] = $this->url;
 
 			return json_encode($json_array);
 		}

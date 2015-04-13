@@ -12,7 +12,7 @@ h1 {
 	color: #0C7FBA;
 }
 
-
+/* potentially has to go because the container its in should have padding */
 .loading {
 	padding-top: 50px;
 	padding-bottom: 50px;

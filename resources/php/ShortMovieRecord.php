@@ -208,7 +208,6 @@
         "media" => $this->media,
         "accession_number" => $this->accession_number,
         "summary" => $this->summary,
-        "url" => $this->url,
         "bibnumber" => $this->bib_number,
         "cast" => $this->cast,
         "image_path" => $this->image_path,

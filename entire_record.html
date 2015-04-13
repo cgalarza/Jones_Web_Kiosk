@@ -7,18 +7,32 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-custom.css"/>
 
 		<script type="text/javascript" src="libraries/jquery/js/jquery-1.11.2.min.js"></script>
-		<script type="text/javascript" src="resources/js/DisplaySearch.js"></script>
+		<script type="text/javascript" src="libraries/handlebars/js/handlebars-3.0.1.js"></script>
+		<script type="text/javascript" src="resources/js/Utilities.js"></script>
+		<script type="text/javascript" src="resources/js/MovieRecordHelpers.js"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#header').load('header.html');
 
 				$('.last-updated').hide();
-				var get_results = window.location.search.substring(1);
-				var bibnum_split= get_results.split("=");
-				$.get("resources/php/MovieRecord.php", { bibnum: bibnum_split[1], long: 1 },
-					function(response){
-						displayEntireRecord(response);
+
+				var bibnum = getParam('bibnum');
+
+				// Load handlebars short-movie-record template.
+				var template;
+				$.ajax({
+					url: "resources/js/templates/movie-record.handlebars",
+					cache: true,
+					success: function(source){
+						template = Handlebars.compile(source);
+					}
+				});
+
+				$.get("resources/php/MovieRecord.php", { bibnum: bibnum, long: 1 },
+					function(data){
+						var render = template(data);
+						$('#entire-record').append(render);
 					},
 					"json");
 			});
