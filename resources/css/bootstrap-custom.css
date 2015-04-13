@@ -75,13 +75,6 @@ h2.title {
 	color: #F36C6E;
 }
 
-/*#searchResults {
-	margin: auto;
-	width: 90%;
-	height: auto;
-	min-height: 100%;
-}*/
-
 .noResults{
 	color: red;
 	font-size: 200%;
@@ -104,7 +97,7 @@ span.multipleDiscs {
 	background-color: #DCE3E8;
 }
 
-.movieImage {
+.movie-image {
 	max-width: 220px;
 	max-height: 250px;
 }
@@ -114,11 +107,8 @@ span.multipleDiscs {
 /* --->>> Entire Catalog Entry <<<----*/
 /* -----------------------------------*/
 
-#entireRecordWrapper {
-	height: 100%;
-}
-
-#entireRecord {
+/*
+#entire-record {
 	min-height: 100%;
 	height: auto;
 }
@@ -140,4 +130,4 @@ div#entireRecord div.movieResult .movieImage {
 
 div#entireRecord div.movieResult .movieInfo {
 	margin-left: 325px;
-}
+}*/

@@ -2,7 +2,7 @@
   <div class="media">
     {{!-- Image --}}
     <div class="media-left">
-      <img class="media-object movieImage" src="{{imagePath media accession_number}}"></img>
+      <img class="media-object movie-image" src="{{imagePath media accession_number}}"></img>
     </div>
 
     <div class="media-body">
@@ -18,7 +18,7 @@
 
       {{!-- Summary (TODO:Truncate) --}}
       {{#if summary}}
-        <p><strong>Summary:</strong> {{summary}}</p>
+        <p>{{summary}}</p>
       {{/if}}
 
       {{!-- Location, Call number, Status --}}
@@ -48,6 +48,6 @@
       {{/if}}
 
     </div>
-    
+
   </div>
 </div>

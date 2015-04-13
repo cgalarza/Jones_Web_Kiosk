@@ -32,7 +32,7 @@
 				$.get("resources/php/MovieRecord.php", { bibnum: bibnum, long: 1 },
 					function(data){
 						var render = template(data);
-						$('#entire-record').append(render);
+						$('.entire-record').append(render);
 					},
 					"json");
 			});
@@ -45,8 +45,8 @@
 
 		<br />
 
-		<div id="entire-record-wrapper">
-			<div id="entire-record"/>
+		<div class="container">
+			<div class="entire-record row"></div>
 		</div>
 
 	</body>
