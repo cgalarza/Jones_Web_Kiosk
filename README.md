@@ -24,6 +24,10 @@ plugin can be found at [here](http://www.owlgraphic.com/owlcarousel/).
 Used a customized version of bootstrap on the page. The json specifying
 the configuration used is at libraries/bootstrap/config.json.
 
+**Handlebars.js**
+Using Handlebars template to display each movie record. Handlebars will make
+up keep of movie record html easier.
+
 **preloaders.net**  
 This website was used to generate the loading GIF.
 
@@ -36,6 +40,7 @@ library/ (Any external libraries/plugins used)
     bootstrap/
     jquery/
     owl-carousel/
+    handlebars/
 resources/ (Code specific to this site)
     css/
     data/
