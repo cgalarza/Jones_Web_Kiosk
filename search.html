@@ -40,7 +40,7 @@
 					($("a:contains('" + genre + "')").parent()).attr("class", "active");
 					$("#genre-title").html("Genre: " + genre);
 				} else if (search_term) {
-					$('#search-term > i').html(search_term);
+					$('#search-term > em').html(search_term);
 					$('.nav-genre').hide();
 				} //TODO: else display error and return.
 
@@ -115,11 +115,11 @@
 			</ul>
 
 			<h3 id="display-search-term">
-				Search results for:&nbsp;<span id="search-term"><i></i></span>
+				Search results for:&nbsp;<span id="search-term"><em></em></span>
 			</h3>
 
 			<!-- Where search results will be displayed -->
-			<div id="search-results-wrapper">
+			<div id="search-results-wrapper" class="container">
 				<div id="search-results">
 					<!-- Need some kind of loading message -->
 				</div>
@@ -127,8 +127,8 @@
 
 			<!-- Loading Image. Only shown when axaj call has been made and hasn't returned. -->
 			<div class="loading"></div>
-		</div>
 
+		</div>
 	</body>
 
 </html>

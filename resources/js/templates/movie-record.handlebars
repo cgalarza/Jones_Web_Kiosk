@@ -1,53 +1,51 @@
 <div class="panel panel-default">
-  <div class="media">
-    {{!-- Image --}}
-    <div class="media-left">
-      <img class="media-object movie-image" src="{{imagePath media accession_number}}"></img>
+  <div class="panel-body">
+    <div class="media">
+      {{!-- Image --}}
+      <div class="media-left">
+        <img class="media-object movie-image" src="{{imagePath media accession_number}}"></img>
+      </div>
+
+      <div class="media-body">
+        {{!-- Title --}}
+        <a href="entire_record.html?bibnum={{bibnumber}}">
+          <h2 class="media-heading title">{{title}}</h2>
+            {{!-- Media --}}
+            &nbsp;<span class="label label-primary">{{media}}</span>
+        </a>
+
+        {{!-- Summary (TODO:Truncate) --}}
+        {{#if summary}}
+          <p>{{summary}}</p>
+        {{/if}}
+
+        {{!-- Location, Call number, Status --}}
+
+        <p>{{formatCallNumber accession_number location media}}</p>
+
+
+        {{!-- Cast (TODO:Truncate)--}}
+        {{#if cast}}
+          <p><strong>Cast:</strong> {{cast}}</p>
+        {{/if}}
+
+        {{#if language}}
+          <p><strong>Language:</strong> {{language}}</p>
+        {{/if}}
+
+        {{#if rating}}
+          <p><strong>Rating:</strong> {{rating}}</p>
+        {{/if}}
+
+        {{#if note}}
+          <p><strong>Note:</strong> {{note}}</p>
+        {{/if}}
+
+        {{#if url}}
+          <a class="catalogLink" href="{{url}}">See library catalog entry</a></div>
+        {{/if}}
+
+      </div>
     </div>
-
-    <div class="media-body">
-      {{!-- Title --}}
-      <a href="entire_record.html?bibnum={{bibnumber}}">
-        <h2 class="media-heading title">
-          {{title}}
-        </h2>
-      </a>
-
-      {{!-- Media --}}
-      <span class="label label-primary">{{media}}</span>
-
-      {{!-- Summary (TODO:Truncate) --}}
-      {{#if summary}}
-        <p>{{summary}}</p>
-      {{/if}}
-
-      {{!-- Location, Call number, Status --}}
-
-      {{formatCallNumber accession_number location media}}
-
-
-      {{!-- Cast (TODO:Truncate)--}}
-      {{#if cast}}
-        <p><strong>Cast:</strong> {{cast}}</p>
-      {{/if}}
-
-      {{#if language}}
-        <p><strong>Language:</strong> {{language}}</p>
-      {{/if}}
-
-      {{#if rating}}
-        <p><strong>Rating:</strong> {{rating}}</p>
-      {{/if}}
-
-      {{#if note}}
-        <p><strong>Note:</strong> {{note}}</p>
-      {{/if}}
-
-      {{#if url}}
-        <a class="catalogLink" href="{{url}}">See library catalog entry</a></div>
-      {{/if}}
-
-    </div>
-
   </div>
 </div>

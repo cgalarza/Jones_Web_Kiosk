@@ -38,7 +38,7 @@ Handlebars.registerHelper('formatCallNumber', function (accession_number, locati
 	// number and availability.
 	if (locations.length == 1) {
 		if (media == "DVD" || media == "VHS")
-			strings.push("<br/><strong>Call Number:</strong> " + accession_number);
+			strings.push("<strong>Call Number: </strong>" + accession_number);
 		else
 			strings.push("<br/>On Reserve for " + locations[0].callnumber);
 
@@ -48,8 +48,8 @@ Handlebars.registerHelper('formatCallNumber', function (accession_number, locati
 		// If it is a DVD set display the call number and that there are
 		// multiple disc and under that display the disc number and whether or
 		// not its available.
-		strings.push("<br><strong>Call Number: </strong>" + accession_number +
-			" (Multiple Discs)<br/>");
+		strings.push("<strong>Call Number: </strong>" + accession_number +
+			" (Multiple Discs)");
 		$.each(locations, function(index, row){
 
 			var discString = row.callnumber.split(" ");

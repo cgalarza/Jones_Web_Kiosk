@@ -12,12 +12,6 @@ h1 {
 	color: #0C7FBA;
 }
 
-/* potentially has to go because the container its in should have padding */
-.loading {
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
 /* -----------------------------------*/
 /* ----------->>> NAVBAR <<<----------*/
 /* -----------------------------------*/
@@ -44,7 +38,6 @@ h1 {
 	font-weight: 300;
 	font-size: 18px;
 	text-align: center;
-
 }
 
 .nav-genre>li {
@@ -75,17 +68,15 @@ h2.title {
 	color: #F36C6E;
 }
 
+.loading {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+/*
 .noResults{
 	color: red;
 	font-size: 200%;
-}
-
-.movieResult {
-	display: block;
-	padding: 15px;
-	margin: auto;
-	max-width: 800px;
-	min-height: 250px;
 }
 
 span.multipleDiscs {
@@ -95,7 +86,7 @@ span.multipleDiscs {
 
 .altColor {
 	background-color: #DCE3E8;
-}
+}*/
 
 .movie-image {
 	max-width: 220px;
