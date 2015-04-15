@@ -94,18 +94,16 @@
         if ($location_info['type'] == self::MEDIA_DVD){
           $this->media = self::DVD;
           $this->accession_number = $this->get_accession_num($location_info['callnumber']);
-          return;
         }
         else if ($location_info['type'] == self::ON_RESERVE_AT_JMC){
           $this->media = self::RESERVE;
-          return;
         }
 
         else if ($location_info['type'] == self::MEDIA_VHS){
           $this->media = self::VHS;
           $this->accession_number = $this->get_accession_num($location_info['callnumber']);
-          return;
         }
+        return;
       }
 
       else {
@@ -120,15 +118,15 @@
           $this->get_accession_num(
             $this->location_array[0]['callnumber']);
 
-        // Check to see if all the items have the same type. Items are consireded to have the same types even if some
-        // discs are on reserve.
+        // Check to see if all the items have the same type. Items are
+        // consireded to have the same types even if some discs are on reserve.
         foreach ($this->location_array as $location_info){
           $new_loc = $location_info['type'];
 
           if (($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_DVD) ||
-            ($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_VHS)) {
-            $loc = $new_loc;
-          $this->accession_number = $this->get_accession_num($location_info['callnumber']);
+              ($loc == self::ON_RESERVE_AT_JMC && $new_loc == self::MEDIA_VHS)) {
+              $loc = $new_loc;
+              $this->accession_number = $this->get_accession_num($location_info['callnumber']);
 
           }
 

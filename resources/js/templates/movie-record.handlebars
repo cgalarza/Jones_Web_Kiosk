@@ -8,11 +8,13 @@
 
       <div class="media-body">
         {{!-- Title --}}
-        <a href="entire_record.html?bibnum={{bibnumber}}">
-          <h2 class="media-heading title">{{title}}</h2>
-            {{!-- Media --}}
-            &nbsp;<span class="label label-primary">{{media}}</span>
-        </a>
+
+        <h2 class="media-heading title">
+          <a href="entire_record.html?bibnum={{bibnumber}}">{{title}}</a>
+          &nbsp;<span class="badge media-badge">{{media}}</span>
+        </h2>
+        {{!-- Media --}}
+
 
         {{!-- Summary (TODO:Truncate) --}}
         {{#if summary}}
@@ -42,7 +44,7 @@
         {{/if}}
 
         {{#if url}}
-          <a class="catalogLink" href="{{url}}">See library catalog entry</a></div>
+          <a href="{{url}}">See library catalog entry</a>
         {{/if}}
 
       </div>

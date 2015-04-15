@@ -63,14 +63,18 @@ h1 {
 /* ------>>> SEARCH RESULTS <<<-------*/
 /* -----------------------------------*/
 
-h2.title {
-	display: inline;
+.title>a {
+	/*display: inline;*/
 	color: #F36C6E;
 }
 
 .loading {
 	padding-top: 50px;
 	padding-bottom: 50px;
+}
+
+.media-badge {
+	vertical-align: middle;
 }
 
 /*
@@ -107,11 +111,6 @@ span.multipleDiscs {
 div#entireRecord div.movieResult {
 	max-width: 1000px;
 	font-size: 105%;
-}
-
-div#entireRecord div.movieResult a.catalogLink {
-	font-size: 18px;
-	font-weight: 700;
 }
 
 div#entireRecord div.movieResult .movieImage {

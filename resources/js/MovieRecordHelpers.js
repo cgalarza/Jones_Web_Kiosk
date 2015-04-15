@@ -36,38 +36,43 @@ Handlebars.registerHelper('formatCallNumber', function (accession_number, locati
 	var strings = [];
 	// If there is only one item associated with the record display the call
 	// number and availability.
-	if (locations.length == 1) {
-		if (media == "DVD" || media == "VHS")
-			strings.push("<strong>Call Number: </strong>" + accession_number);
-		else
-			strings.push("<br/>On Reserve for " + locations[0].callnumber);
-
-		strings.push(formatStatus(locations[0].status));
-
-	} else if (media == "DVD Set") {
+	if (media == "DVD" || media == "VHS"){
+		strings.push("<strong>Call Number: </strong>" + accession_number +
+      formatStatus(locations[0].status));
+  }
+  else if (media == "On Reserve"){
+		strings.push("On Reserve for " + locations[0].callnumber +
+      formatStatus(locations[0].status));
+	}
+  else if (media == "DVD Set" || media == 'VHS Set') {
 		// If it is a DVD set display the call number and that there are
 		// multiple disc and under that display the disc number and whether or
 		// not its available.
-		strings.push("<strong>Call Number: </strong>" + accession_number +
-			" (Multiple Discs)");
-		$.each(locations, function(index, row){
+    var multipleTag = (media == "DVD Set") ? " (Multiple Discs) " : " (Multiple Tapes) ";
+
+		strings.push("<strong>Call Number: </strong> " + accession_number + multipleTag);
+
+    $.each(locations, function(index, row){
 
 			var discString = row.callnumber.split(" ");
 
 			// If the first part of the string does not only contain numbers
 			// then its on reserve.
+      strings.push('<span class="multiple-discs">');
+
+      if (discString[1])
+        strings.push(discString[1]);
+
 			if (!(/^\d+$/.test(discString[0])))
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] +
-					" (On Reserve for " + discString[0].trim() + ") " +
-					formatStatus(row.status) + "</span>");
-			else
-				strings.push("<span class=\"multipleDiscs\">" + discString[1] +
-					" " + formatStatus(row.status) + "</span>");
+				strings.push("(On Reserve for " + discString[0].trim() + ")");
+
+      strings.push(" " + formatStatus(row.status) + "</span>");
 		});
 
-	} else {
+	}
+  else {
 		$.each(locations, function(index, row){
- 			strings.push("<br/>" + row.type + "  " + row.callnumber + "  " +
+ 			strings.push(row.type + "  " + row.callnumber + "  " +
 	 			formatStatus(row.status));
 		 });
 	}
@@ -82,7 +87,6 @@ Handlebars.registerHelper('formatCallNumber', function (accession_number, locati
 */
 function formatStatus(status){
   var label = (status === "AVAILABLE") ? 'label-success' : 'label-danger';
-	return '&nbsp&nbsp<span class="label ' + label + '"><strong>' +
-    status.trim() + '</strong></span>';
+	return '&nbsp&nbsp<span class="label ' + label + '">' + status.trim() + '</span>';
 
 }
